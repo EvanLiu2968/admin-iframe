@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>后台管理系统</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport" id="viewport">
+  <meta http-equiv="cache-control" content="no-cache">
+  <meta name="description" content="为人民服务">
+  <meta name="keyword" content="后台管理系统,evanliu,evanliu2968">
+  <meta name="author" content="evanliu2968">
+  <!-- <link rel="shortcut icon" href="/favicon.ico" /> -->
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- 主题 -->
+  <link rel="stylesheet" href="../src/css/app.css">
+  <link rel="stylesheet" href="../src/css/el-sidebar.css">
+  <!--iframe页面加载进度条-->
+  <link rel="stylesheet" href="../src/libs/nprogress/nprogress.css">
+  <script src="../src/libs/nprogress/nprogress.js"></script>
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../src/js/html5shiv.min.js"></script>
+  <script src="../src/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body class="skin-blue">
+<!-- 页面容器 -->
+<div class="wrapper">
+  <!-- 头部 -->
+  <header class="main-header">
+    <!-- Header Navbar -->
+    <nav class="navbar" role="navigation">
+      <div class="tabs-view-container">
+        <!-- 标签模版
+        <a class="tabs-view" href="./cssDemo/blankPage.html">
+          <span class="tabs-tag">空白页 <i class="tabs-tag-close fa fa-close"></i></span>
+        </a>
+         -->
+      </div>
+      <ul class="nav navbar-nav pull-right">
+        <!-- 问题反馈  -->
+        <li>
+          <!-- Menu toggle button -->
+          <a href="javascript:void(0)" title="问题反馈" id="btn-feedback" >
+            <i class="fa fa-question-circle-o"></i>
+            <span >问题反馈</span>
+          </a>
+        </li>
+        <!-- 通知  -->
+        <li>
+          <!-- Menu toggle button -->
+          <a href="javascript:void(0)" title="公告栏" id="btn-notice" >
+            <i class="fa fa-bell-o"></i>
+            <span class="label label-warning" id="messageCount">1</span>
+            <span >公告栏</span>
+          </a>
+        </li>
+        <!-- User Account Menu -->
+        <li class="dropdown">
+          <!-- Menu Toggle Button -->
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+            <!-- The user image in the navbar-->
+            <img src="../src/images/user.jpg" class="user-image" alt="头像">
+            <!-- hidden-xs hides the username on small devices so only the image appears. -->
+            <span class="hidden-xs">管理员</span>
+          </a>
+          <ul class="dropdown-menu header-dropdown-menu">
+            <li><a href="./Authen/passwordChange.html" data-tabs-dynamic="tab" data-tabcontainer="iframe">修改密码</a></li>
+            <li><a href="./Authen/login3.html">切换账号</a></li>
+            <li><a href="./Authen/login4.html">注销登录</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header><!-- 头部 -->
+
+  <!-- 左侧菜单栏 -->
+  <aside class="main-sidebar">
+
+    <section class="sidebar">
+
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu">
+        <li class="header">
+          <span>导航菜单</span>
+          <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button" title="切换菜单">
+            <i class="fa fa-bars"></i>
+          </a>
+        </li>
+        <li class="treeview">
+          <a href="#" title="常用页面"><i class="fa fa-file-text"></i><span>常用页面</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a href="./Authen/404.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="404页面">404页面</a></li>
+            <li><a href="./Authen/500.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="500页面">500页面</a></li>
+            <li><a href="./Authen/login.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="登录页面">登录页面</a></li>
+            <li><a href="./Authen/login1.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="登录一页面">登录一页面</a></li>
+            <li><a href="./Authen/login2.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="登录二页面">登录二页面</a></li>
+            <li><a href="./Authen/login3.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="登录三页面">登录三页面</a></li>
+            <li><a href="./Authen/login4.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="登录四页面">登录四页面</a></li>
+            <li><a href="./Authen/register.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="注册页面">注册页面</a></li>
+            <li><a href="./Authen/lockscreen.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="注册页面">锁屏页面</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#" title="CSS示例"><i class="fa fa-bookmark"></i><span>CSS示例</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="start" href="./cssDemo/blankPage.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" data-tabclosable="false" title="空白页">空白页</a></li>
+            <li><a href="./cssDemo/dynamicTab.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="标签栏">标签栏</a></li>
+            <li><a href="./cssDemo/basic.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="基础组件">基础组件</a></li>
+            <li><a href="./cssDemo/component.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="常用组件">常用组件</a></li>
+            <li><a href="./cssDemo/animate.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="动画">动画</a></li>
+            <li><a href="./cssDemo/stepTab.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="tab标签页/步骤分步">tab标签页/步骤分步</a></li>
+            <li><a href="./cssDemo/colorTable.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="颜色配色参考">颜色配色参考</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#" title="Plugin示例"><i class="fa fa-desktop"></i><span>Plugin示例</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a href="./pluginDemo/formValidate.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="滑块组件">表单验证</a></li>
+            <li><a href="./pluginDemo/checkbox.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="滑块组件">纯css复选单选</a></li>
+            <li><a href="./pluginDemo/layerBox.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="滑块组件">layer提示框</a></li>
+            <li><a href="./pluginDemo/bootstrapTable.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="bootstrapTable">bootstrapTable</a></li>
+            <li><a href="./pluginDemo/tableExport.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="表格导出">表格导出</a></li>
+            <li><a href="./pluginDemo/dataTable.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="dataTable">dataTable</a></li>
+            <li><a href="./pluginDemo/fileUploader.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="文件上传控件">文件上传控件</a></li>
+            <li><a href="./pluginDemo/datePicker.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="日期选择">日期选择</a></li>
+            <li><a href="./pluginDemo/TextEditor.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="富文本编辑器">富文本编辑器</a></li>
+            <li><a href="./pluginDemo/inputSearch.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="查询输入框">查询输入框</a></li>
+            <li><a href="./pluginDemo/pictureViewer.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="图片查看">图片查看</a></li>
+            <li><a href="./pluginDemo/treeView.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="树视图">树视图</a></li>
+            <li><a href="./pluginDemo/selectMultiple.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="查询输入框">下拉多选框</a></li>
+            <li><a href="./pluginDemo/colorPicker.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="颜色选择">颜色选择</a></li>
+            <li><a href="./pluginDemo/selectSplitter.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="选择联动">选择联动</a></li>
+            <li><a href="./pluginDemo/tagInput.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="标签输入">标签输入</a></li>
+            <li><a href="./pluginDemo/fileInput.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="简单文件上传">简单文件上传</a></li>
+            <li><a href="./pluginDemo/fullcalendar.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="日历">日历</a></li>
+            <li><a href="./pluginDemo/levelSelect.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="联级选择">联级选择</a></li>
+            <li><a href="./pluginDemo/PDF.html" target="_blank" title="PDF在线查看器">PDF在线查看器</a></li>
+            <li><a href="./pluginDemo/githubPlugin.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="github常用插件参考">github常用插件参考</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#" title="MobilePlugin示例"><i class="fa fa-apple"></i><span>MobilePlugin示例</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a href="./mobilePluginDemo/mpicker.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="mpicker">mpicker</a></li>
+            <li><a href="./mobilePluginDemo/layerMobi.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="手机端提示框">手机端提示框</a></li>
+            <li><a href="./mobilePluginDemo/swiper.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="swiper">swiper</a></li>
+            <li><a href="./mobilePluginDemo/mdater.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="简易版日期控件">简易版日期控件</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#" title="图表统计分析"><i class="fa fa-pie-chart"></i><span>图表统计分析</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a href="./mapChart/echarts.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="ECharts">ECharts</a></li>
+            <li><a href="./mapChart/echartsGl.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="ECharts-gl">ECharts-gl</a></li>
+            <li><a href="./mapChart/BMap.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="百度地图">百度地图&leaflet</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#" title="系统管理"><i class="fa fa-cog"></i><span>系统管理</span> <i class="fa fa-angle-left pull-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a href="./SystemManage/UserManage.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="用户管理">用户管理</a></li>
+            <li><a href="./SystemManage/RoleManage.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="角色管理">角色管理</a></li>
+            <li><a href="./SystemManage/MenuManage.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="菜单管理">菜单管理</a></li>
+            <li><a href="./SystemManage/LimitManage.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="权限管理">权限管理</a></li>
+            <li><a href="./SystemManage/LogManage.html" data-tabs-dynamic="tab" data-tabcontainer="iframe" title="日志管理">日志管理</a></li>
+          </ul>
+        </li>
+      </ul><!-- /.sidebar-menu -->
+    </section><!-- /.sidebar -->
+  </aside><!-- 左侧菜单栏 -->
+
+  <!-- 主内容容器 -->
+  <div class="content-wrapper">
+    <!--iframe层-->
+    <div class="tab-content" id="iframeTabContent" data-tabsid="dynamicTab-window-top-main">
+      <iframe id="iframe" class="tab-pane active" style="width: 100%; height: 100%; border: 0px;"></iframe>
+    </div>
+  </div><!-- .content-wrapper -->
+</div><!-- 页面容器 -->
+<!-- jQuery 2.1.4 -->
+<script src="../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!--layer.js-->
+<script src="../src/libs/layer/layer.js"></script>
+<!-- common.js -->
+<script src="../src/js/common.js"></script>
+<script>
+/*
+ * Created by evanliu2968 on 2017/09/29.
+ */
+$(function() {
+  index.init();
+});
+var index = (function() {
+  //组件；
+  var sidebarInit = function() {
+    //首页左侧下拉菜单
+    var treeviewmenuToggle = function(menu) {
+      var animationSpeed = 200;
+      $(document).on('click', menu + ' li a', function(e) {
+        //Get the clicked link and the next element
+        var $this = $(this);
+        var checkElement = $this.next();
+
+        //Check if the next element is a menu and is visible
+        if ((checkElement.is('.treeview-menu')) && (checkElement.is(':visible'))) {
+          //Close the menu
+          checkElement.slideUp(animationSpeed, function() {
+            checkElement.removeClass('menu-open');
+            //Fix the layout in case the sidebar stretches over the height of the window
+            //_this.layout.fix();
+          });
+          checkElement.parent("li").removeClass("active");
+        }
+        //If the menu is not visible
+        else if ((checkElement.is('.treeview-menu')) && (!checkElement.is(':visible'))) {
+          //Get the parent menu
+          var parent = $this.parents('ul').first();
+          //Close all open menus within the parent
+          var ul = parent.find('ul:visible').slideUp(animationSpeed);
+          //Remove the menu-open class from the parent
+          ul.removeClass('menu-open');
+          //Get the parent li
+          var parent_li = $this.parent("li");
+
+          //Open the target menu and add the menu-open class
+          checkElement.slideDown(animationSpeed, function() {
+            //Add the class active to the parent li
+            checkElement.addClass('menu-open');
+            parent.find('>li.active').removeClass('active');
+            parent_li.addClass('active');
+          });
+        }
+        //if this isn't a link, prevent the page from being redirected
+        if (checkElement.is('.treeview-menu')) {
+          e.preventDefault();
+        }
+      });
+    };
+    //显示/隐藏菜单
+    var sidebarToggle = function() {
+      $("body").on('click',".sidebar-toggle", function(e) {
+        e.preventDefault();
+        $("body").toggleClass("sidebar-collapse");
+      });
+    };
+    //对侧边栏总模块添加active类
+    var treeviewmenuActiveShow = function(menu) {
+      $(document).on('click', menu + ' li a', function(e) {
+        //Get the clicked link and the next element
+        var $this = $(this);
+        var checkElement = $this.next();
+        //console.log(checkElement.is('.treeview-menu'));
+        //Check if the next element is a menu and is visible
+        if (!checkElement.is('.treeview-menu')) {
+          var treeviewLi = $this.parents('.treeview');
+          treeviewLi.addClass("active").siblings(".active").removeClass("active");
+        }
+      });
+    };
+    //iframe标签页切换监听
+    var tabToggleHandle = function() {
+      $('.nav-dynamicTab-container').on('shown.bs.tab', 'a[data-toggle="tab"]', function(e) {
+        var pathname = $(e.target).data('href').toLowerCase();
+        var moduelname = pathname.split("/")[1];
+        //console.log(pathname);
+        //console.log(moduelname);
+        var $targetLi = $('.sidebar-menu>li[data-moduel="' + pathname + '"]');
+        if ($targetLi.length === 0) {
+          if (moduelname === 'authen') moduelname = 'todo';
+          $('.sidebar-menu>li[data-moduel="' + moduelname + '"]').addClass("active").siblings('.active').removeClass('active');
+        } else if ($targetLi.length === 1) {
+          $targetLi.addClass("active").siblings('.active').removeClass('active');
+        }
+      });
+    };
+    //对二级菜单栏位置矫正，使之最低不低于屏幕视口
+    var treeviewmenuOffsetShow = function() {
+      $(".sidebar-menu>li.treeview").on("mouseenter", function(e) {
+        var $self = $(this);
+        var winH = $(window).height();
+        var $menu = $self.find(">ul.treeview-menu");
+        //如果二级菜单低于屏幕视口
+        if ($menu.length === 0) return;
+        if ((winH - $menu.offset().top) < $menu.height()) {
+          $menu.css("margin-top", $self.height() - $menu.height() - 8 + "px");
+        }
+      })
+    };
+    //检测窗口宽度
+    var windowCollapse = function() {
+      var windowAjust = function() {
+        var win_w = $(window).width();
+        //console.log(win_w);
+        if (win_w <= 1200) {
+          $("body").addClass("sidebar-collapse");
+          //$(".sidebar-toggle").off('click');
+        } else {
+          $("body").removeClass("sidebar-collapse");
+          //sidebarToggle();
+        }
+      };
+      var resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize';
+      var timer;
+      window.addEventListener(resizeEvent, function() {
+        clearTimeout(timer);
+        timer = setTimeout(windowAjust, 300);
+      }, false);
+      windowAjust();
+    };
+    treeviewmenuToggle('.sidebar');
+    treeviewmenuActiveShow('.sidebar');
+    windowCollapse();
+    sidebarToggle();
+  };
+
+  //iframe系列初始化
+  var iframeLoadInit=function(){
+    var $tab_content = $('div.tab-content[data-tabsid="dynamicTab-window-top-main"]');//iframe容器
+    var heightAjust = function () {
+      var neg = $('.main-header').outerHeight();
+      var messageRoll=$('.system-message-roll').height();
+      var window_height = $(window).height();
+      var height = window_height - neg -messageRoll;
+      $tab_content.height(height);
+    };
+    heightAjust();
+    //$(document).on('click', '.menu-toggler.sidebar-toggler', headerAjust);
+    var resizeEvent = 'orientationchange' in window ? 'orientationchange' : 'resize';
+    var timer;
+    window.addEventListener(resizeEvent, function() {
+    clearTimeout(timer);
+    timer = setTimeout(heightAjust, 300);
+    }, false);
+    //监听消息滚动条
+    $(document).on("bs.systemMessageRoll",function(){
+      heightAjust();
+    });
+    //a标签使用iframe加载
+    var linkSelector='a[data-tabs-dynamic]',$iframe=$("#iframe"),$tagContainer=$(".tabs-view-container");
+    function applyToggleIframe(selector){
+      $(document).off('click', selector);
+      $(document).on('click', selector, function(e) {
+        e.preventDefault();
+        var $self=$(this);
+        var url=$self.attr("href"),title=$self.text();
+        toggleIframe(url,title);
+      })
+    }
+    $(document).on('click', '.tabs-view-container a .tabs-tag-close',function(e){
+      e.preventDefault();
+      e.stopPropagation();
+      $(this).closest('.tabs-view').remove();
+    });
+    applyToggleIframe(linkSelector);
+    function toggleIframe(url,title){
+      $iframe.attr("src",url);
+      $(document).trigger("dymanicTab.start");
+      $iframe.load(function () {
+        //Metronic.stopPageLoading();
+        $(document).trigger("dymanicTab.end");
+      });
+      //没有标签则添加一个
+      if($('.tabs-view-container a[href="'+url+'"]').length===0){
+        var tag='<a class="tabs-view" href="'+url+'">'+
+                '<span class="tabs-tag">'+title+' <i class="tabs-tag-close fa fa-close"></i></span>'+
+                '</a>';
+        $tagContainer.append(tag);
+        applyToggleIframe('.tabs-view-container a')
+      }
+      //限制标签个数
+      if($('.tabs-view-container a').length>6){
+        $('.tabs-view-container a .tabs-tag-close').eq(0).trigger("click");
+      }
+    }
+    window.toggleIframe=toggleIframe;
+  }
+
+  var buttonActionInit = function() {
+    //公告栏
+    $("#btn-notice").on("click", function() {
+      window.toggleIframe("./Authen/noticeBoard.html", "公告栏");
+      $("#messageCount").text("");
+    });
+    //公告栏
+    $("#btn-feedback").on("click", function() {
+      window.toggleIframe("./Authen/questionFeedback.html", "问题反馈");
+    })
+  };
+
+  //页面初始化
+  var pageStart = function() {
+    //iframe加载进度条显示
+    $(document).on("dymanicTab.start", function() {
+      NProgress.start();
+    }).on("dymanicTab.end", function() {
+      NProgress.done();
+    });
+    //首页默认打开带start类的菜单
+    $('.sidebar-menu li>a.start').eq(0).trigger("click");
+  };
+  return {
+    init: function() {
+      sidebarInit();
+      iframeLoadInit();
+      buttonActionInit();
+      pageStart();
+    }
+  }
+})();
+</script>
+</body>
+</html>

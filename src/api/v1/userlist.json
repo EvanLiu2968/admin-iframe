@@ -1,0 +1,48 @@
+{
+  "status": 200,
+  "statustext": "查询成功",
+  "records": [{
+    "id": "1",
+    "username": "admin",
+    "nickname": "系统管理员",
+    "phone": "",
+    "role": "admin",
+    "login_time": "2017-03-01 12:00:00"
+  }, {
+    "id": "2",
+    "username": "zhangsan",
+    "nickname": "张三",
+    "phone": "13447895642",
+    "role": "normal",
+    "login_time": "2017-02-01 12:11:13"
+  }, {
+    "id": "3",
+    "username": "lisi",
+    "nickname": "李四",
+    "phone": "15447895642",
+    "role": "normal",
+    "login_time": "2017-02-03 12:11:13"
+  }, {
+    "id": "4",
+    "username": "wangwu",
+    "nickname": "王五",
+    "phone": "15647895642",
+    "role": "normal",
+    "login_time": "2017-02-05 12:11:13"
+  }, {
+    "id": "5",
+    "username": "zhaoliu",
+    "nickname": "赵六",
+    "phone": "17547895642",
+    "role": "normal",
+    "login_time": "2017-02-07 12:11:13"
+  }, {
+    "id": "6",
+    "username": "zhouqi",
+    "nickname": "周七",
+    "phone": "18147895642",
+    "role": "normal",
+    "login_time": "2017-02-09 12:11:13"
+  }],
+  "recordstotal": 108
+}

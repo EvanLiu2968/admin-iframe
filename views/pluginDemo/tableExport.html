@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>交通工程质量安全监督监管系统</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+	<!-- 主题 -->
+	<link rel="stylesheet" href="../../src/css/app.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+	<!-- 警告: Respond.js使用file://无法正常工作 -->
+	<!--[if lt IE 9]>
+	<script src="../../src/js/html5shiv.min.js"></script>
+	<script src="../../src/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<style>
+</style>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+	<!-- Main content -->
+	<section class="content">
+		<div class="page">
+			<div class="page-header">
+				
+				<ol class="breadcrumb">
+					<li><a href="#">首页</a></li>
+					<li><a href="#">插件示例</a></li>
+					<li class="active">表格导出</li>
+				</ol>
+			</div><!-- /.page-header -->
+			<div class="page-body">
+				<div class="" id="toolbar">
+					<button class="btn btn-primary" type="button" id="btn-search"><i class="fa fa-search"></i>查询</button>
+					<button class="btn btn-outline" type="button" id="btn-exportSelect" ><i class="glyphicon glyphicon-export"></i>导出选中</button>
+					<button class="btn btn-outline" type="button" id="btn-exportBasic" ><i class="glyphicon glyphicon-export"></i>导出当前页</button>
+					<button class="btn btn-outline" type="button" id="btn-exportAll" ><i class="glyphicon glyphicon-export"></i>导出全部</button>
+				</div>
+				<table id="table"></table>
+				<div class="callout callout-info">
+					<p>表格导出默认配置</p>
+					<pre>
+<code>
+{
+	consoleLog: false,
+	csvEnclosure: '"',
+	csvSeparator: ',',
+	csvUseBOM: true,
+	displayTableName: false,
+	escape: false,
+	excelstyles: [],
+	fileName: 'tableExport',
+	htmlContent: false,
+	ignoreColumn: [],
+	ignoreRow: [],
+	jspdf:{},
+	numbers:{
+		html:{
+			decimalMark: '.',
+			thousandsSeparator: ','
+		},
+		output:{
+			decimalMark: '.',
+			thousandsSeparator: ','
+		}
+	},
+	onCellData: null,
+	onCellHtmlData: null,
+	onMsoNumberFormat: null,
+	outputMode: 'file',
+	tbodySelector: 'tr',
+	tfootSelector: 'tr',
+	theadSelector: 'tr',
+	tableName: 'myTableName',
+	type: 'csv',
+	worksheetName: 'xlsWorksheetName',
+}
+</code>
+					</pre>
+				</div>
+			</div><!-- /.page-body -->
+		</div><!-- /.page -->
+	</section><!-- /.content -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- jquery.validate -->
+<script src="../../src/libs/jquery.validate/jquery.validate.js"></script>
+<script src="../../src/libs/jquery.validate/validate.extend.js"></script>
+<!-- bootstrap-table -->
+<link rel="stylesheet" href="../../src/libs/bootstrap-table/bootstrap-table.css">
+<script src="../../src/libs/bootstrap-table/bootstrap-table.min.js"></script>
+<!--表格导出插件-->
+<script src="../../src/libs/bootstrap-table/extensions/export/tableExport.jquery.plugin/FileSaver/FileSaver.min.js"></script><!--主要格式-->
+<script src="../../src/libs/bootstrap-table/extensions/export/tableExport.jquery.plugin/js-xlsx/xlsx.core.min.js"></script><!--excel2007和xml-->
+<script src="../../src/libs/bootstrap-table/extensions/export/tableExport.jquery.plugin/tableExport.js"></script>
+<!-- WdatePicker.js 自动加载css -->
+<script src="../../src/libs/My97DatePicker/WdatePicker.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!--knockout-->
+<script src="../../src/libs/knockout/knockout-3.4.1.js"></script>
+<script src="../../src/libs/knockout/knockout.mapping.js"></script>
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- 业务逻辑js -->
+<script>
+	$(function(){
+		page.init();
+	});
+	var page=(function(){
+		var dataInit=function(){};
+		var tableInit=function(){
+			var dataList=[
+				{
+					id:"1",account:"admin",name:"admin",idNo:"462456198809252345",phone:"-",type:"admin",login_time:"2017-03-01 12:00:00"
+				},
+				{
+					id:"2",account:"zhangsan",name:"张三",idNo:"462456198809252345X",phone:"13447895642",type:"normal",login_time:"2017-02-01 12:11:13"
+				},
+				{
+					id:"3",account:"lisi",name:"李四",idNo:"462456198809252345",phone:"15447895642",type:"normal",login_time:"2017-02-03 12:11:13"
+				},
+				{
+					id:"4",account:"wangwu",name:"王五",idNo:"462456198809252345X",phone:"15647895642",type:"normal",login_time:"2017-02-05 12:11:13"
+				},
+				{
+					id:"5",account:"zhaoliu",name:"赵六",idNo:"462456198809252345",phone:"17547895642",type:"normal",login_time:"2017-02-07 12:11:13"
+				},
+				{
+					id:"6",account:"zhouqi",name:"周七",idNo:"462456198809252345X",phone:"18147895642",type:"normal",login_time:"2017-02-09 12:11:13"
+				}
+			];
+			var columns=[
+				{
+					checkbox:true,title:""
+				},
+				{
+					field:"account",title:"账户名"
+				},
+				{
+					field:"name",title:"姓名"
+				},
+				{
+					field:"idNo",title:"身份证号码"
+				},
+				{
+					field:"phone",title:"手机号码"
+				},
+				{
+					field:"type",title:"用户类型",
+					formatter:function(value,row,index){return value=="admin"?"系统管理员":"普通用户"}
+				},
+				{
+					field:"login_time",title:"最近登录时间"
+				},
+				{
+					field:"",title:"操作",
+					formatter:function(value,row,index){
+						return '<div class="btn-group">' +
+								'<button type="button" class="btn btn-xs btn-primary" onclick="page.edit(\''+row.id+'\')">修改</button>' +
+								'<button type="button" class="btn btn-xs btn-primary" onclick="page.delete(\''+row.id+'\')">删除</button>' +
+								'</div>'
+					}
+				}
+			];
+			function queryParams(params){
+				var data={
+					limit:params.limit,
+					offset:params.offset,
+					account:$('#form-search [name="account"]').val(),
+					type:$('#form-search [name="type"]').find("option:selected").val(),
+					login_time_s:$('#form-search [name="sdate"]').val(),
+					login_time_e:$('#form-search [name="edate"]').val()
+				};
+				console.log(data);
+				return data;
+			}
+			var option={
+				method: 'get',
+				/*url: '/protosystem/src/js/jsonTemplate.json',
+				responseHandler:function(res){ //格式化响应的数据
+					return {
+						total:res.data.total,
+						rows:res.data.rows
+					}
+				},*/
+				dataType: "json", //服务器返回数据类型
+				columns: columns, //列
+				data:dataList,  //使用url时，不需要data
+				classes:"table table-hover table-bordered table-ele",
+				idField: "id",  //标识哪个字段为id主键
+				uniqueId:"id",//给每行一个唯一标识
+				sidePagination: "client",//设置分页，可选值为 'client' 或者 'server'
+				queryParams: queryParams, //传参函数
+				pageSize: 5, //初始数据条数
+				pageList: [5, 10, 20], //选择数据条数
+				singleSelect:false, //设置单选
+				checkboxHeader:true//设置false 将在列头隐藏check-all checkbox
+			};
+			option=common.extend(common.getBootstrapTableOption(),option);
+			$("#table").bootstrapTable(option);
+		};
+		//组件初始化；
+		var componentInit=function(){
+		};
+		//按钮点击初始化
+		var btnActionInit=function(){
+			//查询
+			$("#btn-search").on("click",function(){
+				$("#table").bootstrapTable("refresh");
+			});
+			//导出选中
+			$("#btn-exportSelect").on("click",function(){
+				var $table=$("#table");
+				var data = $table.bootstrapTable("getData"),
+						selectedData = $table.bootstrapTable("getAllSelections");
+				if(selectedData.length==0) {
+					$.msg("请选择需要导出的数据！");
+					return;
+				}
+				$table.bootstrapTable("load",selectedData);
+				$table.tableExport({
+					type:"xls",
+					fileName:"选中导出",
+					worksheetName: '选中导出',
+					ignoreColumn: [''] //filed为''则忽略
+				});
+				$table.bootstrapTable("load",data);
+			});
+			//导出当前页
+			$("#btn-exportBasic").on("click",function(){
+				$("#table").tableExport({
+					type:"xls",
+					fileName:"当前页导出",
+					worksheetName: '当前页导出',
+					excelstyles: [],
+					ignoreColumn: [''], //filed为''则忽略
+					ignoreRow: [],
+					numbers:{
+						html:{
+							decimalMark: '.',
+							thousandsSeparator: ','
+						},
+						output:{
+							decimalMark: '.',
+							thousandsSeparator: ','
+						}
+					},
+					onCellData: function(element,rowIndex,colIndex){
+						if(colIndex===3){
+							console.log(element.context.innerText);
+							return (element.context.innerText.slice(0,6)+" "+element.context.innerText.slice(6))
+						}else{
+							return element.context.innerText
+						}
+					},
+					onCellHtmlData: null,
+					onMsoNumberFormat: null
+				});
+			});
+			//导出全部
+			$("#btn-exportAll").on("click",function(){
+				var $table=$("#table");
+				var sidePagination=$table.bootstrapTable("getOptions").sidePagination;
+				$table.one(sidePagination === 'server' ? 'post-body.bs.table' : 'page-change.bs.table', function (){
+					$table.tableExport({
+						type:"xls",
+						fileName:"全部导出",
+						worksheetName: '全部导出',
+						ignoreColumn: [''] //filed为''则忽略
+					});
+					$table.bootstrapTable("togglePagination");
+				});
+				$table.bootstrapTable("togglePagination");
+			});
+		};
+		return {
+			init:function(){
+				dataInit();
+				tableInit();
+				componentInit();
+				btnActionInit();
+			},
+			edit:function(id){
+				$.msg("无法编辑！",4)
+			},
+			delete:function(id){
+				var row=$("#table").bootstrapTable('getRowByUniqueId',id);
+				$.confirm("确定要删除选中数据吗？",function(){
+					layer.closeAll();
+					var load=$.showLoading();
+					setTimeout(function(){
+						$("#table").bootstrapTable('remove',{field: 'id', values: [row.id]});
+						layer.close(load);
+						$.msg("删除成功！",6);
+					},1000);
+				})
+			}
+		}
+	})();
+</script>
+</body>
+</html>

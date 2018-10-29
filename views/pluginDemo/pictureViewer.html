@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>后台管理系统</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+	<!-- 主题 -->
+	<link rel="stylesheet" href="../../src/css/app.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+	<!-- 警告: Respond.js使用file://无法正常工作 -->
+	<!--[if lt IE 9]>
+	<script src="../../src/js/html5shiv.min.js"></script>
+	<script src="../../src/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<style>
+	.image{
+		height:50px;
+	}
+	.image-list{
+		list-style: none;
+		padding:0;
+	}
+	.image-list>li{
+		float:left;
+		margin-right:10px;
+	}
+	.image-list>li>img{
+		height:50px;
+	}
+</style>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+	<!-- Main content -->
+	<section class="content">
+		<div class="page">
+			<div class="page-header">
+				<ol class="breadcrumb">
+					<li><a href="#">plugin示例</a></li>
+					<li class="active">图片查看</li>
+				</ol>
+			</div><!-- /.page-header -->
+			<div class="page-body">
+				<div class="callout callout-default">
+					<p><a class="text-blue" href="https://github.com/fengyuanchen/viewer" target="_blank">相关配置说明</a></p>
+				</div>
+				<h3>单图片查看</h3>
+				<div>
+					<img class="image" src="../../src/images/Penguins.jpg" alt="Picture">
+				</div>
+				<h3>图片列表查看</h3>
+				<ul class="image-list clearfix">
+					<li><img src="../../src/images/bg1.jpg" alt="Picture 1"></li>
+					<li><img src="../../src/images/bg2.jpg" alt="Picture 2"></li>
+					<li><img src="../../src/images/bg3.jpg" alt="Picture 3"></li>
+					<li><img src="../../src/images/bg4.jpg" alt="Picture 4"></li>
+				</ul>
+			</div><!-- /.page-body -->
+		</div><!-- /.page -->
+	</section><!-- /.content -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!-- picture viewer -->
+<link rel="stylesheet" href="../../src/libs/pictureViewer/viewer.min.css">
+<script src="../../src/libs/pictureViewer/viewer.min.js"></script>
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- 业务逻辑js -->
+<script>
+	$(function(){
+		page.init();
+	});
+	var page=(function(){
+		//组件初始化；
+		var componentInit=function(){
+			//单图片查看
+			$('.image').viewer();
+			//图片列表查看
+			$('.image-list').viewer();
+		};
+		return {
+			init:function(){
+				componentInit();
+			}
+		}
+	})();
+</script>
+</body>
+</html>

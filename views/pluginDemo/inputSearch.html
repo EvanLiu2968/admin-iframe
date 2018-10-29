@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>后台管理系统</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+	<!-- 主题 -->
+	<link rel="stylesheet" href="../../src/css/app.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+	<!-- 警告: Respond.js使用file://无法正常工作 -->
+	<!--[if lt IE 9]>
+	<script src="../../src/js/html5shiv.min.js"></script>
+	<script src="../../src/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<style>
+	.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+	.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+	.autocomplete-selected { background: #F0F0F0; }
+	.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+	.autocomplete-group { padding: 2px 5px; }
+	.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+</style>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+	<!-- Main content -->
+	<section class="content">
+		<div class="page">
+			<div class="page-header">
+				<h1 class="page-title">查询输入框</h1>
+			</div><!-- /.page-header -->
+			<div class="page-body">
+				<div class="callout callout-default">
+					<p>select2 API:<a href="https://select2.github.io/examples.html" target="_blank">http://select2.github.io</a></p>
+					<p>autocomplete API:<a href="https://www.devbridge.com/sourcery/components/jquery-autocomplete/" target="_blank">autocomplete</a></p>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">select2</div>
+					<div class="panel-body">
+						<form class="form-horizontal row">
+							<div class="form-group">
+								<label class="col-md-4 control-label">普通select2</label>
+								<div class="col-sm-4">
+									<select class="form-control" id="select1">
+										<option value="1">北京</option>
+										<option value="2">上海</option>
+										<option value="3">广东</option>
+										<option value="4">广西</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-4 control-label">多选/限制两个/自定义模版</label>
+								<div class="col-sm-4">
+									<select class="form-control" id="select2" multiple="multiple">
+										<option value="1">北京</option>
+										<option value="2">上海</option>
+										<option value="3">广东</option>
+										<option value="4">广西</option>
+									</select>
+								</div>
+							</div>
+							<h4 class="text-center">电影搜索</h4>
+							<div class="form-group">
+								<label class="col-md-4 control-label">ajax搜索加载</label>
+								<div class="col-sm-4">
+									<select class="form-control" id="select3" ></select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-4 control-label">ajax搜索加载(多选)</label>
+								<div class="col-sm-4">
+									<select class="form-control" id="select4" multiple="multiple"></select>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="panel panel-default">
+					<div class="panel-heading">jQuery-Autocomplete</div>
+					<div class="panel-body">
+						<form class="form-horizontal row">
+							<div class="form-group">
+								<label class="col-md-4 control-label">ajax搜索加载</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="input1" name="province" placeholder="省份,如：广东"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-md-4 control-label">Autocomplete样式</label>
+								<div class="col-sm-4">
+									<input type="text" class="form-control" id="input2" name="province" placeholder="省份"/>
+									<div class="autocomplete-suggestions">
+										<div class="autocomplete-group"><strong>华南区</strong></div>
+										<div class="autocomplete-suggestion autocomplete-selected">广东</div>
+										<div class="autocomplete-suggestion">广西</div>
+										<div class="autocomplete-suggestion">云南</div>
+									</div>
+								</div>
+							</div>
+						</form>
+						<div class="btn-wrapper">
+							<button type="button" class="btn btn-default" id="btn-autocomplete">打印信息</button>
+						</div>
+					</div>
+				</div>
+			</div><!-- /.page-body -->
+		</div><!-- /.page -->
+	</section><!-- /.content -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- jquery.validate 表单验证-->
+<script src="../../src/libs/jquery.validate/jquery.validate.js"></script>
+<script src="../../src/libs/jquery.validate/validate.extend.js"></script>
+<!-- bootstrap-table -->
+<link rel="stylesheet" href="../../src/libs/bootstrap-table/bootstrap-table.css">
+<script src="../../src/libs/bootstrap-table/bootstrap-table.min.js"></script>
+<!-- WdatePicker.js 自动加载css -->
+<script src="../../src/libs/My97DatePicker/WdatePicker.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!-- select2 -->
+<link rel="stylesheet" href="../../src/libs/select2/css/select2.css">
+<script src="../../src/libs/select2/js/select2.min.js"></script>
+<!-- jquery.autocomplete -->
+<script src="../../src/libs/jQuery-Autocomplete/jquery.autocomplete.min.js"></script>
+
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- 业务逻辑js -->
+<script>
+	$(function(){
+		page.init();
+	});
+	var page=(function(){
+		//组件初始化；
+		var componentInit=function(){
+			$("#select1").select2();
+			$("#select2").select2({
+				language: "zh-CN",
+				maximumSelectionLength: 2,
+				templateResult: function(state){ //可自定义下拉结果列表
+					if (!state.id) { return state.text; }
+					var $state = $(
+						'<span>' + state.text + '</span>'
+					);
+					return $state; //非$对象会一text插入
+				},
+				templateSelection:function(state){ //可自定义多选tag标签
+					console.log(state);
+					if (!state.id) { return state.text; }
+					var $state = $(
+						'<a onclick="alert(\'' + state.text + '\')">' + state.text + '</a>'
+					);
+					return $state;
+				}
+			});
+			//https://api.douban.com/v2/movie/search q|关键字 tag|标签 start|(默认0) count|(默认20)
+			$("#select3").select2({
+				placeholder: "请输入电影或人名",
+				minimumInputLength: 2,
+				language: "zh-CN",
+				ajax: {
+					url: 'https://api.douban.com/v2/movie/search',
+					dataType: 'jsonp',
+					delay: 1000,
+					data: function (params) {
+						console.log(params);
+						return {
+							q: params.term, //搜索关键字
+							count:10
+						};
+					},
+					processResults: function (data, params) {
+						console.log(data);
+						console.log(params);
+						params.page = params.page || 1;
+						var results=[];
+						data.subjects.forEach(function(value){
+							results.push({
+								id:value.id,
+								text:value.title
+							});
+						});
+						return {
+							results: results,
+							pagination: {
+								more: (params.page * 10) < results.length
+							}
+						};
+					}
+				}
+			});
+			$("#select4").select2({
+				placeholder: "请输入电影或人名",
+				maximumSelectionLength: 2,
+				minimumInputLength: 2,
+				language: "zh-CN",
+				ajax: {
+					url: "https://api.douban.com/v2/movie/search",
+					dataType: 'jsonp',
+					delay: 1000,
+					data: function (params) {
+						console.log(params);
+						return {
+							q: params.term, //搜索关键字
+							count:10
+						};
+					},
+					processResults: function (data, params) {
+						console.log(data);
+						console.log(params);
+						params.page = params.page || 1;
+						var results=[];
+						data.subjects.forEach(function(value){
+							results.push({
+								id:value.id,
+								text:value.title
+							});
+						});
+						return {
+							results: results,
+							pagination: {
+								more: (params.page * 10) < results.length
+							}
+						};
+					}
+				}
+			});
+
+			//jQuery-Autocomplete
+			$('#input1').autocomplete({
+				/*serviceUrl: '/api/v1/Enterprise/Select2',
+				transformResult: function(response) {
+					console.log(response);
+					return {
+						suggestions: $.map(response, function(dataItem) {
+							return { value: dataItem.value, data: dataItem.data };
+						})
+					};
+				},*/
+				lookup: [
+					{data:"beijing",value:"北京"},
+					{data:"shanghai",value:"上海"},
+					{data:"guangdong",value:"广东"},
+					{data:"guangxi",value:"广西"}
+				],
+				onSelect: function (suggestion) {
+					console.log('你选择了 ' + suggestion.value + '(' + suggestion.data+ ')');
+					$('#input1').data("value",suggestion.data);
+				}
+			});
+		};
+		//按钮点击初始化
+		var btnActionInit=function(){
+			$("#btn-autocomplete").on("click",function(){
+				console.log($('#input1').val());
+				console.log($('#input1').data("value"));
+			})
+		};
+		return {
+			init:function(){
+				componentInit();
+				btnActionInit();
+			}
+		}
+	})();
+</script>
+</body>
+</html>

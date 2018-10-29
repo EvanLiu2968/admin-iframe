@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>后台管理系统</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- 主题 -->
+  <link rel="stylesheet" href="../../src/css/app.css">
+  <!-- animate.css -->
+  <link rel="stylesheet" href="../../src/libs/animate/animate.css">
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../../src/js/html5shiv.min.js"></script>
+  <script src="../../src/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+  <!-- Main content -->
+  <section class="content">
+    <div class="page">
+      <div class="page-header">
+        <ol class="breadcrumb">
+          <li><a href="#">CSS示例</a></li>
+          <li class="active">animate动画</li>
+        </ol>
+      </div><!-- /.page-header -->
+      <div class="page-body">
+        <div class="callout callout-default">
+          <p>对目标添加 class="动画类名 animated"【项目一般只用到少数几个动画，此类库可作为动画参考加入自己的css，而不是全部引入】</p>
+        </div>
+        <div class="container" style="height:280px;">
+          <img class="" id="animateTarget" src="../../src/images/bg1.jpg" style="position:absolute;display:block;left:50%;margin-left:-150px;;width:300px;">
+        </div>
+        <select class="form-control center-block" id="animateSelect" style="width:200px;margin-bottom:30px;z-index:1024">
+          <optgroup label="特殊">
+            <option value="bounce">bounce</option>
+            <option value="flash">flash</option>
+            <option value="pulse">pulse</option>
+            <option value="rubberBand">rubberBand</option>
+            <option value="shake">shake</option>
+            <option value="swing">swing</option>
+            <option value="tada">tada</option>
+            <option value="wobble">wobble</option>
+            <option value="jello">jello</option>
+            <option value="hinge">hinge</option>
+          </optgroup>
+          <optgroup label="弹入">
+            <option value="bounceIn">bounceIn</option>
+            <option value="bounceInDown">bounceInDown</option>
+            <option value="bounceInLeft">bounceInLeft</option>
+            <option value="bounceInRight">bounceInRight</option>
+            <option value="bounceInUp">bounceInUp</option>
+          </optgroup>
+
+          <optgroup label="弹出">
+            <option value="bounceOut">bounceOut</option>
+            <option value="bounceOutDown">bounceOutDown</option>
+            <option value="bounceOutLeft">bounceOutLeft</option>
+            <option value="bounceOutRight">bounceOutRight</option>
+            <option value="bounceOutUp">bounceOutUp</option>
+          </optgroup>
+
+          <optgroup label="淡入">
+            <option value="fadeIn">fadeIn</option>
+            <option value="fadeInDown">fadeInDown</option>
+            <option value="fadeInDownBig">fadeInDownBig</option>
+            <option value="fadeInLeft">fadeInLeft</option>
+            <option value="fadeInLeftBig">fadeInLeftBig</option>
+            <option value="fadeInRight">fadeInRight</option>
+            <option value="fadeInRightBig">fadeInRightBig</option>
+            <option value="fadeInUp">fadeInUp</option>
+            <option value="fadeInUpBig">fadeInUpBig</option>
+          </optgroup>
+
+          <optgroup label="淡出">
+            <option value="fadeOut">fadeOut</option>
+            <option value="fadeOutDown">fadeOutDown</option>
+            <option value="fadeOutDownBig">fadeOutDownBig</option>
+            <option value="fadeOutLeft">fadeOutLeft</option>
+            <option value="fadeOutLeftBig">fadeOutLeftBig</option>
+            <option value="fadeOutRight">fadeOutRight</option>
+            <option value="fadeOutRightBig">fadeOutRightBig</option>
+            <option value="fadeOutUp">fadeOutUp</option>
+            <option value="fadeOutUpBig">fadeOutUpBig</option>
+          </optgroup>
+
+          <optgroup label="翻转">
+            <option value="flip">flip</option>
+            <option value="flipInX">flipInX</option>
+            <option value="flipInY">flipInY</option>
+            <option value="flipOutX">flipOutX</option>
+            <option value="flipOutY">flipOutY</option>
+            <option value="rollIn">rollIn</option>
+            <option value="rollOut">rollOut</option>
+          </optgroup>
+
+          <optgroup label="轻速">
+            <option value="lightSpeedIn">lightSpeedIn</option>
+            <option value="lightSpeedOut">lightSpeedOut</option>
+          </optgroup>
+
+          <optgroup label="旋入">
+            <option value="rotateIn">rotateIn</option>
+            <option value="rotateInDownLeft">rotateInDownLeft</option>
+            <option value="rotateInDownRight">rotateInDownRight</option>
+            <option value="rotateInUpLeft">rotateInUpLeft</option>
+            <option value="rotateInUpRight">rotateInUpRight</option>
+          </optgroup>
+
+          <optgroup label="旋出">
+            <option value="rotateOut">rotateOut</option>
+            <option value="rotateOutDownLeft">rotateOutDownLeft</option>
+            <option value="rotateOutDownRight">rotateOutDownRight</option>
+            <option value="rotateOutUpLeft">rotateOutUpLeft</option>
+            <option value="rotateOutUpRight">rotateOutUpRight</option>
+          </optgroup>
+
+          <optgroup label="滑入">
+            <option value="slideInUp">slideInUp</option>
+            <option value="slideInDown">slideInDown</option>
+            <option value="slideInLeft">slideInLeft</option>
+            <option value="slideInRight">slideInRight</option>
+
+          </optgroup>
+          <optgroup label="滑出">
+            <option value="slideOutUp">slideOutUp</option>
+            <option value="slideOutDown">slideOutDown</option>
+            <option value="slideOutLeft">slideOutLeft</option>
+            <option value="slideOutRight">slideOutRight</option>
+
+          </optgroup>
+
+          <optgroup label="放大进入">
+            <option value="zoomIn">zoomIn</option>
+            <option value="zoomInDown">zoomInDown</option>
+            <option value="zoomInLeft">zoomInLeft</option>
+            <option value="zoomInRight">zoomInRight</option>
+            <option value="zoomInUp">zoomInUp</option>
+          </optgroup>
+
+          <optgroup label="缩小退出">
+            <option value="zoomOut">zoomOut</option>
+            <option value="zoomOutDown">zoomOutDown</option>
+            <option value="zoomOutLeft">zoomOutLeft</option>
+            <option value="zoomOutRight">zoomOutRight</option>
+            <option value="zoomOutUp">zoomOutUp</option>
+          </optgroup>
+        </select>
+      </div><!-- /.page-body -->
+    </div><!-- /.page -->
+  </section><!-- /.content -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- jquery.validate 表单验证-->
+<script src="../../src/libs/jquery.validate/jquery.validate.js"></script>
+<script src="../../src/libs/jquery.validate/validate.extend.js"></script>
+<!-- WdatePicker.js 自动加载css -->
+<script src="../../src/libs/My97DatePicker/WdatePicker.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+
+<link rel="stylesheet" href="../../src/libs/noUiSlider.9.2.0/nouislider.css">
+<script src="../../src/libs/noUiSlider.9.2.0/nouislider.js"></script>
+
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- 业务逻辑js -->
+<script>
+  $(function(){
+    page.init();
+  });
+  var page=(function(){
+    //组件初始化；
+    var componentInit=function(){
+      var target=$("#animateTarget");
+      target.addClass("bounceInDown animated");
+      $("#animateSelect").on("change",function(e){
+        var animate=$(this).find("option:selected").val();
+        target.attr("class",animate+" animated");
+      })
+    };
+    return {
+      init:function(){
+        componentInit();
+      }
+    }
+  })();
+</script>
+</body>
+</html>

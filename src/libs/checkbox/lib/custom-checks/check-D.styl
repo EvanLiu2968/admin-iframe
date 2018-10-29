@@ -1,0 +1,41 @@
+/**
+ * ESTILOS PARA INPUT DE TIPO CHECKBOX
+ *
+ * CONTENIDO
+ * ==========================================================
+ * check-D......................Estilos del check animado D.
+ *        check-D__background...Fondo del check animado.
+ *        check-D__checkbox.....Símbolo animado del checkbox.
+ *
+ */
+
+/*------------------------------------*\
+    CHECK-D
+\*------------------------------------*/
+.check-D
+    &__background //fondo '☐' cuando .custom-check__checkbox esta desmarcado
+        background-color white
+        border solid .125em unchecked-color //variable en variables.styl
+        border-radius .125em
+        transition border .2s ease-in-out .35s
+
+    &:checked + .check-D__background //fondo '☐' cuando .custom-check__checkbox esta marcado
+        animation bouncing-item .5s ease-in-out .35s 1 normal forwards //animación en keyframes.styl
+        border-color checked-color //variable en variables.styl
+        box-shadow z-depth-1 //variable en variables.styl
+
+    &__checkbox //símbolo '✔' cuando .custom-check__checkbox esta desmarcado
+        border solid .125em unchecked-color //variable en variables.styl
+        border-radius 0
+        border-right none
+        border-top none
+        height .33em //30% de 1.1
+        left .22em //20% de 1.1em
+        top .3em //27.27% de 1.1em
+        transform rotate(-45deg)
+        transition border-left .1s ease-in-out .25s, border-bottom .1s ease-in-out .35s
+        width .66em //60% de 1.1em
+
+    &:checked + .check-D__background + .check-D__checkbox //símbolo '✔' cuando .custom-check__checkbox esta marcado
+        border-color checked-color //variable en variables.styl
+        box-shadow -1px 1px 1px rgba(black, .1)

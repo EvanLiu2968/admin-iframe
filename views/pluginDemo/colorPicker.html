@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>后台管理系统</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+	<!-- 主题 -->
+	<link rel="stylesheet" href="../../src/css/app.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+	<!-- 警告: Respond.js使用file://无法正常工作 -->
+	<!--[if lt IE 9]>
+	<script src="../../src/js/html5shiv.min.js"></script>
+	<script src="../../src/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<style>
+	.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+	.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+	.autocomplete-selected { background: #F0F0F0; }
+	.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+	.autocomplete-group { padding: 2px 5px; }
+	.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+</style>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+	<!-- Main content -->
+	<section class="content">
+		<div class="page">
+			<div class="page-header">
+				<ol class="breadcrumb">
+					<li><a href="#">颜色选择</a></li>
+					<li class="active">checkbox</li>
+				</ol>
+			</div><!-- /.page-header -->
+			<div class="page-body">
+				<div class="callout callout-default">
+					<p>jquery-minicolors API:<a href="http://labs.abeautifulsite.net/jquery-minicolors/" target="_blank">http://labs.abeautifulsite.net/jquery-minicolors/</a></p>
+					<p>以file://的形式打开会因跨域问题而不能生效</p>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">jquery-minicolors</div>
+					<div class="panel-body">
+						<form class="form-horizontal row">
+							<div class="form-group">
+								<label class="col-sm-3 col-md-2 control-label">默认配置</label>
+								<div class="col-sm-4">
+									<input type="text" id="colorPicker1" class="form-control"  value="#ff6161"> </div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 col-md-2 control-label">自定义配置</label>
+								<div class="col-sm-4">
+									<input type="text" id="colorPicker2" class="form-control"  value="#ff6161"> </div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div><!-- /.page-body -->
+		</div><!-- /.page -->
+	</section><!-- /.content -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- jquery.validate 表单验证-->
+<script src="../../src/libs/jquery.validate/jquery.validate.js"></script>
+<script src="../../src/libs/jquery.validate/validate.extend.js"></script>
+<!-- bootstrap-table -->
+<link rel="stylesheet" href="../../src/libs/bootstrap-table/bootstrap-table.css">
+<script src="../../src/libs/bootstrap-table/bootstrap-table.min.js"></script>
+<!-- WdatePicker.js 自动加载css -->
+<script src="../../src/libs/My97DatePicker/WdatePicker.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!-- jquery-minicolors -->
+<link rel="stylesheet" href="../../src/libs/jquery-minicolors/jquery.minicolors.css">
+<script src="../../src/libs/jquery-minicolors/jquery.minicolors.js"></script>
+
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- 业务逻辑js -->
+<script>
+	$(function(){
+		page.init();
+	});
+	var page=(function(){
+		//组件初始化；
+		var componentInit=function(){
+			$("#colorPicker1").minicolors();
+			$("#colorPicker2").minicolors(
+					{
+						animationSpeed: 50,
+						animationEasing: 'swing',
+						change: null,
+						changeDelay: 0,
+						control: 'hue',
+						dataUris: true,
+						defaultValue: '',
+						format: 'hex', //颜色格式
+						hide: null,
+						hideSpeed: 100,
+						inline: false,
+						keywords: '',
+						letterCase: 'lowercase',
+						opacity: true, //透明度
+						position: 'bottom left',
+						show: null,
+						showSpeed: 100,
+						theme: 'default',
+						swatches: []
+					}
+			);
+		};
+		return {
+			init:function(){
+				componentInit();
+			}
+		}
+	})();
+</script>
+</body>
+</html>

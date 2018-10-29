@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>后台管理系统</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+	<!-- 主题 -->
+	<link rel="stylesheet" href="../../src/css/app.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+	<!-- 警告: Respond.js使用file://无法正常工作 -->
+	<!--[if lt IE 9]>
+	<script src="../../src/js/html5shiv.min.js"></script>
+	<script src="../../src/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+	<!-- Main content -->
+	<section class="content">
+		<div class="page">
+			<div class="page-header">
+				<h1 class="page-title">日期选择</h1>
+			</div><!-- /.page-header -->
+			<div class="page-body">
+				<div class="callout callout-default">
+					<p>Pikaday:体积小,仅支持日期选择，不支持时间选择</p>
+				</div>
+				<form class="row">
+					<div class="col-sm-6">
+						<div class="form-group form-inline" >
+							<label class="control-label">&emsp;&emsp;&emsp;年月日</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="check_date" id="pikaday" />
+								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							</div>
+						</div>
+					</div>
+				</form>
+				<div class="callout callout-default">
+					<p>flatpickr日期控件：<a style="color:#20A0FF" href="https://chmln.github.io/flatpickr/options/" target="_blank">https://chmln.github.io/flatpickr/options/</a></p>
+					<p>主要功能：日期选择，时间选择，周选择等模式及多种样式主题</p>
+				</div>
+				<form class="row">
+					<div class="col-sm-6">
+						<div class="form-group form-inline" >
+							<label class="control-label">&emsp;&emsp;&emsp;年月日</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="check_date" id="flatpickr1" />
+								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group form-inline" >
+							<label class="control-label">&emsp;年月日多选</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="check_date" id="flatpickr2" />
+								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group form-inline" >
+							<label class="control-label">年月日时分秒</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="check_date" id="flatpickr3"  />
+								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group form-inline" >
+							<label class="control-label">&emsp;&emsp;&emsp;时分秒</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="check_date" id="flatpickr4"  />
+								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group form-inline" >
+							<label class="control-label">&emsp;&emsp;&emsp;周选择</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="check_date" id="flatpickr5"  />
+								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group form-inline" >
+							<label class="control-label">&emsp;&emsp;范围选择</label>
+							<input type="text" class="form-control" style="width:320px" name="check_date" id="flatpickr6"  />
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group form-inline" >
+							<label class="control-label">&emsp;&emsp;快速选择</label>
+							<input type="text" class="form-control" style="width:320px" name="check_date" id="flatpickr7"  />
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<input type="text" class="form-control" style="width:320px" name="check_date" id="flatpickr8" placeholder="行内展示" />
+					</div>
+				</form>
+				<div class="callout callout-default" style="margin-top:15px">
+					<p>My97datepicker</p>
+					<p>多种格式支持，模式单一</p>
+				</div>
+				<form class="row">
+					<div class="col-sm-6">
+						<div class="form-group form-inline" >
+							<label class="control-label">日期控件---年</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="check_date" onclick="WdatePicker({dateFmt:'yyyy',maxDate:'%y-%M-%d'})" />
+								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group form-inline" >
+							<label class="control-label">日期控件---月</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="check_date" onclick="WdatePicker({dateFmt:'yyyy-MM',maxDate:'%y-%M-%d'})" />
+								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group form-inline" >
+							<label class="control-label">格式为年月日</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="check_date" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'%y-%M-%d'})" />
+								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group form-inline" >
+							<label class="control-label">年月日时分秒</label>
+							<div class="input-group">
+								<input type="text" class="form-control" name="check_date" onclick="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'%y-%M-%d'})" />
+								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group form-inline" >
+							<label class="control-label">时间范围限制</label>
+							<div class="input-group" id="timeEnableInput">
+								<input type="text" class="form-control" name="sdate" id="sdate" style="width:120px;" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'#F{$dp.$D(\'edate\')}'})" />
+								<span class="input-group-addon">至</span>
+								<input type="text" class="form-control" name="edate" id="edate" style="width:120px;" onclick="WdatePicker({dateFmt:'yyyy-MM-dd',minDate:'#F{$dp.$D(\'sdate\',{d:+1})}'})" />
+							</div>
+						</div>
+					</div>
+				</form>
+			</div><!-- /.page-body -->
+		</div><!-- /.page -->
+	</section><!-- /.content -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- jquery.validate 表单验证-->
+<script src="../../src/libs/jquery.validate/jquery.validate.js"></script>
+<script src="../../src/libs/jquery.validate/validate.extend.js"></script>
+<!-- bootstrap-table -->
+<link rel="stylesheet" href="../../src/libs/bootstrap-table/bootstrap-table.css">
+<script src="../../src/libs/bootstrap-table/bootstrap-table.min.js"></script>
+
+<!-- WdatePicker.js 自动加载css -->
+<script src="../../src/libs/My97DatePicker/WdatePicker.js"></script>
+<!-- pikaday -->
+<link rel="stylesheet" href="../../src/libs/pikaday/pikaday.css">
+<script src="../../src/libs/pikaday/pikaday.min.js"></script>
+<!-- flatpickr -->
+<link rel="stylesheet" href="../../src/libs/flatpickr/themes/material_blue.css">
+<script src="../../src/libs/flatpickr/flatpickr.min.js"></script>
+
+
+<!-- flatpickr扩展-周选择 -->
+<script src="../../src/libs/flatpickr/plugins/weekSelect/weekSelect.js"></script>
+<!-- flatpickr扩展-快速选择 -->
+<script src="../../src/libs/flatpickr/plugins/fastRange/fastRange.js"></script>
+
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- 业务逻辑js -->
+<script>
+	$(function(){
+		page.init();
+	});
+	var page=(function(){
+		//组件初始化；
+		var componentInit=function(){
+			var picker = new Pikaday({
+				field: document.getElementById('pikaday'),
+				firstDay: 1,
+				minDate: new Date('2015-01-01'),
+				maxDate: new Date('2020-12-31'),
+				yearRange: [2010, 2020],
+				onSelect: function(date) {
+					//console.log(date);
+					$("#pikaday").val(date.format("yyyy-MM-dd"))
+				}
+			});
+			flatpickr("#flatpickr1",{
+				locale:"zh"
+			});
+			flatpickr("#flatpickr2",{
+				locale:"zh",
+				mode:"multiple"
+			});
+			flatpickr("#flatpickr3",{
+				locale:"zh",
+				dateFormat:"Y-m-d H:i:S",
+				allowInput:true,
+				enableTime:true,
+				enableSeconds:true,
+				time_24hr:true
+			});
+			flatpickr("#flatpickr4",{
+				locale:"zh",
+				dateFormat:"H:i:S",
+				allowInput:true,
+				enableTime:true,
+				noCalendar:true,
+				enableSeconds:true,
+				time_24hr:true
+			});
+			flatpickr("#flatpickr5",{
+				locale:"zh",
+				"plugins": [new weekSelectPlugin({})],
+				time_24hr:true
+			});
+			flatpickr("#flatpickr6",{
+				locale:"zh",
+				mode:"range",
+				dateFormat:"Y-m-d H:i:S",
+				allowInput:true,
+				enableTime:true,
+				enableSeconds:true,
+				time_24hr:true,
+				onChange: function(selectedDates, dateStr, instance) {
+					console.log(dateStr);
+				}
+			});
+			flatpickr("#flatpickr7",{
+				locale:"zh",
+				mode:"range",
+				dateFormat:"Y-m-d H:i:S",
+				"plugins": [new fastRangePlugin({
+					btnClass:"btn btn-primary btn-sm"
+				})],
+				time_24hr:true
+			});
+			flatpickr("#flatpickr8",{
+				locale:"zh",
+				inline:true,
+				dateFormat:"Y-m-d H:i:S",
+				allowInput:true,
+				enableTime:true,
+				enableSeconds:true,
+				time_24hr:true,
+				onChange: function(selectedDates, dateStr, instance) {
+					console.log(dateStr);
+				}
+			});
+		};
+		//按钮点击初始化
+		var buttonActionInit=function(){
+			//查询
+			$("#btn-search").on("click",function(){
+				$("#table").bootstrapTable("refresh");
+			});
+		};
+		return {
+			init:function(){
+				componentInit();
+				buttonActionInit();
+			}
+		}
+	})();
+</script>
+</body>
+</html>

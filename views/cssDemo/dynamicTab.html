@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>后台管理系统</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- 主题 -->
+  <link rel="stylesheet" href="../../src/css/sidebar.css">
+  <link rel="stylesheet" href="../../src/css/app.css">
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../../src/js/html5shiv.min.js"></script>
+  <script src="../../src/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+  <!-- Main content -->
+  <section class="content">
+    <div class="page">
+      <div class="page-header ">
+        <ol class="breadcrumb">
+          <li><a href="#">CSS示例</a></li>
+          <li class="active">标签组件</li>
+        </ol>
+      </div><!-- /.page-header -->
+      <div class="page-body">
+        <div class="row">
+          <div class="col-md-12">
+            <h4>弧形页面标签栏(.nav-dynamicTab-arc)</h4>
+            <div class="">
+              <ul class="nav nav-tabs nav-dynamicTab-arc">
+                <li class="active">
+                  <a href="#tab_1_1" data-toggle="tab" aria-expanded="true">标签页一<span class="tab-close"><i class="fa fa-times-circle"></i></span></a>
+                </li>
+                <li class="">
+                  <a href="#tab_1_2" data-toggle="tab" aria-expanded="false">标签页二<span class="tab-close"><i class="fa fa-times-circle"></i></span></a>
+                </li>
+                <li class="">
+                  <a href="#tab_1_3" data-toggle="tab" aria-expanded="false">标签页三<span class="tab-close"><i class="fa fa-times-circle"></i></span></a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab_1_1">
+                  <h1 class="text-center">标签页一</h1>
+                </div>
+                <div class="tab-pane" id="tab_1_2">
+                  <h1 class="text-center">标签页二</h1>
+                </div>
+                <div class="tab-pane" id="tab_1_3">
+                  <h1 class="text-center">标签页三</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4>方形页面标签栏(.nav-dynamicTab-square)</h4>
+            <div class="">
+              <ul class="nav nav-tabs nav-dynamicTab-square">
+                <li class="active">
+                  <a href="#tab_2_1" data-toggle="tab" aria-expanded="true">标签页一<span class="tab-close"><i class="fa fa-times-circle"></i></span></a>
+                </li>
+                <li class="">
+                  <a href="#tab_2_2" data-toggle="tab" aria-expanded="false">标签页二<span class="tab-close"><i class="fa fa-times-circle"></i></span></a>
+                </li>
+                <li class="">
+                  <a href="#tab_2_3" data-toggle="tab" aria-expanded="false">标签页三<span class="tab-close"><i class="fa fa-times-circle"></i></span></a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab_2_1">
+                  <h1 class="text-center">标签页一</h1>
+                </div>
+                <div class="tab-pane" id="tab_2_2">
+                  <h1 class="text-center">标签页二</h1>
+                </div>
+                <div class="tab-pane" id="tab_2_3">
+                  <h1 class="text-center">标签页三</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h4>梯形页面标签栏(.nav-dynamicTab-default)</h4>
+            <div class="">
+              <ul class="nav nav-tabs nav-dynamicTab-default">
+                <li class="active">
+                  <a href="#tab_3_1" data-toggle="tab" aria-expanded="true">标签页一<span class="tab-close"><i class="fa fa-times-circle"></i></span></a>
+                </li>
+                <li class="">
+                  <a href="#tab_3_2" data-toggle="tab" aria-expanded="false">标签页二<span class="tab-close"><i class="fa fa-times-circle"></i></span></a>
+                </li>
+                <li class="">
+                  <a href="#tab_3_3" data-toggle="tab" aria-expanded="false">标签页三<span class="tab-close"><i class="fa fa-times-circle"></i></span></a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab_3_1">
+                  <h1 class="text-center">标签页一</h1>
+                </div>
+                <div class="tab-pane" id="tab_3_2">
+                  <h1 class="text-center">标签页二</h1>
+                </div>
+                <div class="tab-pane" id="tab_3_3">
+                  <h1 class="text-center">标签页三</h1>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.page-body -->
+    </div><!-- /.page -->
+  </section><!-- /.content -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- jquery.validate 表单验证-->
+<script src="../../src/libs/jquery.validate/jquery.validate.js"></script>
+<script src="../../src/libs/jquery.validate/validate.extend.js"></script>
+<!-- bootstrap-table -->
+<link rel="stylesheet" href="../../src/libs/bootstrap-table/bootstrap-table.css">
+<script src="../../src/libs/bootstrap-table/bootstrap-table.min.js"></script>
+<!-- WdatePicker.js 自动加载css -->
+<script src="../../src/libs/My97DatePicker/WdatePicker.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!-- zTree -->
+<!--<link rel="stylesheet" href="../../../src/libs/zTree_v3/css/zTreeStyle/zTreeStyle.css">-->
+<link rel="stylesheet" href="../../src/libs/zTree_v3/css/metroStyle/metroStyle.css">
+<script src="../../src/libs/zTree_v3/js/jquery.ztree.core.min.js"></script>
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- 业务逻辑js -->
+<script>
+  $(function(){
+    page.init();
+  });
+  var page=(function(){
+    //树结构初始化
+    var dataInit=function(){};
+    //组件初始化；
+    var componentInit=function(){
+    };
+    //按钮点击初始化
+    var buttonActionInit=function(){
+    };
+    return {
+      init:function(){
+        dataInit();
+        componentInit();
+        buttonActionInit();
+      }
+    }
+  })();
+</script>
+</body>
+</html>

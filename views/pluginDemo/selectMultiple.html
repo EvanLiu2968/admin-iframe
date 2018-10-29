@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>后台管理系统</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+	<!-- 主题 -->
+	<link rel="stylesheet" href="../../src/css/app.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+	<!-- 警告: Respond.js使用file://无法正常工作 -->
+	<!--[if lt IE 9]>
+	<script src="../../src/js/html5shiv.min.js"></script>
+	<script src="../../src/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<style>
+	.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+	.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+	.autocomplete-selected { background: #F0F0F0; }
+	.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+	.autocomplete-group { padding: 2px 5px; }
+	.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+</style>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+	<!-- Main content -->
+	<section class="content">
+		<div class="page">
+			<div class="page-header">
+				<h1 class="page-title">选择联动</h1>
+			</div><!-- /.page-header -->
+			<div class="page-body">
+				<div class="panel panel-default">
+					<div class="panel-heading">bootstrap-multiple</div>
+					<div class="panel-body">
+						<form class="form-horizontal row">
+							<div class="form-group">
+								<label class="col-sm-3 col-md-2 control-label">下拉多选</label>
+								<div class="col-sm-4">
+									<select class="form-control" id="select" multiple>
+										<option value="1">很长很长很长很长很长很长很长很长很长的选择一</option>
+										<option value="2">选择二</option>
+										<option value="3">选择三</option>
+										<option value="4">选择四</option>
+										<option value="5">选择五</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 col-md-2 control-label">下拉全选</label>
+								<div class="col-sm-4">
+									<select class="form-control" id="select0" multiple>
+										<option value="1">很长很长很长很长很长很长很长很长很长的选择一</option>
+										<option value="2">选择二</option>
+										<option value="3">选择三</option>
+										<option value="4">选择四</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 col-md-2 control-label">下拉单选</label>
+								<div class="col-sm-4">
+									<select class="form-control" id="select1" >
+										<option value="1">选择一</option>
+										<option value="2">选择二</option>
+										<option value="3">选择三</option>
+										<option value="4">选择四</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="col-sm-3 col-md-2 control-label">分组下拉多选</label>
+								<div class="col-sm-4">
+									<select class="form-control" id="select2" multiple>
+										<optgroup label="分组一">
+											<option value="1">选择一</option>
+											<option value="2">选择二</option>
+											<option value="3">选择三</option>
+											<option value="4">选择四</option>
+										</optgroup>
+										<optgroup label="分组二">
+											<option value="1">选择五</option>
+											<option value="2">选择六</option>
+											<option value="3">选择七</option>
+										</optgroup>
+									</select>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div><!-- /.page-body -->
+		</div><!-- /.page -->
+	</section><!-- /.content -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- bootstrap-multiple-->
+<link rel="stylesheet" href="../../src/libs/bootstrap-multiselect/bootstrap-multiselect.css">
+<script src="../../src/libs/bootstrap-multiselect/bootstrap-multiselect.min.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- 业务逻辑js -->
+<script>
+	$(function(){
+		page.init();
+	});
+	var page=(function(){
+		//组件初始化；
+		var componentInit=function(){
+			$('#select').multiselect();
+			$('#select0').multiselect({
+				includeSelectAllOption: true,
+				//buttonClass: 'btn btn-default',
+				onChange: function(element, checked) {
+					console.log(element.val());
+					console.log(checked);
+				}
+			});
+			$('#select1').multiselect();
+			$('#select2').multiselect({ //分组多选有个bug选择数不更新,待解决
+				enableClickableOptGroups: true,
+				enableCollapsibleOptGroups: true,
+				selectAllNumber: false
+			});
+		};
+		return {
+			init:function(){
+				componentInit();
+			}
+		}
+	})();
+</script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>后台管理系统</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+	<!-- 主题 -->
+	<link rel="stylesheet" href="../../src/css/app.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+	<!-- 警告: Respond.js使用file://无法正常工作 -->
+	<!--[if lt IE 9]>
+	<script src="../../src/js/html5shiv.min.js"></script>
+	<script src="../../src/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+	<!-- Main content -->
+	<section class="content">
+		<div class="page">
+			<div class="page-header">
+				<h1 class="page-title">layer提示框</h1>
+			</div><!-- /.page-header -->
+			<div class="page-body">
+				<div class="callout callout-default">
+					<p>弹框用法及配置封装在/resource/js/common.js中,更多用法参考<a class="text-blue" href="http://layer.layui.com/" target="_blank">layer官网</a>，手机端使用手机版进行配置</p>
+				</div>
+				<div style="padding:15px;">
+					<button type="button" class="btn btn-default" id="btn-msg1">提示框1</button>
+					<button type="button" class="btn btn-warning" id="btn-msg2">提示框2</button>
+					<button type="button" class="btn btn-primary" id="btn-msg3">提示框3</button>
+					<button type="button" class="btn btn-info" id="btn-msg4">提示框4</button>
+					<button type="button" class="btn btn-danger" id="btn-msg5">提示框5</button>
+					<button type="button" class="btn btn-success" id="btn-msg6">提示框6</button>
+				</div>
+				<div style="padding:15px;">
+					<button type="button" class="btn btn-success" id="btn-confirm">确认弹窗</button>
+					<button type="button" class="btn btn-warning" id="btn-load">加载弹窗(加载动画可更改)</button>
+					<button type="button" class="btn btn-primary" id="btn-alert">Alert框</button>
+					<button type="button" class="btn btn-primary" id="btn-tip">tips框</button>
+				</div>
+			</div><!-- /.page-body -->
+		</div><!-- /.page -->
+	</section><!-- /.content -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- 业务逻辑js -->
+<script>
+	$(function(){
+		page.init();
+	});
+	var page=(function(){
+		//组件初始化；
+		var componentInit=function(){
+		};
+		//按钮点击初始化
+		var buttonActionInit=function(){
+			$("#btn-msg1").on("click",function(){
+				$.msg("提示框内容",1)
+			});
+			$("#btn-msg2").on("click",function(){
+				$.msg("提示框内容",2)
+			});
+			$("#btn-msg3").on("click",function(){
+				$.msg("提示框内容",3)
+			});
+			$("#btn-msg4").on("click",function(){
+				$.msg("提示框内容",4)
+			});
+			$("#btn-msg5").on("click",function(){
+				$.msg("提示框内容",5)
+			});
+			$("#btn-msg6").on("click",function(){
+				$.msg("提示框内容",6)
+			});
+			$("#btn-alert").on("click",function(){
+				$.alert("信息框内容")
+			});
+			$("#btn-confirm").on("click",function(){
+				var box=$.confirm("确认要点击[确定]按钮吗？",function(){
+					layer.close(box);
+					$.msg("操作成功！",6)
+				})
+			});
+			$("#btn-load").on("click",function(){
+				var box=$.showLoading();
+				setTimeout(function(){
+					layer.close(box);
+				},2000)
+			});
+			$("#btn-tip").on("click",function(){
+				$.tips("你已经点击了此按钮","#btn-tip","#36c6d3",3000,3)
+			});
+		};
+		return {
+			init:function(){
+				componentInit();
+				buttonActionInit();
+			}
+		}
+	})();
+</script>
+</body>
+</html>

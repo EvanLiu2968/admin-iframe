@@ -1,0 +1,49 @@
+mixin listCustomCheck(inputType, type, ripple)
+    ul(class="list")
+        li(class="list__item")
+            label(class="custom-check")
+                input(class="custom-check__checkbox" + " " + inputType, type=type,  checked="true",  name=inputType)
+                span(class="custom-check__checkbox" + " " + inputType + "__background",  data-ripple=ripple)
+                span(class="custom-check__checkbox" + " " + inputType + "__checkbox")
+                span(class="custom-check__text") Item 1
+
+            li(class="list__item")
+                label(class="custom-check")
+                    input(class="custom-check__checkbox" + " " + inputType, type=type,  name=inputType)
+                    span(class="custom-check__checkbox" + " " + inputType + "__background",  data-ripple=ripple)
+                    span(class="custom-check__checkbox" + " " + inputType + "__checkbox")
+                    span(class="custom-check__text") Item 2
+
+            li(class="list__item")
+                label(class="custom-check")
+                    input(class="custom-check__checkbox" + " " + inputType, type=type,  name=inputType)
+                    span(class="custom-check__checkbox" + " " + inputType + "__background",  data-ripple=ripple)
+                    span(class="custom-check__checkbox" + " " + inputType + "__checkbox")
+                    span(class="custom-check__text") Item 3
+
+mixin customCheck(inputType, type, ripple, itemText)
+    label(class="custom-check")
+        input(class="custom-check__checkbox" + " " + inputType, type=type,  name=inputType)
+        span(class="custom-check__checkbox" + " " + inputType + "__background",  data-ripple=ripple)
+        span(class="custom-check__checkbox" + " " + inputType + "__checkbox")
+        span(class="custom-check__text")=itemText
+
+mixin customSwitch(inputType, type, ripple)
+    div(class="generic-container")
+        label(class="custom-check" + " " + inputType)
+            span(class="custom-check__text" + " " + inputType + "__text") Opción 1
+            input(class="custom-check__checkbox" + " " + inputType, type=type,  name=inputType, checked="true")
+            span(class="custom-check__checkbox" + " " + inputType + "__background")
+                span(class="custom-check__checkbox" + " " + inputType + "__checkbox",  data-ripple=ripple)
+
+        label(class="custom-check" + " " + inputType)
+            span(class="custom-check__text" + " " + inputType + "__text") Opción 2
+            input(class="custom-check__checkbox" + " " + inputType, type=type,  name=inputType)
+            span(class="custom-check__checkbox" + " " + inputType + "__background")
+                span(class="custom-check__checkbox" + " " + inputType + "__checkbox",  data-ripple=ripple)
+
+        label(class="custom-check" + " " + inputType)
+            span(class="custom-check__text" + " " + inputType + "__text") Opción 3
+            input(class="custom-check__checkbox" + " " + inputType, type=type,  name=inputType)
+            span(class="custom-check__checkbox" + " " + inputType + "__background")
+                span(class="custom-check__checkbox" + " " + inputType + "__checkbox",  data-ripple=ripple)

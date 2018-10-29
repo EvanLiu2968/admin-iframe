@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html class="ie8 "> <![endif]-->
+<!--[if IE 9]> <html class="ie9 "> <![endif]-->
+<!--[if !IE]><!-->
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>注册</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.5 -->
+  <link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- app.css -->
+  <link rel="stylesheet" href="../../src/css/app.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../../src/js/html5shiv.min.js"></script>
+  <script src="../../src/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<style>
+  .visible-ie8,.visible-ie9{
+    display:none;
+  }
+  .ie8 .visible-ie8,.ie9 .visible-ie9{
+    display:inherit !important;
+  }
+  .login {
+    background-color: #364150 !important
+  }
+  .login .logo {
+    margin: 60px auto 10px;
+    padding: 15px;
+    text-align: center
+  }
+  .login .logo img{
+    display:block;
+    margin:0 auto;
+    max-width:100%;
+  }
+  .login .content {
+    background-color: #fff;
+    -webkit-border-radius: 7px;
+    -moz-border-radius: 7px;
+    -ms-border-radius: 7px;
+    -o-border-radius: 7px;
+    border-radius: 7px;
+    width: 400px;
+    margin: 0 auto;
+    padding: 10px 30px 30px;
+    overflow: hidden;
+    position: relative
+  }
+  .login .content h3 {
+    color: #4db3a5;
+    text-align: center;
+    font-size: 28px;
+    font-weight: 400 !important
+  }
+  .login .content h4 {
+    color: #555
+  }
+  .login .content .login-form {
+    padding: 0;
+    margin: 0
+  }
+  .login .content .form-control {
+    background-color: #dde3ec;
+    height: 43px;
+    color: #8290a3;
+    border: 1px solid #dde3ec
+  }
+  .login .content .form-control:active, .login .content .form-control:focus {
+    border: 1px solid #c3ccda
+  }
+  .login .content .form-control::-moz-placeholder {
+    color: #8290a3;
+    opacity: 1
+  }
+  .login .content .form-control:-ms-input-placeholder {
+    color: #8290a3
+  }
+  .login .content .form-control::-webkit-input-placeholder {
+    color: #8290a3
+  }
+  .login .content .form-title {
+    font-weight: 300;
+    margin-bottom: 25px;
+    color: #6c7a8d;
+  }
+  .login .content .form-actions {
+    clear: both;
+    border: 0;
+    padding: 10px 0;
+    margin-bottom:10px;
+  }
+  .login .content .form-actions .btn{
+    min-width:50%;
+  }
+  .login .content .form-actions .remember {
+    margin-top: 8px;
+    color:#6c7a8d;
+  }
+  .login .content .create-account {
+    margin: 0 -40px -30px;
+    padding: 15px 0 17px;
+    text-align: center;
+    background-color: #6c7a8d;
+    -webkit-border-radius: 0 0 7px 7px;
+    -moz-border-radius: 0 0 7px 7px;
+    -ms-border-radius: 0 0 7px 7px;
+    -o-border-radius: 0 0 7px 7px;
+    border-radius: 0 0 7px 7px
+  }
+  .login .content .create-account>p {
+    margin: 0
+  }
+  .login .content .create-account p a {
+    font-weight: 600;
+    font-size: 14px;
+    color: #c3cedd;
+  }
+  .login .content .create-account a {
+    display: inline-block;
+    margin-top: 5px
+  }
+  .login .copyright {
+    text-align: center;
+    margin: 0 auto 30px 0;
+    padding: 10px;
+    color: #7a8ca5;
+    font-size: 13px
+  }
+  @media (max-width:440px) {
+    .login .content, .login .logo {
+      margin-top: 10px
+    }
+    .login .content {
+      width: 280px
+    }
+    .login .content h3 {
+      font-size: 22px
+    }
+  }
+
+</style>
+<body class=" login">
+<!-- BEGIN LOGO -->
+<div class="logo">
+  <a href="javascript:;"><img src="../../src/images/logo_title.png" alt="" /></a>
+</div>
+<!-- END LOGO -->
+<!-- BEGIN LOGIN -->
+<div class="content">
+	<!-- BEGIN LOGIN FORM -->
+	<form class="login-form" id="form-login" action="../index.html" method="post">
+		<h3 class="form-title">登录</h3>
+		<div class="alert alert-danger alert-dismissable" id="form-login-alert" style="display:none">
+			<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+			<div><i class="fa fa-info"></i><span class="info">请输入正确的账号和密码</span></div>
+		</div>
+		<div class="form-group">
+			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+			<label class="control-label visible-ie8 visible-ie9">账号</label>
+			<input class="form-control" type="text" autocomplete="off" placeholder="账号" name="username" /> </div>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">密码</label>
+			<input class="form-control" type="password" autocomplete="off" placeholder="密码" name="password" /> </div>
+		<div class="form-actions clearfix">
+			<button type="button" class="btn btn-danger pull-right" id="btn-login">登 录</button>
+			<div class="el-checkbox el-checkbox-red pull-left" style="padding-top:6px;">
+				<input type="checkbox" id="remember" name="remember" value="1">
+				<label class="el-checkbox-style" for="remember"></label>
+				<span>记住密码</span>
+			</div>
+		</div>
+		<div class="create-account">
+			<p>
+				<a href="javascript:;" id="btn-register">注册</a>
+			</p>
+		</div>
+	</form>
+</div>
+<div class="copyright"> 2017 © 后台管理系统</div>
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!-- checkbox -->
+<link rel="stylesheet" href="../../src/css/checkbox.css">
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<script>
+	$(function(){
+		$("#btn-login").on("click",function(){
+			var loginForm=$("#form-login");
+			var username=$("#form-login [name='username']").val();
+			var password=$("#form-login [name='password']").val();
+			if(!username&&!password){
+				$("#form-login-alert").show().find(".info").text("请输入正确的账号和密码");
+			}else{
+				$("#form-login-alert").hide();
+				loginForm.submit();
+			}
+		});
+	});
+</script>
+</body>
+</html>

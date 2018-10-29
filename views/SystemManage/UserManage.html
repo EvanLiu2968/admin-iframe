@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>后台管理系统</title>
+		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+		<!-- bootstrap -->
+		<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+		<!-- Font Awesome -->
+		<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+		<!-- 主题 -->
+		<link rel="stylesheet" href="../../src/css/app.css">
+
+		<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+		<!-- 警告: Respond.js使用file://无法正常工作 -->
+		<!--[if lt IE 9]>
+				<script src="../../src/js/html5shiv.min.js"></script>
+				<script src="../../src/js/respond.min.js"></script>
+		<![endif]-->
+	</head>
+	<style>
+	</style>
+	<body>
+		<!-- 页面容器 -->
+		<div class="wrapper">
+			<!-- Main content -->
+			<section class="content">
+				<div class="page">
+					<div class="page-header">
+						<div class="pull-right">
+							<a class="page-header-btn" role="button" data-toggle="collapse" href="#form-search-collapse"><i class="fa fa-angle-double-down"></i>显示搜索项</a>
+						</div>
+						
+						<ol class="breadcrumb">
+							<li><a href="#">系统管理</a></li>
+							<li class="active">用户管理</li>
+						</ol>
+					</div><!-- /.page-header -->
+					<div class="page-body">
+						<div class="collapse" id="form-search-collapse">
+							<form class="form-search" id="form-search">
+								<div class="form-group form-inline">
+									<label class="control-label">用户账户</label>
+									<input  class="form-control" name="account" data-action="search">
+								</div>
+								<div class="form-group form-inline">
+									<label class="control-label">用户名称</label>
+									<input class="form-control" name="user_name" data-action="search">
+								</div>
+							</form>
+						</div>
+						<div class="" id="toolbar">
+							<button class="btn btn-primary"><i class="fa fa-search"></i>查询</button>
+							<button class="btn btn-primary" data-toggle="modal" data-target="#addModal"><i class="fa fa-plus"></i>新增用户</button>
+						</div>
+						<table id="table"></table>
+					</div><!-- /.page-body -->
+				</div><!-- /.page -->
+			</section><!-- /.content -->
+			<!-- 添加Modal -->
+			<div class="modal" id="addModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4 class="modal-title">新增用户资料</h4>
+						</div>
+						<div class="modal-body clearfix">
+							<form class="form-horizontal" id="form-add">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">用户账号</label>
+									<div class="col-sm-8 col-md-6">
+										<input type="text" class="form-control" name="account" validate="{required:true,email:true}" placeholder="请输入用户账号">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">用户名称</label>
+									<div class="col-sm-8 col-md-6">
+										<input type="text" class="form-control" name="userName" validate="{required:true}" placeholder="请输入用户名称">
+									</div>
+								</div>
+								<!-- select -->
+								<div class="form-group">
+									<label class="col-sm-2 control-label">用户角色</label>
+									<div class="col-sm-8 col-md-6">
+										<select class="form-control" name="role" validate="{required:true}">
+											<option value="0">系统管理员</option>
+											<option value="1">普通用户</option>
+											<option value="2">部门负责人</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">所属部门</label>
+									<div class="col-sm-8 col-md-6">
+										<input type="text" class="form-control" name="department" validate="{max:50}" placeholder="所属部门">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">邮箱</label>
+									<div class="col-sm-8 col-md-6">
+										<input type="text" class="form-control" name="email" validate="{email:true}" placeholder="邮箱">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">联系电话</label>
+									<div class="col-sm-8 col-md-6">
+										<input type="text" class="form-control" name="phone" validate="{isPhone:true}" placeholder="联系电话">
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
+							<button type="button" class="btn btn-primary" id="modal-add-save"><i class="fa fa-save"></i>保存</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- 编辑Modal -->
+			<div class="modal" id="editModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+							<h4 class="modal-title">修改用户资料</h4>
+						</div>
+						<div class="modal-body clearfix">
+							<form class="form-horizontal" id="form-edit">
+								<div class="form-group">
+									<label class="col-sm-2 control-label">用户账号</label>
+									<div class="col-sm-8 col-md-6">
+										<input type="text" class="form-control" name="account" validate="{required:true,email:true}" placeholder="请输入用户账号">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">用户名称</label>
+									<div class="col-sm-8 col-md-6">
+										<input type="text" class="form-control" name="userName" validate="{required:true}" placeholder="请输入用户名称">
+									</div>
+								</div>
+								<!-- select -->
+								<div class="form-group">
+									<label class="col-sm-2 control-label">用户角色</label>
+									<div class="col-sm-8 col-md-6">
+										<select class="form-control" name="role" validate="{required:true}">
+											<option value="0">系统管理员</option>
+											<option value="1">普通用户</option>
+											<option value="2">部门负责人</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">所属部门</label>
+									<div class="col-sm-8 col-md-6">
+										<input type="text" class="form-control" name="department" validate="{max:50}" placeholder="所属部门">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">邮箱</label>
+									<div class="col-sm-8 col-md-6">
+										<input type="text" class="form-control" name="email" validate="{email:true}" placeholder="邮箱">
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="col-sm-2 control-label">联系电话</label>
+									<div class="col-sm-8 col-md-6">
+										<input type="text" class="form-control" name="phone" validate="{isPhone:true}" placeholder="联系电话">
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
+							<button type="button" class="btn btn-primary" id="modal-edit-save"><i class="fa fa-save"></i>保存</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div><!-- 页面容器 -->
+
+		<!-- jQuery 2.1.4 -->
+		<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+		<!-- Bootstrap 3.3.5 -->
+		<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+		<!-- jquery.validate -->
+		<script src="../../src/libs/jquery.validate/jquery.validate.js"></script>
+		<script src="../../src/libs/jquery.validate/validate.extend.js"></script>
+		<!-- bootstrap-table -->
+		<link rel="stylesheet" href="../../src/libs/bootstrap-table/bootstrap-table.css">
+		<script src="../../src/libs/bootstrap-table/bootstrap-table.min.js"></script>
+		<!--公用common.js-->
+		<link rel="stylesheet" href="../../src/libs/layer/skin/default/layer.css">
+		<script src="../../src/libs/layer/layer.js"></script>
+		<script src="../../src/js/common.js"></script>
+		<!-- 业务逻辑js -->
+		<script>
+			$(function(){
+				page.init();
+			});
+			var page=(function(){
+				var tableInit=function(){
+					var dataList=[
+						{
+							id:'1',
+							account:'admin',
+							originPwd:'888888',
+							userName:'admin',
+							department:null,
+							email:null,
+							phone:null,
+							role:'0'
+						},
+						{
+							id:'2',
+							account:'zhangsan',
+							originPwd:'888888',
+							userName:'张三',
+							department:'销售部',
+							email:'zhangsan@mail.qq.com',
+							phone:'17712349876',
+							role:'1'
+						},
+						{
+							id:'3',
+							account:'lisi',
+							originPwd:'888888',
+							userName:'李四',
+							department:'人事部',
+							email:'lisi@mail.qq.com',
+							phone:'17712349876',
+							role:'2'
+						},
+						{
+							id:'0001',
+							account:'lisi',
+							originPwd:'888888',
+							userName:'王五',
+							department:'研发部',
+							email:'wangwu@mail.qq.com',
+							phone:'17712349876',
+							role:'2'
+						},
+						{
+							id:'4',
+							account:'lisi',
+							originPwd:'888888',
+							userName:'赵六',
+							department:'研发部',
+							email:'zhaoliu@mail.qq.com',
+							phone:'17712349876',
+							role:'2'
+						}
+					];
+					var columns=[
+						{
+							field:"account",title:"用户账号",width:"100px"
+						},
+						{
+							field:"userName",title:"用户名称",width:"120px"
+						},
+						{
+							field:"role",title:"角色",width:"120px",
+							formatter:function(value,row,index){
+								var roles={
+									'0':'系统管理员',
+									'1':'管理员',
+									'2':'普通用户'
+								};
+								return roles[value];
+							}
+						},
+						{
+							field:"department",title:"所属部门"
+						},
+						{
+							field:"email",title:"邮箱",width:"150px"
+						},
+						{
+							field:"phone",title:"联系电话",width:"150px"
+						},
+						{
+							field:"",title:"操作",width:"200px",
+							formatter:function(value,row,index){
+								return '<div class="btn-group">' +
+										'<button type="button" class="btn btn-xs btn-primary" onclick="page.edit('+row.id+')">修改资料</button>' +
+										'<button type="button" class="btn btn-xs btn-primary" onclick="page.delUser('+row.id+')">删除用户</button>' +
+										'<button type="button" class="btn btn-xs btn-primary" onclick="page.resetPwd('+row.id+')">重置密码</button>' +
+										'</div>'
+							}
+						}
+					];
+					var option={
+						data:dataList,  //需切换common => sidePagination
+						url: '/api/v1/user',
+						columns: columns, //列
+						idField: "id",  //标识哪个字段为id主键
+						uniqueId:"id"//给每行一个唯一标识
+					};
+					option=common.extend(common.getBootstrapTableOption(),option);
+					$("#table").bootstrapTable(option);
+				};
+				//组件初始化；
+				var componentInit=function(){
+					formValidateInit("#form-add");
+					formValidateInit("#form-edit");
+				};
+				var btnActionInit=function(){
+					$("#modal-add-save").on("click",function(){
+						var valid=$("#form-add").valid();
+						if(!valid)return;
+					});
+					$("#modal-edit-save").on("click",function(){
+						var valid=$("#form-edit").valid();
+						if(!valid)return;
+					});
+				};
+				return {
+					init:function(){
+						tableInit();
+						componentInit();
+						btnActionInit();
+					},
+					edit:function(id){
+						var row=$("#table").bootstrapTable('getRowByUniqueId',id);
+						//row插入表单
+						$("#form-edit [name='account']").val(row.account);
+						$("#form-edit [name='userName']").val(row.userName);
+						$("#form-edit [name='role']").val(row.role);
+						$("#form-edit [name='email']").val(row.email);
+						$("#form-edit [name='phone']").val(row.phone);
+						$("#editModal").modal("show");
+					},
+					delUser:function(id){
+						var confirm=$.confirm("确定要删除该用户吗？",function(){
+							$("#table").bootstrapTable('remove',{field: 'id', values: id});
+							layer.close(confirm);
+						});
+					},
+					assignRole:function(id){
+						$.msg("分配角色");
+					},
+					resetPwd:function(id){
+						$.alert("已将密码重置为初始密码！");
+					}
+				}
+			})();
+		</script>
+	</body>
+</html>

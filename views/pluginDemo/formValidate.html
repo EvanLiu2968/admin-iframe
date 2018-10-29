@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>后台管理系统</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+	<!-- 主题 -->
+	<link rel="stylesheet" href="../../src/css/app.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+	<!-- 警告: Respond.js使用file://无法正常工作 -->
+	<!--[if lt IE 9]>
+	<script src="../../src/js/html5shiv.min.js"></script>
+	<script src="../../src/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+	<!-- Main content -->
+	<section class="content">
+		<div class="page">
+			<div class="page-header">
+				<ol class="breadcrumb">
+					<li><a href="#">插件示例</a></li>
+					<li class="active">表单验证</li>
+				</ol>
+			</div><!-- /.page-header -->
+			<div class="page-body">
+				<div class="callout callout-default">
+					<p>表单验证方法配置在/src/libs/jquery.validate/validate.extend.js,可自由添加更改</p>
+					<p>
+						HTML:&lt;input type="text" name="user" validate="{required:true,rangelength:[6,16]}" ><br>初始化：formValidateInit(表单选择器)
+					</p>
+				</div>
+				<div class="callout callout-info">
+					<p>普通bootstrap栅格布局表格</p>
+				</div>
+				<form class="form-horizontal" id="form-validate">
+					<div class="form-group">
+						<label class="col-sm-3 control-label"><span class="text-red">*</span>用户名</label>
+						<div class="col-sm-6 ">
+							<input type="text" class="form-control" name="user" validate="{required:true,rangelength:[6,16]}" placeholder="请输入旧密码,必填，限制长度6-16" data-tips="请输入旧密码,必填，限制长度6-16">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label"><span class="text-red">*</span>密码</label>
+						<div class="col-sm-6 ">
+							<input type="password" class="form-control"  name="password.new" id="password1" validate="{required:true,minlength:6}" placeholder="请输入新密码">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label"><span class="text-red">*</span>再次输入密码</label>
+						<div class="col-sm-6 ">
+							<input type="password" class="form-control" name="password.repeat" id="password2" validate="{required:true,minlength:6,equalTo:'#password1'}" placeholder="密码要相同">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">邮箱</label>
+						<div class="col-sm-6 ">
+							<input type="text" class="form-control"  name="text1"  validate="{email:true}" placeholder="请输入新密码">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">网址</label>
+						<div class="col-sm-6 ">
+							<input type="text" class="form-control"  name="text2"  validate="{url:true}" placeholder="请输入新密码">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">数字</label>
+						<div class="col-sm-6 ">
+							<input type="text" class="form-control"  name="text3"  validate="{range:[1,5]}" placeholder="请输入1-5之间的数字">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">IP</label>
+						<div class="col-sm-6 ">
+							<input type="text" class="form-control"  name="text4"  validate="{ip:true}" >
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">QQ</label>
+						<div class="col-sm-6 ">
+							<input type="text" class="form-control"  name="text5"  validate="{isQQ:true}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">身份证号码</label>
+						<div class="col-sm-6 ">
+							<input type="text" class="form-control"  name="text6"  validate="{isIdCardNo:true}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">范围</label>
+						<div class="col-sm-6 ">
+							<input type="text" class="form-control"  name="text7" style="display:inline-block;width:100px;" id="range"> - 
+							<input type="text" class="form-control"  name="text8" style="display:inline-block;width:100px;" validate="{numberRange:'#range'}">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">checkbox</label>
+						<div class="col-sm-6 ">
+							<div class="">
+								<label>
+									<input type="checkbox" name="check1" validate="{checkboxLimit:2}">复选框1
+								</label>
+								<label>
+									<input type="checkbox" name="check2">复选框2
+								</label>
+								<label>
+									<input type="checkbox" name="check3">复选框3
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-3 control-label">radio</label>
+						<div class="col-sm-6 ">
+							<div class="">
+								<label >
+									<input type="radio" name="radio2"  validate="{required:true}">单选框1
+								</label>
+								<label>
+									<input type="radio" name="radio2" >单选框2
+								</label>
+								<label>
+									<input type="radio" name="radio2" >单选框3
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="btn-wrapper text-center">
+						<button type="reset" class="btn btn-default" ><i class="fa fa-reply"></i>重置</button>
+						<button type="button" class="btn btn-primary" id="btn-save"><i class="fa fa-save"></i>提交</button>
+						<button type="button" class="btn btn-primary" id="btn-resetValidate"><i class="fa fa-reset"></i>清空值和验证规则</button>
+					</div>
+				</form>
+				<div class="callout callout-info">
+					<p>自定义非栅格从左到右布局表格</p>
+				</div>
+				<form class="form-horizontal form-special" id="form-validate1">
+					<div class="form-group">
+						<label class="control-label">.control-label</label>
+						<div class="controls">
+							<input type="text" class="form-control" name="user1" validate="{required:true}" placeholder=".form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label">容纳六个汉字</label>
+						<div class="controls">
+							<input type="text" class="form-control" name="user2" validate="{required:true}" placeholder=".form-control">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label label-w-md">.control-label.label-w-md</label>
+						<div class="controls">
+							<input type="password" class="form-control input-w-md"  name="password.new1" validate="{required:true}" placeholder=".form-control.input-w-md">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label label-w-md">可以容纳八个汉字</label>
+						<div class="controls">
+							<input type="password" class="form-control input-w-md"  name="password.new2" validate="{required:true}" placeholder=".form-control.input-w-md">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label label-w-lg">.control-label.label-w-lg</label>
+						<div class="controls">
+							<input type="password" class="form-control input-w-lg" name="password.repeat1" validate="{required:true}" placeholder=".form-control.input-w-lg">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label label-w-lg">最多可以容纳十个汉字</label>
+						<div class="controls">
+							<input type="password" class="form-control input-w-lg" name="password.repeat2" validate="{required:true}" placeholder=".form-control.input-w-lg">
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="control-label label-lg"></label>
+						<div class="controls">
+							<button type="reset" class="btn btn-default" ><i class="fa fa-reply"></i>重置</button>
+							<button type="button" class="btn btn-primary" id="btn-save1"><i class="fa fa-save"></i>提交</button>
+						</div>
+					</div>
+					<div class="btn-wrapper text-center">
+
+					</div>
+				</form>
+			</div><!-- /.page-body -->
+		</div><!-- /.page -->
+	</section><!-- /.content -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- jquery.validate 表单验证-->
+<script src="../../src/libs/jquery.validate/jquery.validate.js"></script>
+<script src="../../src/libs/jquery.validate/validate.extend.js"></script>
+<!-- bootstrap-table -->
+<link rel="stylesheet" href="../../src/libs/bootstrap-table/bootstrap-table.css">
+<script src="../../src/libs/bootstrap-table/bootstrap-table.min.js"></script>
+<!-- icheck -->
+<link rel="stylesheet" href="../../src/libs/icheck/skins/all.css">
+<script src="../../src/libs/icheck/icheck.min.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+
+<link rel="stylesheet" href="../../src/libs/pikaday/pikaday.css">
+<script src="../../src/libs/pikaday/pikaday.min.js"></script>
+
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- 业务逻辑js -->
+<script>
+	$(function(){
+		page.init();
+	});
+	var page=(function(){
+		//组件初始化；
+		var componentInit=function(){
+			formValidateInit("#form-validate");
+			formValidateInit("#form-validate1");
+			//得把icheck换了自己写一套
+			$('input[data-checkbox]').on('ifChanged',function(e){
+				$('[name="checkbox1"]').valid();
+			});
+			$('input[data-radio]').on('ifChanged',function(e){
+				$('input[data-radio][validate]').valid();
+			});
+		};
+		//按钮点击初始化
+		var buttonActionInit=function(){
+			$("#btn-save").on("click",function(){
+				var valid=$("#form-validate").valid();
+			});
+			$("#btn-resetValidate").on("click",function(){
+				document.getElementById("form-validate").reset();//初始化值 reset()和submit()使用jQuery对象有问题
+				var validateor=$("#form-validate").validate(); //此对象具有多种方法
+				console.log(validateor);
+				validateor.resetForm(); //清掉错误提示，并把统一添加has-success类（多余？）
+				$("#form-validate").find(".has-success").removeClass("has-success");
+			});
+			$("#btn-save1").on("click",function(){
+				var valid=$("#form-validate1").valid();
+			});
+		};
+		return {
+			init:function(){
+				componentInit();
+				buttonActionInit();
+			}
+		}
+	})();
+</script>
+</body>
+</html>

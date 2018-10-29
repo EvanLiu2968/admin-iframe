@@ -1,0 +1,33 @@
+/*
+ *图片瀑布流层，经测试ie10及以上支持，ie9未测试
+ <div class="waterfall">
+   <div class="waterfall-item">
+    <img src="src">
+    <div class="..."></div>
+  </div>
+ </div>
+ */
+.waterfall{
+  -moz-column-count:4; /* Firefox */
+  -webkit-column-count:4; /* Safari 和 Chrome */
+  column-count:4;
+  -moz-column-gap: 1em;
+  -webkit-column-gap: 1em;
+  column-gap: 1em;
+}
+/*内容层*/
+.waterfall>.waterfall-item{
+  padding: 10px;
+  margin: 0 0 10px 0;
+  -moz-page-break-inside: avoid;
+  -webkit-column-break-inside: avoid;
+  break-inside: avoid;
+  border: 1px solid #ddd;
+  cursor:pointer;
+}
+.waterfall>.waterfall-item img{
+  width: 100%;
+}
+.waterfall>.waterfall-item.active{
+  border-color:#20A0FF;
+}

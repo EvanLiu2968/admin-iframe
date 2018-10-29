@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>交通工程质量安全监督监管系统</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+	<!-- 主题 -->
+	<link rel="stylesheet" href="../../src/css/app.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+	<!-- 警告: Respond.js使用file://无法正常工作 -->
+	<!--[if lt IE 9]>
+	<script src="../../src/js/html5shiv.min.js"></script>
+	<script src="../../src/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+	<!-- Main content -->
+	<section class="content">
+		<div class="page">
+					<div class="page-header">
+						<ol class="breadcrumb">
+							<li><a href="#">首页</a></li>
+							<li class="active">公告栏</li>
+						</ol>
+					</div><!-- /.box-header -->
+					<div class="page-body">
+						<div id="noticeList"></div>
+					</div>
+				</div>
+	</section><!-- /.content -->
+</div><!-- 页面容器 -->
+<script type="text/html" id="messageTpl">
+	<div class="box box-widget" data-id="{{id}}">
+		<div class="box-header with-border">
+			<span>发布人：{{release_person}}</span>
+			<div class="row" style="padding:10px 0">
+				<div class="col-sm-6 text-muted">发布时间：{{release_time}}</div>
+				<div class="col-sm-6 text-muted">失效时间：{{fail_time}}</div>
+			</div>
+		</div>
+		<div class="box-body" style="height:40px;overflow:hidden">
+			<div style="position:relative;padding:0 3em;margin-bottom:10px;">
+				<button class="btn btn-default btn-xs noticeboard-collapse" style="position:absolute;right:0;">展开</button>
+				<label style="position:absolute;left:0;">标题</label>
+				<div class="text-overflow">{{title}}</div>
+			</div>
+			<div style="position:relative;padding-left:3em;">
+				<label style="position:absolute;left:0;">内容</label>
+				<div>{{@content}}</div>
+			</div>
+		</div>
+		<div class="box-footer">
+			<div class="pull-left">
+				{{if attachments}}
+				<a class="btn btn-primary btn-xs" href="{{attachments_url}}">下载附件</a>
+				{{/if}}
+			</div>
+			<div class="pull-right">
+				<button class="btn btn-primary btn-xs noticeboard-edit">编辑</button>
+				<button class="btn btn-danger btn-xs noticeboard-delete">删除</button>
+			</div>
+		</div>
+	</div>
+</script>
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- artTemplate -->
+<script src="../../src/libs/artTemplate/template-web.js"></script>
+<!--公用common.js-->
+<link rel="stylesheet" href="../../src/libs/layer/skin/default/layer.css">
+<script src="../../src/libs/layer/layer.js"></script>
+<script src="../../src/js/common.js"></script>
+<script>
+	$(function(){
+		page.init();
+	});
+	var page=(function(){
+		var listInit=function(){
+			var dataList=[
+				{
+					id:"1",
+					release_person:"支付宝",
+					release_time:"2017-01-17 11:43:01",
+					fail_time:"2017-02-17 00:00:00",
+					attachments:true,
+					attachments_url:"http://219.136.133.174:9001/GuestPages/download.aspx?id=130748351226293750.TIF",
+					title:"支付宝启动“全球未来机场计划” 国庆起接入境外十机场",
+					content:'<p><a href="http://weibo.com/alipay?zw=tech" target="_blank">支付宝</a>9月26日宣布与慕尼黑机场、东京成田国际机场、大阪关西国际机场等十家国际机场达成合作，在上述机场购物可刷支付宝。同日，支付宝还宣布启动“全球未来机场计划”。</p><p><br></p>'
+				},
+				{
+					id:"2",
+					release_person:"微信",
+					release_time:"2016-12-18 11:43:01",
+					fail_time:"2017-01-12 00:00:00",
+					attachments:false,
+					attachments_url:"",
+					title:"今起办出入境证件可用微信支付",
+					content:'<p>从今天开始，市民在全市公安机关各出入境接待场所办理出入境证件时，可以用微信扫码缴费。网络良好的情况下，申请人10秒钟即可完成出入境证件费用的缴纳。</p><p><br></p>'
+				}
+			];
+			var str=dataList.map(function(v,i,a){
+				return template('messageTpl',v)
+			}).join('')
+			$("#noticeList").html(str);
+		};
+		//按钮初始化
+		var btnActionInit=function(){
+			//切换收缩/展开
+			$("body").on("click",".noticeboard-collapse",function(){
+				var $self=$(this);
+				if($self.text()==="展开"){
+					$self.text("收缩").closest(".box-body").css("height","auto")
+				}else{
+					$self.text("展开").closest(".box-body").css("height","40px")
+				}
+			}).on("click",".noticeboard-edit",function(){
+				var $self=$(this);
+				$.alert("无法编辑！")
+			}).on("click",".noticeboard-delete",function(){
+				var $self=$(this);
+				$.confirm("确定要删除吗",function(){
+					layer.closeAll();
+					var load=$.showLoading();
+					$self.closest(".box").remove();
+					layer.close(load);
+					$.msg("删除成功！",6);
+				});
+			})
+		};
+		return {
+			init:function(){
+				listInit();
+				btnActionInit();
+			}
+		}
+	})();
+</script>
+</body>
+</html>

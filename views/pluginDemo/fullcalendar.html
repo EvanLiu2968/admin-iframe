@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>后台管理系统</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+	<!-- 主题 -->
+	<link rel="stylesheet" href="../../src/css/app.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+	<!-- 警告: Respond.js使用file://无法正常工作 -->
+	<!--[if lt IE 9]>
+	<script src="../../src/js/html5shiv.min.js"></script>
+	<script src="../../src/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<style>
+	tr>td>.fc-day-grid-event,.fc-event,.fc-event-dot{
+		background-color: #1582DC !important;
+		border-radius:0 !important;
+	}
+	.fc-title{
+		color:#fff;
+	}
+	tr>td>.fc-day-grid-event:hover,tr>td>.fc-day-grid-event:active{
+		background-color: #337ab7;
+	}
+	#calendar a{
+		color: #1582DC;
+	}
+</style>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+	<!-- Main content -->
+	<section class="content">
+		<div class="page">
+			<div class="page-header">
+				<ol class="breadcrumb">
+					<li><a href="#">插件示例</a></li>
+					<li class="active">日历</li>
+				</ol>
+			</div><!-- /.page-header -->
+			<div class="page-body">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="btn-wrapper">
+							<button class="btn btn-primary" type="button" id="btn-add" data-toggle="modal" data-target="#modal-add"><i class="fa fa-plus"></i>新增</button>
+						</div>
+						<div id='calendar'></div>
+					</div>
+				</div>
+			</div><!-- /.page-body -->
+		</div><!-- /.page -->
+	</section><!-- /.content -->
+	<!--新增模态框-->
+	<div class="modal" id="modal-add">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+					<h4 class="modal-title">新增排班</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" id="form-add">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">监督受理号</label>
+							<div class="col-sm-8 col-md-6 ">
+								<select class="form-control" name="order_no" validate="{required:true}">
+									<option value="2010005">2010005</option>
+									<option value="2017006">2017006</option>
+									<option value="2017007">2017007</option>
+									<option value="2017008">2017008</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">项目名称</label>
+							<div class="col-sm-8 col-md-6 ">
+								<input type="text" class="form-control" name="name" placeholder="请输入内容" value="广明高速公路广州段" validate="{required:true}">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">计划检查日期</label>
+							<div class="col-sm-8 col-md-6 ">
+								<div class="input-group">
+									<input type="text" class="form-control" name="check_date" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" >
+									<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">检查人员</label>
+							<div class="col-sm-8 col-md-6 ">
+								<input type="text" class="form-control" name="check_person" placeholder="请输入内容" value="" validate="{required:true}" data-tips="">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
+					<button type="button" class="btn btn-primary" id="modal-add-save"><i class="fa fa-check"></i>新增</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<!--修改模态框-->
+	<div class="modal" id="modal-edit">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+					<h4 class="modal-title">修改排班</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" id="form-edit">
+						<div class="form-group">
+							<label class="col-sm-3 control-label">监督受理号</label>
+							<div class="col-sm-8 col-md-6 ">
+								<input type="text" class="form-control" name="order_no" placeholder="请输入内容" value="" readonly>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">项目名称</label>
+							<div class="col-sm-8 col-md-6 ">
+								<input type="text" class="form-control" name="name" placeholder="请输入内容" value="" readonly>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">计划检查日期</label>
+							<div class="col-sm-8 col-md-6 ">
+								<div class="input-group">
+									<input type="text" class="form-control" name="check_date" onclick="WdatePicker({dateFmt:'yyyy-MM-dd'})" value="" >
+									<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+								</div>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label">检查人员</label>
+							<div class="col-sm-8 col-md-6 ">
+								<input type="text" class="form-control" name="check_person" placeholder="请输入内容" value="" validate="{required:true}" data-tips="">
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
+					<button type="button" class="btn btn-primary" id="modal-edit-save"><i class="fa fa-check"></i>修改</button>
+					<button type="button" class="btn btn-danger" id="modal-edit-delete"><i class="fa fa-trash-o"></i>删除</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- jquery.validate 表单验证-->
+<script src="../../src/libs/jquery.validate/jquery.validate.js"></script>
+<script src="../../src/libs/jquery.validate/validate.extend.js"></script>
+<!-- WdatePicker.js 自动加载css -->
+<script src="../../src/libs/My97DatePicker/WdatePicker.js"></script>
+<!-- fullcalendar-->
+<link rel="stylesheet" href="../../src/libs/fullcalendar/fullcalendar.min.css">
+<script src="../../src/libs/fullcalendar/moment.js"></script>
+<script src="../../src/libs/fullcalendar/fullcalendar.js"></script>
+<script src="../../src/libs/fullcalendar/zh-cn.js"></script>
+
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- 业务逻辑js -->
+<script>
+	$(function(){
+		page.init();
+	});
+	var page=(function(){
+		//组件初始化；
+		var componentInit=function(){
+			function todayOffset(num){
+				var today=new Date();
+				return new Date(today-(-num*24*60*60*1000)).format('yyyy-MM-dd')
+			}
+			var events=[
+				{
+					id:2017001,
+					title: '广明高速公路广州段',
+					start: new Date().format('yyyy-MM-dd'),
+					order_no:"2017001",name:"广明高速公路广州段",check_date:new Date().format('yyyy-MM-dd'),check_person:"张三，李四",state:"0"
+				},
+				{
+					id:2017002,
+					title: '广明高速公路韶关段',
+					start: todayOffset(1),
+					end: todayOffset(2),
+					order_no:"2017002",name:"广明高速公路韶关段",check_date:new Date().format('yyyy-MM-dd'),check_person:"王三，赵六",state:"0"
+
+				},
+				{
+					id:2017003,
+					title: '广深高速公路广州段',
+					start:todayOffset(4),
+					order_no:"2017003",name:"广深高速公路广州段",check_date:new Date().format('yyyy-MM-dd'),check_person:"李七",state:"0"
+				},
+				{
+					id:2017004,
+					title: '广深高速公路深圳段',
+					start: todayOffset(5),
+					order_no:"2017004",name:"广深高速公路深圳段",check_date:new Date().format('yyyy-MM-dd'),check_person:"朱八",state:"0"
+				}
+			];
+			$('#calendar').fullCalendar({
+				header: {
+					left: 'prev,next today',
+					center: 'title',
+					right: 'month,agendaWeek,agendaDay'
+				},
+				aspectRatio:2,
+				defaultDate: new Date().format('yyyy-MM-dd'),
+				navLinks: false, // day/week值 作为标签导向 对应视图
+				dayClick:function (date, allDay, jsEvent, view ){
+					//console.log(date);
+				},
+				eventClick:function(event, jsEvent, view ){
+					var row=event;
+					$('#form-edit').data("id",row.id);
+					$('#form-edit input[name="order_no"]').val(row.order_no);
+					$('#form-edit input[name="name"]').val(row.name);
+					$('#form-edit input[name="check_date"]').val(row.check_date);
+					$('#form-edit input[name="check_person"]').val(row.check_person);
+					$("#modal-edit").modal("show");
+				},
+				eventMouseover:function(event, jsEvent, view ){
+				},
+				editable: false,
+				eventLimit: true, // allow "more" link when too many events
+				events: events //或传请求链接"events.json"→类似event.json?start=2017-02-27&end=2017-04-10&_=1490232746360
+			});
+			//表单验证初始化
+			formValidateInit("#form-add");
+			formValidateInit("#form-edit");
+		};
+		//按钮点击初始化
+		var btnActionInit=function(){
+			//新增模态框保存
+			$("#modal-add-save").on("click",function(){
+				if(!$("#form-add").valid())return;
+				var date=$('#form-add [name="check_date"]').val();
+				if(date==""){$.alert("请输入检查日期");return}
+				$("#modal-add").modal("hide");
+				var event={
+					id:$('#form-add [name="order_no"]').val(),
+					title: $('#form-add [name="name"]').val(),
+					start: date,
+					order_no:$('#form-add [name="order_no"]').val(),
+					name:$('#form-add [name="name"]').val(),
+					check_date:date,
+					check_person:$('#form-add [name="check_person"]').val()
+				};
+				$('#calendar').fullCalendar('addEventSource',[event]);
+			});
+			//修改模态框保存
+			$("#modal-edit-save").on("click",function(){
+				if(!$("#form-edit").valid())return;
+				var date=$('#form-edit [name="check_date"]').val();
+				if(date==""){$.alert("请输入检查日期");return}
+				$("#modal-edit").modal("hide");
+				var id=$('#form-edit').data("id");
+				var events=$('#calendar').fullCalendar('clientEvents');
+				for(var i= 0,len=events.length;i<=len;i++){
+					if(events[i].id==id)break;
+				}
+				var event={
+					id:id,
+					start: date,
+					order_no:$('#form-edit [name="order_no"]').val(),
+					name:$('#form-edit [name="name"]').val(),
+					check_date:date,
+					check_person:$('#form-edit [name="check_person"]').val()
+				};
+				events[i]= $.extend(events[i],event);
+				$('#calendar').fullCalendar('updateEvents',events)
+			});
+			//编辑模态框删除
+			$("#modal-edit-delete").on("click",function(){
+				var confirm=$.confirm("确定要删除该项吗？",function(){
+					$("#modal-edit").modal("hide");
+					var id=$('#form-edit').data("id");
+					$('#calendar').fullCalendar('removeEvents',[id]);
+					layer.close(confirm);
+					$.msg("已删除成功！",6)
+				})
+			});
+		};
+		return {
+			init:function(){
+				componentInit();
+				btnActionInit();
+			}
+		}
+	})();
+</script>
+</body>
+</html>

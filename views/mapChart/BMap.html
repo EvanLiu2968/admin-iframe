@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>后台管理系统</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- 主题 -->
+  <link rel="stylesheet" href="../../src/css/app.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../../src/js/html5shiv.min.js"></script>
+  <script src="../../src/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+  <!-- Main content -->
+  <section class="content">
+    <div class="page">
+      <div class="page-header">
+        <ol class="breadcrumb">
+          <li><a href="#">图表统计分析</a></li>
+          <li class="active">百度地图&leaflet</li>
+        </ol>
+      </div><!-- /.page-header -->
+      <div class="page-body">
+        <div class="btn-wrapper" >
+          <button class="btn btn-default" type="button" id="btn-search"><i class="fa fa-search"></i>查询</button>
+        </div>
+        <h4 class="text-center">百度地图</h4>
+        <div class="text-center" style="margin-bottom:10px">
+          <span>点击获取坐标点：</span>
+          <input type="text" name="bmap.lng" class="form-control input-inline">
+          <input type="text" name="bmap.lat" class="form-control input-inline">
+        </div>
+        <div id="bmap" style="height:600px"></div>
+        <h4 class="text-center">leaflet加载百度地图</h4>
+        <div class="text-center" style="margin-bottom:10px">
+          <span>点击获取坐标点：</span>
+          <input type="text" name="lmap.lng" class="form-control input-inline">
+          <input type="text" name="lmap.lat" class="form-control input-inline">
+        </div>
+        <div id="lmap" style="height:600px"></div>
+      </div><!-- /.page-body -->
+    </div><!-- /.page -->
+  </section><!-- /.content -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- WdatePicker.js 自动加载css -->
+<script src="../../src/libs/My97DatePicker/WdatePicker.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- BMap-->
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=kO4BW1FKYzI97bzjZizusV63ZXBFNcyp"></script>
+<!-- leaflet-->
+<link rel="stylesheet" href="../../src/libs/leaflet/leaflet.css">
+<script src="../../src/libs/leaflet/leaflet.js"></script>
+<!-- leaflet CRS扩展-->
+<script src="../../src/libs/leaflet/proj4-compressed.js"></script>
+<script src="../../src/libs/leaflet/proj4leaflet.js"></script>
+<!-- 业务逻辑js -->
+<script>
+  $(function(){
+    page.init();
+  });
+  var page=(function(){
+    //数据初始化
+    var dataInit=function(){
+      $('#form-search [name="year"]').val(new Date().format("yyyy"));
+      $("#btn-search").trigger("click");//初始数据为今年全年
+    };
+    //百度地图初始化
+    var BMapInit=function(){
+      var map = new BMap.Map("bmap");  // 创建地图实例
+      var point= new BMap.Point(113.330836,23.155645);  // 创建点坐标
+      map.centerAndZoom(point, 15);
+      map.enableScrollWheelZoom();
+      map.addControl(new BMap.NavigationControl());
+      map.addControl(new BMap.ScaleControl());
+      map.addControl(new BMap.OverviewMapControl());
+      map.addControl(new BMap.MapTypeControl());
+      map.setCurrentCity("广州");
+      var marker = new BMap.Marker(point);  // 创建标注
+      map.addOverlay(marker);
+      var opts = {
+        width : 60,   // 信息窗口宽度
+        height: 30,   // 信息窗口高度
+        title : "当前目标"  // 信息窗口标题
+      };
+      map.openInfoWindow(new BMap.InfoWindow("广州东站", opts), point);
+      marker.addEventListener("click", function(e){
+        map.openInfoWindow(new BMap.InfoWindow("广州东站", opts), e.point);  // 打开信息窗口
+      });
+      var circle = new BMap.Circle(point, 500, {
+        strokeColor: 'red',
+        strokeWeight:3,
+        fillColor: '#f03',
+        fillOpacity: 0.3
+      });
+      map.addOverlay(circle);
+
+      map.addEventListener("click", function(e){
+        $('input[name="bmap.lng"]').val(e.point.lng);
+        $('input[name="bmap.lat"]').val(e.point.lat);
+      });
+    };
+    //leaflet加载百度地图初始化
+    var leafletInit=function(){
+      var crs = new L.Proj.CRS('EPSG:900913',
+            '+proj=merc +a=6378206 +b=6356584.314245179 +lat_ts=0.0 +lon_0=0.0 +x_0=0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext  +no_defs',
+            {
+              resolutions: function () {
+                level = 19;
+                var res = [];
+                res[0] = Math.pow(2, 18);
+                for (var i = 1; i < level; i++) {
+                  res[i] = Math.pow(2, (18 - i));
+                }
+                return res;
+              }(),
+              origin: [0,0],
+              bounds: L.bounds([20037508.342789244, 0], [0, 20037508.342789244])
+            }),
+        map = L.map('lmap', {
+          crs: crs
+        });
+      new L.TileLayer('http://online{s}.map.bdimg.com/tile/?qt=tile&x={x}&y={y}&z={z}&styles=pl&udt=20170101', {
+        maxZoom: 18,
+        minZoom: 3,
+        subdomains: [0,1,2],
+        attribution: ' © <a href="http://map.baidu.com/">百度地图</a>',
+        tms: true
+      }).addTo(map);
+      map.setView([23.155645,113.330836], 15);
+      //添加标注
+      var marker = L.marker([23.155645,113.330836]).addTo(map);
+      //添加圆形
+      var circle = L.circle([23.155645,113.330836], 500, {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.3
+      }).addTo(map);
+      //添加多边形
+      var polygon = L.polygon([
+        [23.157107,113.332309],
+        [23.15,113.332309],
+        [23.157107,113.33]
+      ]);
+      marker.bindPopup("<b>广州东站</b>").openPopup();
+      map.on('click', function(e){
+        $('input[name="lmap.lng"]').val(e.latlng.lng);
+        $('input[name="lmap.lat"]').val(e.latlng.lat);
+      });
+    };
+    //按钮点击初始化
+    var buttonActionInit=function(){
+      //查询
+      $("#btn-search").on("click",function(){
+      });
+    };
+    return {
+      init:function(){
+        dataInit();
+        BMapInit();
+        leafletInit();
+        buttonActionInit();
+      }
+    }
+  })();
+</script>
+</body>
+</html>

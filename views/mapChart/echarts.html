@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>后台管理系统</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+	<!-- 主题 -->
+	<link rel="stylesheet" href="../../src/css/app.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+	<!-- 警告: Respond.js使用file://无法正常工作 -->
+	<!--[if lt IE 9]>
+	<script src="../../src/js/html5shiv.min.js"></script>
+	<script src="../../src/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<style>
+	.chart-count-text{
+		font-size: 18px;padding: 30px;
+	}
+	.chart-count-text.border-r,
+	.chart-count.border-r {
+		border-right: 1px solid #eee;
+	}
+	.chart-count{
+		padding: 30px;font-size: 24px;font-weight: bold;
+	}
+	.chart-unit{
+		color: #ccc; padding-top: 15px; font-size: 12px;
+	}
+</style>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+	<!-- Main content -->
+	<section class="content">
+		<div class="page">
+			<div class="page-header">
+				<ol class="breadcrumb">
+					<li><a href="#">图表统计分析</a></li>
+					<li class="active">ECharts</li>
+				</ol>
+			</div><!-- /.page-header -->
+			<div class="page-body">
+				<div class="row">
+					<div class="col-md-6">
+						<div class="box box-widget">
+							<div class="box-header">
+								<h3 class="box-title">折线图</h3>
+								<div class="box-tools">
+									<div class="nav-tabs-line">
+										<ul class="nav nav-tabs">
+											<li class="active">
+												<a href="#tab_1_1" data-toggle="tab" aria-expanded="true">图表</a>
+											</li>
+											<li class="">
+												<a href="#tab_1_2" data-toggle="tab" aria-expanded="false">累计数</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div><!-- /.box-header -->
+							<div class="box-body">
+								<div class="tab-content">
+									<div class="tab-pane active" id="tab_1_1">
+										<div id="chart1" style="height:400px"></div>
+									</div>
+									<div class="tab-pane" id="tab_1_2">
+										<div style="min-height:400px">
+											<table style="width: 100%;">
+												<tbody>
+												<tr>
+													<td style="width: 50%;">
+														<div class="text-center chart-count-text border-r" style="">总数</div>
+														<div class="text-center text-blue chart-count border-r">
+															<a href="#" id="chart1_count_1">1050</a>
+														</div>
+													</td>
+													<td style="width: 50%;">
+														<div class="text-center chart-count-text">年均数</div>
+														<div class="text-center text-green chart-count" style="" id="chart1_count_2">350.00</div>
+													</td>
+												</tr>
+												</tbody>
+											</table>
+											<div class="text-center chart-unit">单位：个</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><!-- /.box -->
+					</div>
+					<div class="col-md-6">
+						<div class="box box-widget">
+							<div class="box-header">
+								<h3 class="box-title">饼图</h3>
+								<div class="box-tools">
+									<div class="nav-tabs-line">
+										<ul class="nav nav-tabs">
+											<li class="active">
+												<a href="#tab_2_1" data-toggle="tab" aria-expanded="true">图表</a>
+											</li>
+											<li class="">
+												<a href="#tab_2_2" data-toggle="tab" aria-expanded="false">累计数</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div><!-- /.box-header -->
+							<div class="box-body">
+								<div class="tab-content">
+									<div class="tab-pane active" id="tab_2_1">
+										<div id="chart2" style="height:400px"></div>
+									</div>
+									<div class="tab-pane" id="tab_2_2">
+										<div style="min-height:400px">
+											<table style="width: 100%;">
+												<tbody>
+												<tr>
+													<td style="width: 50%;">
+														<div class="text-center chart-count-text border-r" style="">总数</div>
+														<div class="text-center text-blue chart-count border-r">
+															<a href="#" id="chart2_count_1">1050</a>
+														</div>
+													</td>
+													<td style="width: 50%;">
+														<div class="text-center chart-count-text">年均数</div>
+														<div class="text-center text-green chart-count" style="" id="chart2_count_2">350.00</div>
+													</td>
+												</tr>
+												</tbody>
+											</table>
+											<div class="text-center chart-unit">单位：个</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div><!-- /.box -->
+					</div>
+				</div>
+			</div><!-- /.page-body -->
+		</div><!-- /.page -->
+	</section><!-- /.content -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- jquery.validate 表单验证-->
+<script src="../../src/libs/jquery.validate/jquery.validate.js"></script>
+<script src="../../src/libs/jquery.validate/validate.extend.js"></script>
+<!-- bootstrap-table -->
+<link rel="stylesheet" href="../../src/libs/bootstrap-table/bootstrap-table.css">
+<script src="../../src/libs/bootstrap-table/bootstrap-table.min.js"></script>
+<!-- WdatePicker.js 自动加载css -->
+<script src="../../src/libs/My97DatePicker/WdatePicker.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- echarts -->
+<script src="../../src/libs/echarts/echarts.min.js"></script>
+<!-- 业务逻辑js -->
+<script>
+	$(function(){
+		page.init();
+	});
+	var page=(function(){
+		//图表初始化
+		var chartInit=function(){
+			var option1={
+				tooltip: {
+					trigger: 'axis'
+				},
+				legend: {
+					data:['进场车辆数']
+				},
+				toolbox: {
+					show: true,
+					feature: {
+						dataZoom: {
+							yAxisIndex: 'none'
+						},
+						dataView: {readOnly: false},
+						magicType: {type: ['line', 'bar']},
+						restore: {},
+						saveAsImage: {}
+					}
+				},
+				xAxis:  {
+					type: 'category',
+					boundaryGap: false,
+					data: ['周一','周二','周三','周四','周五','周六','周日']
+				},
+				yAxis: {
+					type: 'value',
+					axisLabel: {
+						formatter: '{value}'
+					}
+				},
+				series: [
+					{
+						name:'进场车辆数',
+						type:'line',
+						data:[136, 111, 178, 167, 189, 113, 94],
+						markPoint: {
+							data: [
+								{type: 'max', name: '最大值'},
+								{type: 'min', name: '最小值'}
+							]
+						},
+						markLine: {
+							data: [
+								{type: 'average', name: '平均值'}
+							]
+						}
+					}
+				]
+			};
+			var option2={
+				tooltip : {
+					trigger: 'item',
+					formatter: "{a} <br/>{b} : {c} ({d}%)"
+				},
+				legend: {
+					orient: 'vertical',
+					left: 'left',
+					data: ['广州车牌','东莞车牌','深圳车牌','珠海车牌','佛山车牌']
+				},
+				series : [
+					{
+						name: '车牌来源',
+						type: 'pie',
+						radius : '55%',
+						center: ['50%', '60%'],
+						data:[
+							{value:1548, name:'广州车牌'},
+							{value:310, name:'东莞车牌'},
+							{value:534, name:'深圳车牌'},
+							{value:135, name:'珠海车牌'},
+							{value:235, name:'佛山车牌'}
+						],
+						itemStyle: {
+							emphasis: {
+								shadowBlur: 10,
+								shadowOffsetX: 0,
+								shadowColor: 'rgba(0, 0, 0, 0.5)'
+							}
+						}
+					}
+				]
+			};
+			var chart1=echarts.init(document.getElementById('chart1'));
+			var chart2=echarts.init(document.getElementById('chart2'));
+			chart1.setOption(option1);
+			chart2.setOption(option2);
+		};
+		return {
+			init:function(){
+				chartInit();
+			}
+		}
+	})();
+</script>
+</body>
+</html>

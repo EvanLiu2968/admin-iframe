@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>后台管理系统</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- 主题 -->
+  <link rel="stylesheet" href="../../src/css/app.css">
+
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../../src/js/html5shiv.min.js"></script>
+  <script src="../../src/js/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+  <!-- Main content -->
+  <section class="content">
+    <div class="page">
+      <div class="page-header">
+        <ol class="breadcrumb">
+          <li><a href="#">CSS示例</a></li>
+          <li class="active">tab标签页/步骤分步</li>
+        </ol>
+      </div><!-- /.page-header -->
+      <div class="page-body">
+        <div class="row">
+          <div class="col-md-12">
+            <h4>tab标签页一:nav-tabs-line</h4>
+            <div class="nav-tabs-line">
+              <ul class="nav nav-tabs">
+                <li class="active">
+                  <a href="#tab_1_1" data-toggle="tab" aria-expanded="true">标签一</a>
+                </li>
+                <li class="">
+                  <a href="#tab_1_2" data-toggle="tab" aria-expanded="false">标签二</a>
+                </li>
+                <li class="">
+                  <a href="#tab_1_3" data-toggle="tab" aria-expanded="false">标签三 </a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab_1_1">
+                  <h1 class="text-center">标签一</h1>
+                </div>
+                <div class="tab-pane" id="tab_1_2">
+                  <h1 class="text-center">标签二</h1>
+                </div>
+                <div class="tab-pane" id="tab_1_3">
+                  <h1 class="text-center">标签三</h1>
+                </div>
+              </div>
+            </div>
+            <h4>tab标签页一:nav-tabs-box</h4>
+            <div class="nav-tabs-box">
+              <ul class="nav nav-tabs">
+                <li class="active">
+                  <a href="#tab_2_1" data-toggle="tab" aria-expanded="true">标签一</a>
+                </li>
+                <li class="">
+                  <a href="#tab_2_2" data-toggle="tab" aria-expanded="false">标签二</a>
+                </li>
+                <li class="">
+                  <a href="#tab_2_3" data-toggle="tab" aria-expanded="false">标签三 </a>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab_2_1">
+                  <h1 class="text-center">标签一</h1>
+                </div>
+                <div class="tab-pane" id="tab_2_2">
+                  <h1 class="text-center">标签二</h1>
+                </div>
+                <div class="tab-pane" id="tab_2_3">
+                  <h1 class="text-center">标签三</h1>
+                </div>
+              </div>
+            </div>
+            <h4>弹性标签页</h4>
+            <div class="step-stemona">
+              <ul class="nav nav-justified">
+                <li class="complete active"><a href="#tab_3_1" data-toggle="tab" ><span class="step-tag bg1">1</span>标签一</a></li>
+                <li class="complete"><a href="#tab_3_2" data-toggle="tab" ><span class="step-tag bg2">2</span>标签二</a></li>
+                <li class="complete"><a href="#tab_3_3" data-toggle="tab" ><span class="step-tag bg3">3</span>标签三</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="tab_3_1">
+                  <h1 class="text-center">标签一</h1>
+                </div>
+                <div class="tab-pane" id="tab_3_2">
+                  <h1 class="text-center">标签二</h1>
+                </div>
+                <div class="tab-pane" id="tab_3_3">
+                  <h1 class="text-center">标签三</h1>
+                </div>
+              </div>
+            </div>
+            
+            <div class="nav-tabs-primary">
+              <ul class="nav nav-tabs pull-right">
+                <li class="pull-left header"><i class="fa fa-th"></i>tab标签页:nav-tabs-primary</li>
+                <li class=""><a href="#tab_1-1" data-toggle="tab" aria-expanded="false">Tab 1</a></li>
+                <li class=""><a href="#tab_2-2" data-toggle="tab" aria-expanded="false">Tab 2</a></li>
+                <li class="active"><a href="#tab_3-2" data-toggle="tab" aria-expanded="true">Tab 3</a></li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                    下拉菜单 <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">菜单一</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">菜单二</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">菜单三</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">菜单四</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane" id="tab_1-1">
+                  <h1 class="text-center">标签一</h1>
+                </div><!-- /.tab-pane -->
+                <div class="tab-pane" id="tab_2-2">
+                  <h1 class="text-center">标签二</h1>
+                </div><!-- /.tab-pane -->
+                <div class="tab-pane active" id="tab_3-2">
+                  <h1 class="text-center">标签三</h1>
+                </div><!-- /.tab-pane -->
+              </div><!-- /.tab-content -->
+            </div><!-- nav-tabs-custom -->
+          </div>
+        </div>
+        <h4>时间轴</h4>
+        <ul class="timeline">
+          <li>
+            <span class="step-mark" >1</span>
+            <div class="timeline-item">
+              <span class="time"><i class="fa fa-clock-o"></i><span >2017-04-25 15:31</span></span>
+              <div class="timeline-header">
+                <i class="fa fa-exchange"></i>审批环节：<span class="timeline-item-label" >预审通过</span>
+                <i class="fa fa-user"></i><span class="timeline-item-label" >admin</span>
+              </div>
+              <div class="timeline-body">
+                <p><i class="fa fa-calendar-check-o"></i>审批状态：<span class="timeline-item-label" >待审批</span></p>
+                <p><i class="fa fa-commenting-o"></i>回复意见：<span >好</span></p>
+                <p><i class="fa fa-paperclip"></i>附件：<span class="text-gray">未上传</span></p>
+              </div>
+              <div class="timeline-footer">
+                <button type="button" class="btn btn-primary btn-xs">上传附件</button>
+              </div>
+            </div>
+          </li>
+          <li>
+            <i class="fa fa-clock-o bg-gray"></i>
+          </li>
+        </ul>
+        <div class="row">
+          <div class="col-md-12">
+            <h4>步骤分步</h4>
+            <div class="mt-element-step">
+              <div class="row step-default">
+                <div class="col-md-4 bg-grey mt-step-col">
+                  <div class="mt-step-number bg-white font-grey">1</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">填写资料</div>
+                  <div class="mt-step-content font-grey-cascade">第一步、</div>
+                </div>
+                <div class="col-md-4 bg-grey mt-step-col active">
+                  <div class="mt-step-number bg-white font-grey">2</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">验证信息</div>
+                  <div class="mt-step-content font-grey-cascade">第二步、验证信息</div>
+                </div>
+                <div class="col-md-4 bg-grey mt-step-col ">
+                  <div class="mt-step-number bg-white font-grey">3</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">完成</div>
+                  <div class="mt-step-content font-grey-cascade">第三步、完成</div>
+                </div>
+              </div>
+              <br>
+              <br>
+              <div class="row step-thin">
+                <div class="col-md-4 bg-grey mt-step-col">
+                  <div class="mt-step-number bg-white font-grey">1</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">填写资料</div>
+                  <div class="mt-step-content font-grey-cascade">第一步、填写资料</div>
+                </div>
+                <div class="col-md-4 bg-grey mt-step-col">
+                  <div class="mt-step-number bg-white font-grey">2</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">验证信息</div>
+                  <div class="mt-step-content font-grey-cascade">第二步、验证信息</div>
+                </div>
+                <div class="col-md-4 bg-grey done mt-step-col active">
+                  <div class="mt-step-number bg-white font-grey">3</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">完成</div>
+                  <div class="mt-step-content font-grey-cascade">第三步、完成</div>
+                </div>
+              </div>
+              <br>
+              <br>
+              <div class="row step-no-background">
+                <div class="col-md-4 mt-step-col done">
+                  <div class="mt-step-number font-grey-cascade">1</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">填写资料</div>
+                  <div class="mt-step-content font-grey-cascade">第一步、填写资料</div>
+                </div>
+                <div class="col-md-4 mt-step-col error">
+                  <div class="mt-step-number bg-white font-grey">2</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">验证信息</div>
+                  <div class="mt-step-content font-grey-cascade">第二步、验证信息</div>
+                </div>
+                <div class="col-md-4 mt-step-col">
+                  <div class="mt-step-number bg-white font-grey">3</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">完成</div>
+                  <div class="mt-step-content font-grey-cascade">第三步、完成</div>
+                </div>
+              </div>
+              <br>
+              <br>
+              <div class="row step-no-background-thin">
+                <div class="col-md-4 mt-step-col done">
+                  <div class="mt-step-number font-grey-cascade">1</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">填写资料</div>
+                  <div class="mt-step-content font-grey-cascade">第一步、填写资料</div>
+                </div>
+                <div class="col-md-4 mt-step-col error">
+                  <div class="mt-step-number bg-white font-grey">2</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">验证信息</div>
+                  <div class="mt-step-content font-grey-cascade">第二步、验证信息</div>
+                </div>
+                <div class="col-md-4 mt-step-col">
+                  <div class="mt-step-number bg-white font-grey">3</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">完成</div>
+                  <div class="mt-step-content font-grey-cascade">第三步、完成</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-element-step">
+              <div class="row step-line">
+                <div class="col-md-4 mt-step-col first done">
+                  <div class="mt-step-number bg-white">1</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">填写资料</div>
+                  <div class="mt-step-content font-grey-cascade">第一步、填写资料</div>
+                </div>
+                <div class="col-md-4 mt-step-col error">
+                  <div class="mt-step-number bg-white">2</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">验证信息</div>
+                  <div class="mt-step-content font-grey-cascade">第二步、验证信息</div>
+                </div>
+                <div class="col-md-4 mt-step-col last">
+                  <div class="mt-step-number bg-white">3</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">完成</div>
+                  <div class="mt-step-content font-grey-cascade">第三步、完成</div>
+                </div>
+              </div>
+              <br>
+              <br>
+              <div class="row step-line">
+                <div class="col-md-offset-1 col-md-2 mt-step-col first done">
+                  <div class="mt-step-number bg-white">1</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">填写资料</div>
+                  <div class="mt-step-content font-grey-cascade">第一步、填写资料</div>
+                </div>
+                <div class="col-md-2 mt-step-col done">
+                  <div class="mt-step-number bg-white">2</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">验证信息</div>
+                  <div class="mt-step-content font-grey-cascade">第二步、验证信息</div>
+                </div>
+                <div class="col-md-2 mt-step-col active">
+                  <div class="mt-step-number bg-white">3</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">设置</div>
+                  <div class="mt-step-content font-grey-cascade">第三步、设置</div>
+                </div>
+                <div class="col-md-2 mt-step-col">
+                  <div class="mt-step-number bg-white">4</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">完成</div>
+                  <div class="mt-step-content font-grey-cascade">第四步、完成</div>
+                </div>
+                <div class="col-md-2 mt-step-col last">
+                  <div class="mt-step-number bg-white">5</div>
+                  <div class="mt-step-title uppercase font-grey-cascade">使用</div>
+                  <div class="mt-step-content font-grey-cascade">第五步、使用</div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-element-step">
+              <div class="row step-line">
+                <div class="col-md-4 mt-step-col first done">
+                  <div class="mt-step-number bg-white">
+                    <i class="fa fa-table"></i>
+                  </div>
+                  <div class="mt-step-title uppercase font-grey-cascade">填写资料</div>
+                  <div class="mt-step-content font-grey-cascade">第一步、</div>
+                </div>
+                <div class="col-md-4 mt-step-col error">
+                  <div class="mt-step-number bg-white">
+                    <i class="fa fa-credit-card"></i>
+                  </div>
+                  <div class="mt-step-title uppercase font-grey-cascade">验证信息</div>
+                  <div class="mt-step-content font-grey-cascade">第二步、验证信息</div>
+                </div>
+                <div class="col-md-4 mt-step-col last">
+                  <div class="mt-step-number bg-white">
+                    <i class="fa fa-rocket"></i>
+                  </div>
+                  <div class="mt-step-title uppercase font-grey-cascade">完成</div>
+                  <div class="mt-step-content font-grey-cascade">第三步、</div>
+                </div>
+              </div>
+              <br>
+              <br>
+              <div class="row step-line">
+                <div class="col-md-4 mt-step-col first done">
+                  <div class="mt-step-number bg-white">
+                    <i class="fa fa-shopping-cart"></i>
+                  </div>
+                  <div class="mt-step-title uppercase font-grey-cascade">填写资料</div>
+                  <div class="mt-step-content font-grey-cascade">第一步、填写资料</div>
+                </div>
+                <div class="col-md-4 mt-step-col active">
+                  <div class="mt-step-number bg-white">
+                    <i class="fa fa-cc-visa"></i>
+                  </div>
+                  <div class="mt-step-title uppercase font-grey-cascade">验证信息</div>
+                  <div class="mt-step-content font-grey-cascade">第二步、验证信息</div>
+                </div>
+                <div class="col-md-4 mt-step-col last">
+                  <div class="mt-step-number bg-white">
+                    <i class="fa fa-rocket"></i>
+                  </div>
+                  <div class="mt-step-title uppercase font-grey-cascade">完成</div>
+                  <div class="mt-step-content font-grey-cascade">第三步、完成</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- /.page-body -->
+    </div><!-- /.page -->
+  </section><!-- /.content -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- jquery.validate 表单验证-->
+<script src="../../src/libs/jquery.validate/jquery.validate.js"></script>
+<script src="../../src/libs/jquery.validate/validate.extend.js"></script>
+<!-- bootstrap-table -->
+<link rel="stylesheet" href="../../src/libs/bootstrap-table/bootstrap-table.css">
+<script src="../../src/libs/bootstrap-table/bootstrap-table.min.js"></script>
+<!-- WdatePicker.js 自动加载css -->
+<script src="../../src/libs/My97DatePicker/WdatePicker.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+
+<link rel="stylesheet" href="../../src/libs/pikaday/pikaday.css">
+<script src="../../src/libs/pikaday/pikaday.min.js"></script>
+
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- 业务逻辑js -->
+<script>
+  $(function(){
+    page.init();
+  });
+  var page=(function(){
+    //组件初始化；
+    var componentInit=function(){
+    };
+    //按钮点击初始化
+    var buttonActionInit=function(){
+      //查询
+      $("#btn-search").on("click",function(){
+        $("#table").bootstrapTable("refresh");
+      });
+    };
+    return {
+      init:function(){
+        componentInit();
+        buttonActionInit();
+      }
+    }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>交通工程质量安全监督监管系统</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+	<!-- 主题 -->
+	<link rel="stylesheet" href="../../src/css/app.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+	<!-- 警告: Respond.js使用file://无法正常工作 -->
+	<!--[if lt IE 9]>
+	<script src="../../src/js/html5shiv.min.js"></script>
+	<script src="../../src/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+	<!-- Main content -->
+	<section class="content">
+		<div class="page">
+			<div class="page-header">
+				<ol class="breadcrumb">
+					<li><a href="#">首页</a></li>
+					<li><a href="#">插件示例</a></li>
+					<li class="active">bootstrapTable</li>
+				</ol>
+			</div><!-- /.page-header -->
+			<div class="page-body">
+				<form class="form-search" id="form-search">
+					<div class="form-group form-inline" >
+						<label class="control-label">用户账号</label>
+						<input class="form-control" name="account" data-tips="用户账号是唯一的" data-action="search">
+					</div>
+					<div class="form-group form-inline" >
+						<label class="control-label">用户类型</label>
+						<select class="form-control" name="type" data-action="search">
+							<option value="">全部</option>
+							<option value="system">系统管理员</option>
+							<option value="normal">普通用户</option>
+						</select>
+					</div>
+				</form>
+				<div class="" id="toolbar">
+					<button class="btn btn-default" type="button" id="btn-search"><i class="fa fa-search"></i>查询</button>
+					<button class="btn btn-primary" type="button" id="btn-add" data-toggle="modal" data-target="#modal-add"><i class="fa fa-plus" ></i>新增</button>
+					<button class="btn btn-primary" type="button" id="btn-edit" v-bind:disabled="!btn.editEnable"><i class="fa fa-edit"></i>修改</button>
+					<button class="btn btn-danger" type="button" id="btn-delete" v-bind:disabled="!btn.deleteEnable"><i class="fa fa-trash"></i>删除</button>
+					<!-- <button class="btn btn-primary" type="button" id="btn-edit" data-bind="enable:editEnable"><i class="fa fa-edit"></i>修改</button>
+					<button class="btn btn-danger" type="button" id="btn-delete" data-bind="enable:deleteEnable"><i class="fa fa-trash"></i>删除</button> -->
+				</div>
+				<table id="table"></table>
+				<div class="" id="toolbar3">classes:table table-hover table-bordered table-ele</div>
+				<table id="table3"></table>
+				<div class="" id="toolbar1">classes:table table-hover table-bordered table-light</div>
+				<table id="table1"></table>
+				<div class="" id="toolbar2">classes:table table-hover table-bordered table-info</div>
+				<table id="table2"></table>
+			</div><!-- /.page-body -->
+		</div><!-- /.page -->
+	</section><!-- /.content -->
+	<!-- 添加Modal -->
+	<div class="modal" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">添加用户</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<form class="form-horizontal" id="form-add">
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><span class="text-red">*</span>用户账号</label>
+							<div class="col-sm-8 col-md-6">
+								<input type="text" class="form-control" name="account" validate="{required:true}" placeholder="请输入用户账号">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><span class="text-red">*</span>用户名称</label>
+							<div class="col-sm-8 col-md-6">
+								<input type="text" class="form-control" name="name" validate="{required:true}" placeholder="请输入用户名称">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><span class="text-red">*</span>手机号码</label>
+							<div class="col-sm-8 col-md-6">
+								<input type="text" class="form-control" name="[hone" validate="{required:true,isPhone:true}" placeholder="请输入手机号码">
+							</div>
+						</div>
+						<!-- select -->
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><span class="text-red">*</span>用户类型</label>
+							<div class="col-sm-8 col-md-6">
+								<select class="form-control" name="type" validate="{required:true}">
+									<option value="normal">普通用户</option>
+									<option value="system">系统管理员</option>
+								</select>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
+					<button type="button" class="btn btn-primary" id="form-add-save"><i class="fa fa-save"></i>保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- 添加Modal -->
+	<div class="modal" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+					<h4 class="modal-title">编辑用户</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<form class="form-horizontal" id="form-edit">
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><span class="text-red">*</span>用户账号</label>
+							<div class="col-sm-8 col-md-6">
+								<input type="text" class="form-control" name="account" validate="{required:true}" placeholder="请输入用户账号">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><span class="text-red">*</span>用户名称</label>
+							<div class="col-sm-8 col-md-6">
+								<input type="text" class="form-control" name="name" validate="{required:true}" placeholder="请输入用户名称">
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><span class="text-red">*</span>手机号码</label>
+							<div class="col-sm-8 col-md-6">
+								<input type="text" class="form-control" name="phone" validate="{required:true,isPhone:true}" placeholder="请输入手机号码">
+							</div>
+						</div>
+						<!-- select -->
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><span class="text-red">*</span>用户类型</label>
+							<div class="col-sm-8 col-md-6">
+								<select class="form-control" name="type" validate="{required:true}">
+									<option value="admin">系统管理员</option>
+									<option value="normal">普通用户</option>
+								</select>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
+					<button type="button" class="btn btn-primary" id="form-edit-save"><i class="fa fa-save"></i>保存</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- jquery.validate -->
+<script src="../../src/libs/jquery.validate/jquery.validate.js"></script>
+<script src="../../src/libs/jquery.validate/validate.extend.js"></script>
+<!-- bootstrap-table -->
+<link rel="stylesheet" href="../../src/libs/bootstrap-table/bootstrap-table.css">
+<script src="../../src/libs/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../../src/libs/bootstrap-table/extensions/export/bootstrap-table-export.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!--knockout-->
+<!-- <script src="../../src/libs/knockout/knockout-3.4.1.js"></script>
+<script src="../../src/libs/knockout/knockout.mapping.js"></script> -->
+<!--vue2-->
+<script src="../../src/libs/vue2/vue.min.js"></script>
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- 业务逻辑js -->
+<script>
+	$(function(){
+		page.init();
+	});
+	var page=(function(){
+		var dataInit=function(){};
+		var tableInit=function(){
+			var dataList=[
+				{
+					id:"66",account:"admin",name:"admin",phone:"",type:"admin",login_time:"2017-03-01 12:00:00"
+				},
+				{
+					id:"2",account:"zhangsan",name:"张三",phone:"13447895642",type:"normal",login_time:"2017-02-01 12:11:13"
+				},
+				{
+					id:"3",account:"lisi",name:"李四",phone:"15447895642",type:"normal",login_time:"2017-02-03 12:11:13"
+				},
+				{
+					id:"4",account:"wangwu",name:"王五",phone:"15647895642",type:"normal",login_time:"2017-02-05 12:11:13"
+				},
+				{
+					id:"5",account:"zhaoliu",name:"赵六",phone:"17547895642",type:"normal",login_time:"2017-02-07 12:11:13"
+				},
+				{
+					id:"6",account:"zhouqi",name:"周七",phone:"18147895642",type:"normal",login_time:"2017-02-09 12:11:13"
+				}
+			];
+			var columns=[
+				{
+					checkbox:true,title:""
+				},
+				{
+					field:"account",title:"账户名"
+				},
+				{
+					field:"name",title:"姓名"
+				},
+				{
+					field:"phone",title:"手机号码"
+				},
+				{
+					field:"type",title:"用户类型",
+					formatter:function(value,row,index){return value=="admin"?"系统管理员":"普通用户"}
+				},
+				{
+					field:"login_time",title:"最近登录时间"
+				},
+				{
+					field:"",title:"操作",
+					formatter:function(value,row,index){
+						return '<div class="btn-group">' +
+								'<button type="button" class="btn btn-xs btn-primary" onclick="page.edit(\''+row.id+'\')">修改</button>' +
+								'<button type="button" class="btn btn-xs btn-primary" onclick="page.delete(\''+row.id+'\')">删除</button>' +
+								'</div>'
+					}
+				}
+			];
+			var option={
+				//url: '/api/v1/jsonTemplate.json',
+				columns: columns, //列
+				data:dataList,  //使用url时，不需要data
+				classes:"table table-hover table-bordered",
+				idField: "id",  //标识哪个字段为id主键
+				uniqueId:"id"  //给每行一个唯一标识
+			};
+			option=common.extend(common.getBootstrapTableOption(),option);
+			$("#table").bootstrapTable(option);
+			$("#table1").bootstrapTable(common.extend(option,{classes:"table table-hover table-light",toolbar:"#toolbar1"}));
+			$("#table2").bootstrapTable(common.extend(option,{classes:"table table-hover table-bordered table-info",toolbar:"#toolbar2"}));
+			$("#table3").bootstrapTable(common.extend(option,{classes:"table table-hover table-bordered table-ele",toolbar:"#toolbar3"}));
+		};
+		//组件初始化；
+		var componentInit=function(){
+			//表单验证初始化
+			formValidateInit("#form-add");
+			formValidateInit("#form-edit");
+		};
+		//按钮点击初始化
+		var btnActionInit=function(){
+			//查询
+			$("#btn-search").on("click",function(){
+				$("#table").bootstrapTable("refresh");
+			});
+			//修改
+			$("#btn-edit").on("click",function(){
+				var rows=$("#table").bootstrapTable("getSelections");
+				if(rows.length!==1) {
+					$.msg("请选择一条数据！");
+					return;
+				}
+				$('#form-edit').data("id",rows[0].id);
+				$('#form-edit [name="account"]').val(rows[0].account);
+				$('#form-edit [name="name"]').val(rows[0].name);
+				$('#form-edit [name="phone"]').val(rows[0].phone);
+				$('#form-edit [name="type"]').val(rows[0].type);
+				$("#modal-edit").modal("show");
+			});
+			//添加模态框保存
+			$("#form-add-save").on("click",function(){
+				if(!$("#form-add").valid())return;
+				$("#modal-add").modal("hide");
+			});
+			//修改模态框保存
+			$("#form-edit-save").on("click",function(){
+				if(!$("#form-edit").valid())return;
+				$("#modal-edit").modal("hide");
+			});
+			//删除
+			$("#btn-delete").on("click",function(){
+				var rows=$("#table").bootstrapTable("getSelections");
+				if(rows.length==0) {
+					$.msg("请选择需要删除的数据！");
+					return;
+				}
+				layer.closeAll();
+				$.confirm("确定要删除选中数据吗？",function(){
+					layer.closeAll();
+					var load=$.showLoading();
+					var id=[];
+					for(var k in rows){
+						id.push(rows[k].id)
+					}
+					setTimeout(function(){
+						$("#table").bootstrapTable('remove',{field: 'id', values: id});
+						layer.close(load);
+						$.msg("删除成功！",6);
+					},1000);
+				})
+			});
+		};
+		//按钮状态绑定,建议使用vue
+		var btnActionEnable=function(){
+			/*//ko实现示例
+			var data={
+				editEnable:false,
+				deleteEnable:false,
+				exportEnable:false
+			};
+			var viewModel=ko.mapping.fromJS(data);
+			ko.applyBindings(viewModel);
+			$("#table").on("check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table",function(){
+				var rows=$("#table").bootstrapTable("getSelections");
+				var data,len=rows.length;
+				if(len===0) {
+					data={
+						editEnable:false,
+						deleteEnable:false
+					};
+				}else if(len===1){
+					data={
+						editEnable:true,
+						deleteEnable:true
+					};
+				}else{
+					data={
+						editEnable:false,
+						deleteEnable:true
+					};
+				}
+				ko.mapping.fromJS(data,viewModel);
+			})*/
+			//vue实现示例
+			var btnModuel=new Vue({
+				el:'#toolbar',
+				data:function(){
+					return {
+						btn:{
+							editEnable:false,
+							deleteEnable:false
+						}
+					}
+				}
+			});
+			$("#table").on("check.bs.table uncheck.bs.table check-all.bs.table uncheck-all.bs.table",function(){
+				var rows=$("#table").bootstrapTable("getSelections");
+				var len=rows.length;
+				if(len===0) {
+					btnModuel.btn={
+						editEnable:false,
+						deleteEnable:false
+					};
+				}else if(len===1){
+					btnModuel.btn={
+						editEnable:true,
+						deleteEnable:true
+					};
+				}else{
+					btnModuel.btn={
+						editEnable:false,
+						deleteEnable:true
+					};
+				}
+			})
+		};
+		return {
+			init:function(){
+				dataInit();
+				tableInit();
+				componentInit();
+				btnActionInit();
+				btnActionEnable();
+			},
+			edit:function(id){
+				var row=$("#table").bootstrapTable('getRowByUniqueId',id);
+				$('#form-edit').data("id",row.id);
+				$('#form-edit [name="account"]').val(row.account);
+				$('#form-edit [name="name"]').val(row.name);
+				$('#form-edit [name="phone"]').val(row.phone);
+				$('#form-edit [name="type"]').val(row.type);
+				$("#modal-edit").modal("show");
+			},
+			delete:function(id){
+				var row=$("#table").bootstrapTable('getRowByUniqueId',id);
+				$.confirm("确定要删除选中数据吗？",function(){
+					layer.closeAll();
+					var load=$.showLoading();
+					setTimeout(function(){
+						$("#table").bootstrapTable('remove',{field: 'id', values: [row.id]});
+						layer.close(load);
+						$.msg("删除成功！",6);
+					},1000);
+				})
+			}
+		}
+	})();
+</script>
+</body>
+</html>

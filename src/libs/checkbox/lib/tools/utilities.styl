@@ -1,0 +1,85 @@
+/**
+ **************************************************************************
+ *******************************--CONTENIDO--******************************
+ **************************************************************************
+ *
+ * BLOQUES
+ * ================================================================
+ * ripple..............Agrega el efecto de ripple al elemento
+ *                     .check-[LETRA]__background, o  con con el
+ *                     data-atribute data-ripple="true".
+ *
+ * wrapper.............Contenedor de principal de los grupos checks.
+ *
+ * sections-title......Estilos de los títulos de los wrappers.
+ *
+ * generic-container...Contenedor genérico sin formato de lista, pero
+                       con los mismos estilos que el contenedor de tipo
+                       lista, útil para cualquier tipo de custom-checks.
+ */
+
+
+/*------------------------------------*\
+    RIPPLE
+\*------------------------------------*/
+input[class^="custom-check__checkbox"] + span[class^="custom-check__checkbox"] > span[data-ripple="true"]::before
+span[data-ripple="true"]::before
+    background-color rgba(unchecked-color, .9) //variable en variables.styl
+    border-radius 50%
+    content ''
+    display block
+    height 100%
+    opacity 0
+    width 100%
+
+input[class^="custom-check__checkbox"]:checked + span[class^="custom-check__checkbox"] > span[data-ripple="true"]::before
+input[class^="custom-check__checkbox"]:checked + span[data-ripple="true"]::before
+    animation ripple .4s ease .1s 1 normal forwards //Animación en el archivo keyframes.styl
+
+/*------------------------------------*\
+    WRAPPER
+\*------------------------------------*/
+.wrapper
+    background-color lighten(light-gray, 90%)
+    border-radius 0.125em //2px
+    box-shadow z-depth-2 ///variable en variables.styl
+    margin 4em auto
+    padding .5em 0 1.5em 0
+    text-align center
+    width 820px
+
+@media screen and (max-width 53em)
+    .wrapper
+        width 90%
+
+/*------------------------------------*\
+    SECTIONS-TITLE
+\*------------------------------------*/
+.sections-title
+    border-bottom border-1 //variable en variables.styl
+    color lighten(secondary-text-color, 10%) //variable en variables.styl
+    display block
+    font-size 1.3rem
+    font-weight 100
+    line-height 1.3em
+    margin .5em 3%
+    padding .25em 1%
+    text-align left
+    width 92%
+
+/*------------------------------------*\
+    GENERIC-CONTAINER
+\*------------------------------------*/
+.generic-container
+    background-color white
+    border-radius .125em
+    box-shadow z-depth-2 //variable en variables.styl
+    display inline-block
+    height auto
+    margin .5em
+    padding .5em 1em
+    width 9.4em //Define el ancho de los elementos interiores
+
+@media screen and (max-width: 30em)
+    .generic-container
+        width 80%

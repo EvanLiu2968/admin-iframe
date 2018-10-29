@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>后台管理系统</title>
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+	<!-- 主题 -->
+	<link rel="stylesheet" href="../../src/css/app.css">
+	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+	<!-- 警告: Respond.js使用file://无法正常工作 -->
+	<!--[if lt IE 9]>
+	<script src="../../src/js/html5shiv.min.js"></script>
+	<script src="../../src/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<style>
+	#rMenu {position:absolute; visibility:hidden; top:0; padding:1px 0;min-width:16em;text-align: left;border:1px solid #ddd;background-color: #fff;}
+	#rMenu>li{
+		padding: 0 2em;
+		line-height:200%;
+		cursor: pointer;
+		list-style: none ;
+		border-bottom:1px solid #eee;
+	}
+	#rMenu>li:last-child{
+		border-color:transparent;
+	}
+	#rMenu>li:hover{
+		background-color: #eee;
+	}
+</style>
+<body>
+<!-- 页面容器 -->
+<div class="wrapper">
+	<!-- Main content -->
+	<section class="content">
+		<div class="page">
+			<div class="page-header ">
+				<h1 class="page-title"><i class="fa fa-check-square-o"></i>检查项管理<small>鼠标右键可对单个节点进行编辑、新增和删除</small></h1>
+			</div><!-- /.page-header -->
+			<div class="page-body">
+				<div class="callout callout-default">
+					<p>
+						鼠标右键可对单个节点进行编辑、新增和删除。
+					</p>
+				</div>
+				<div id="toolbar" style="margin-bottom:15px;">
+					<button class="btn btn-default" type="button" id="btn-add" data-toggle="modal" data-target="#modal-add"><i class="fa fa-plus"></i>新增</button>
+				</div>
+				<div id="tree" class="ztree" style="margin-bottom:15px;width:100%;"></div>
+			</div><!-- /.page-body -->
+		</div><!-- /.page -->
+	</section><!-- /.content -->
+	<!--zTree右键菜单-->
+	<ul id="rMenu">
+		<li  onclick="page.editTreeNode();">编辑节点</li>
+		<li  onclick="page.addTreeNode(false);">增加子节点</li>
+		<li  onclick="page.addTreeNode(true);">增加子父节点</li>
+		<li id="m_del" onclick="page.removeTreeNode();">删除节点</li>
+	</ul>
+	<!--新增模态框-->
+	<div class="modal" id="modal-add">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+					<h4 class="modal-title">新增检查项</h4>
+				</div>
+				<div class="modal-body">
+					<p class="text-muted">新增项为此模版最外层目录结构，子节点操作在鼠标右键菜单操作，上一级检查项仅可在专检查表模板管理页面修改</p>
+					<form class="form-horizontal" id="form-add">
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><span class="text-red">*</span>检查项内容</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="content" validate="{required:true}"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><span class="text-red">*</span>检查项依据</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="basis" validate="{required:true}"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3  control-label"><span class="text-red">*</span>上一级检查项</label>
+							<div class="col-sm-6">
+								<!--只作为查看参考,不可修改-->
+								<select class="form-control" name="type" disabled >
+									<option value="1">质量检查</option>
+									<option value="2">安全检查</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><span class="text-red">*</span>排序</label>
+							<div class="col-sm-6">
+								<input type="text" class="form-control" name="sort" validate="{required:true,digits:true}" data-tips="从小到大依次从上到下排列，相同排序按先后顺序排列"/>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><span class="text-red">*</span>发布状态</label>
+							<div class="col-sm-6">
+								<select class="form-control" name="release_state">
+									<option value="1">已发布</option>
+									<option value="2">未发布</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><span class="text-red">*</span>启用状态</label>
+							<div class="col-sm-6">
+								<select class="form-control" name="release_state">
+									<option value="1">启用</option>
+									<option value="2">禁用</option>
+								</select>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
+					<button type="button" class="btn btn-primary" id="modal-add-save"><i class="fa fa-check"></i>保存</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+	<!--新增模态框-->
+	<div class="modal" id="modal-edit">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+					<h4 class="modal-title">编辑检查项</h4>
+				</div>
+				<div class="modal-body">
+					<form class="form-horizontal" id="form-edit">
+						<div class="form-group">
+							<label class="col-sm-3 control-label"><span class="text-red">*</span>检查项内容</label>
+							<div class="col-sm-6">
+								<textarea class="form-control" rows="3" name="content" validate="{required:true}"></textarea>
+							</div>
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
+					<button type="button" class="btn btn-primary" id="modal-edit-save"><i class="fa fa-check"></i>保存</button>
+				</div>
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</div><!-- 页面容器 -->
+
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- jquery.validate 表单验证-->
+<script src="../../src/libs/jquery.validate/jquery.validate.js"></script>
+<script src="../../src/libs/jquery.validate/validate.extend.js"></script>
+<!-- bootstrap-table -->
+<link rel="stylesheet" href="../../src/libs/bootstrap-table/bootstrap-table.css">
+<script src="../../src/libs/bootstrap-table/bootstrap-table.min.js"></script>
+<!-- WdatePicker.js 自动加载css -->
+<script src="../../src/libs/My97DatePicker/WdatePicker.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!-- zTree -->
+<!--<link rel="stylesheet" href="../../../src/libs/zTree_v3/css/zTreeStyle/zTreeStyle.css">-->
+<link rel="stylesheet" href="../../src/libs/zTree_v3/css/metroStyle/metroStyle.css">
+<script src="../../src/libs/zTree_v3/js/jquery.ztree.core.min.js"></script>
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+<!-- 业务逻辑js -->
+<script>
+	$(function(){
+		page.init();
+	});
+	var page=(function(){
+		//树结构初始化
+		var zTreeInit=function(zNodes){
+			var setting = {
+				view: {
+					dblClickExpand: false,
+					showLine: true,
+					selectedMulti: false
+				},
+				data: {
+					simpleData: {
+						enable:true,
+						idKey: "id",
+						pIdKey: "pId",
+						rootPId: ""
+					}
+				},
+				callback: {
+					onRightClick:function(event, treeId, treeNode){
+						var zTree = $.fn.zTree.getZTreeObj("tree");
+						if (!treeNode && event.target.tagName.toLowerCase() != "button" && $(event.target).parents("a").length == 0) {
+							zTree.cancelSelectedNode();
+							showRMenu("root", event.clientX, event.clientY);
+						} else if (treeNode && !treeNode.noR) {
+							zTree.selectNode(treeNode);
+							showRMenu("node", event.clientX, event.clientY);
+						}
+					}
+				}
+			};
+			$.fn.zTree.init($("#tree"), setting, zNodes);
+		};
+		function showRMenu(type, x, y) {
+			$("#rMenu ul").show();
+			if (type=="root") {
+				$("#m_del").hide();//根目录不能删除
+			} else {
+				$("#m_del").show();
+			}
+			$("#rMenu").css({"top":y+"px", "left":x+"px", "visibility":"visible"});
+
+			$("body").bind("mousedown", onBodyMouseDown);
+		}
+		function hideRMenu() {
+			if ($("#rMenu")) $("#rMenu").css({"visibility": "hidden"});
+			$("body").unbind("mousedown", onBodyMouseDown);
+		}
+		function onBodyMouseDown(event){
+			if (!(event.target.id == "rMenu" || $(event.target).parents("#rMenu").length>0)) {
+				$("#rMenu").css({"visibility" : "hidden"});
+			}
+		}
+		//树结构数据
+		var zNodes =[
+			{id:1, pId:0, name:"施工准备", open:true},
+			{id:101, pId:1, name:"专项施工方案（应包括支架拆除施工方案）编制及报审情况。"},
+			{id:102, pId:1, name:"模板、支架脚手架搭设用的钢材、钢管、扣件等周转性材料进场前，施工单位应逐批进行检测，监理单位应进行抽检。钢管厚度不足的，应重新设计支架搭设方案。"},
+			{id:103, pId:1, name:"是否按规定组织验收，通过验收的应挂牌公示，明确使用荷载，载人数量、搭设责任人姓名及联系方式等相关内容。"},
+			{id:2, pId:0, name:"一般项目", open:true},
+			{id:201, pId:2, name:"支架基础是否与方案一致：承载力检测、基础处理、垫块设置、扫地杆设置、临时排水设置等情况。"},
+			{id:202, pId:2, name:"支架构件、扣件外观检查情况。"}
+		];
+		//组件初始化；
+		var componentInit=function(){
+			//表单验证初始化
+			formValidateInit("#form-add");
+			formValidateInit("#form-edit");
+		};
+		//按钮点击初始化
+		var buttonActionInit=function(){
+			//添加模态框保存
+			$("#modal-add-save").on("click",function(){
+				if($("#form-add").valid())return;
+
+			});
+			//编辑模态框保存
+			$("#modal-edit-save").on("click",function(){
+				if(!$("#form-edit").valid())return;
+				var nodeContent=$('#form-edit textarea[name="content"]');
+				var zTree = $.fn.zTree.getZTreeObj("tree");
+				var nodes = zTree.getSelectedNodes();
+				nodes[0].name=nodeContent.val();
+				zTree.updateNode(nodes[0]);
+				$("#modal-edit").modal("hide");
+			});
+		};
+		return {
+			init:function(){
+				zTreeInit(zNodes);
+				componentInit();
+				buttonActionInit();
+			},
+			addTreeNode:function(type) {
+				hideRMenu();
+				var zTree = $.fn.zTree.getZTreeObj("tree");
+				var treeNode=zTree.getSelectedNodes()[0];
+				var newNode = {id:100,pId:treeNode.id,isParent:type,name: "新增节点"};
+				if (treeNode) {
+					newNode.checked = treeNode.checked;
+					zTree.addNodes(treeNode, newNode);
+				} else {
+					zTree.addNodes(null, newNode);
+				}
+			},
+			editTreeNode:function() {
+				hideRMenu();
+				var zTree = $.fn.zTree.getZTreeObj("tree");
+				var nodes = zTree.getSelectedNodes(),
+						treeNode = nodes[0];
+				if (nodes.length == 0) {
+					$.alert("请先选择一个节点");
+					return;
+				}
+				$('#form-edit textarea[name="content"]').val(treeNode.name);
+				$("#modal-edit").modal("show");
+			},
+			removeTreeNode:function () {
+				hideRMenu();
+				var zTree = $.fn.zTree.getZTreeObj("tree");
+				var nodes = zTree.getSelectedNodes();
+				if (nodes && nodes.length>0) {
+					var msg = "确定要删除吗？";
+					if (nodes[0].children && nodes[0].children.length > 0) {
+						msg += "<br>删除的节点是父节点，将连同子节点一起删掉!";
+					}
+					var page= $.confirm(msg,function(){
+						layer.close(page);
+						zTree.removeNode(nodes[0]);
+					})
+				}
+			}
+		}
+	})();
+</script>
+</body>
+</html>

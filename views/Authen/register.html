@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>注册</title>
+	<!-- Tell the browser to be responsive to screen width -->
+	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+	<!-- Bootstrap 3.3.5 -->
+	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+	<!-- app.css -->
+	<link rel="stylesheet" href="../../src/css/app.css">
+
+	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+	<!-- 警告: Respond.js使用file://无法正常工作 -->
+	<!--[if lt IE 9]>
+	<script src="../../src/js/html5shiv.min.js"></script>
+	<script src="../../src/js/respond.min.js"></script>
+	<![endif]-->
+</head>
+<style>
+	.login{
+		background-color: #efedd5;
+	}
+	.login .logo-wrapper{
+		position: relative;
+		background-color: #7FDADB;
+		height:300px;
+		padding:200px 15px 0;
+	}
+	.login .logo-wrapper .logo{
+		display:block;
+		margin:0 auto;
+		max-width:100%;
+	}
+	.form-login{
+		position: relative;
+		display:block;
+		margin-top:-69px;
+		margin-left:auto;
+		margin-right:auto;
+		width:30%;
+	}
+	.form-login-group{
+		border:1px solid #eee;
+		padding:10px 20px;
+		background-color: #fff;
+		margin-bottom:30px;
+		border-radius: 4px;
+	}
+	.form-login-group .remember{
+		color:#999;
+	}
+	.form-login-control{
+		display:block;
+		width:100%;
+		padding:10px;
+		font-size:16px;
+		border:none;
+		border-bottom:1px solid #eee !important;
+		-webkit-tap-highlight-color:rgba(255,0,0,0);
+		outline: 0;
+	}
+	.form-login-control:focus{
+		outline: 0;
+	}
+	.form-login-group .form-login-control:last-child{
+		border-color:transparent !important;
+	}
+	.btn-block{
+		padding:10px;
+		font-size:16px;
+	}
+	@media (max-width:998px){
+		.form-login{
+			width:50%;
+		}
+	}
+	@media (max-width:500px){
+		.login .logo-wrapper{
+			height:200px;
+			padding:100px 15px 0;
+		}
+		.form-login{
+			width:80%;
+		}
+	}
+</style>
+<body class="login">
+<div class="logo-wrapper">
+	<img class="logo" src="../../src/images/logo_title.png" alt="" />
+</div>
+<div class="content">
+	<form class="form-login" action="../index.html" method="post">
+		<div class="form-login-group">
+			<input type="text" class="form-login-control" placeholder="用户名">
+			<input type="password" class="form-login-control" placeholder="输入密码">
+			<input type="password" class="form-login-control" placeholder="再次输入密码">
+			<div class="el-checkbox" style="padding-top:6px;">
+				<input type="checkbox" id="agree" name="agree" value="1">
+				<label class="el-checkbox-style" for="agree"></label>
+				<span> 我同意此<a href="#">《用户协议》</span>
+			</div>
+		</div>
+		<button type="submit" class="btn btn-block btn-primary">注册</button>
+	</form>
+</div>
+<!-- jQuery 2.1.4 -->
+<script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
+<!-- Bootstrap 3.3.5 -->
+<script src="../../src/libs/bootstrap-3.3.6/js/bootstrap.min.js"></script>
+<!-- 弹框layer.js 自动加载css -->
+<script src="../../src/libs/layer/layer.js"></script>
+<!-- checkbox -->
+<link rel="stylesheet" href="../../src/css/checkbox.css">
+<!--公用common.js-->
+<script src="../../src/js/common.js"></script>
+</body>
+</html>
