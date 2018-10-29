@@ -1,6 +1,10 @@
 # 后台管理模版
 
-`src/libs` 第三方库部分源码已经调整过，请科学使用
+`src/libs` 第三方库部分源码已经调整过
+
+### 示例(live demo)
+
+[https://evanliu2968.github.io/admin-iframe/](https://evanliu2968.github.io/admin-iframe/)
 
 ### 主要内容
 
