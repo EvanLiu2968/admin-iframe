@@ -1,201 +1,201 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>文件上传</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
-	<!-- 主题 -->
-	<link rel="stylesheet" href="../../src/css/app.css">
-	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
-	<!-- 警告: Respond.js使用file://无法正常工作 -->
-	<!--[if lt IE 9]>
-	<script src="../../src/js/html5shiv.min.js"></script>
-	<script src="../../src/js/respond.min.js"></script>
-	<![endif]-->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>文件上传</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- 主题 -->
+  <link rel="stylesheet" href="../../src/css/app.css">
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../../src/js/html5shiv.min.js"></script>
+  <script src="../../src/js/respond.min.js"></script>
+  <![endif]-->
 </head>
 <style>
-	.link-groups>a{
-		margin-right:20px;
-	}
+  .link-groups>a{
+    margin-right:20px;
+  }
 </style>
 <body>
 <!-- 页面容器 -->
 <div class="wrapper">
-	<!-- Main content -->
-	<section class="content">
-		<div class="page">
-			<div class="page-header">
-				<ol class="breadcrumb">
-					<li><a href="#">插件示例</a></li>
-					<li class="active">文件上传控件</li>
-				</ol>
-			</div><!-- /.page-header -->
-			<div class="page-body">
-				<div class="callout callout-default">
-					<p class="link-groups">
-						<a href="https://docs.fineuploader.com/" target="_blank">文档地址</a>
-						<a href="https://docs.fineuploader.com/branch/master/browser-support.html" target="_blank">浏览器支持</a>
-					</p>
-				</div>
-				<div class="alert alert-danger alert-dismissable">
-					<p>为提升性能，此组件ie9功能有限，如有兼容问题可使用 <a href="http://fex.baidu.com/webuploader/" target="_blank">fex.baidu.com/webuploader/</a></p>
-					<p>或者 <a href="http://www.plupload.com/" target="_blank">http://www.plupload.com/</a></p>
-				</div>
-				<h3>普通上传</h3>
-				<div id="fine-uploader-gallery"></div>
-				<h3>手动批量上传</h3>
-				<div id="fine-uploader-manual-trigger"></div>
-				<h3>分块上传等功能前往<a href="https://fineuploader.com/demos.html" target="_blank">更多demo</a></h3>
-			</div><!-- /.page-body -->
-		</div><!-- /.page -->
-	</section><!-- /.content -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="page">
+      <div class="page-header">
+        <ol class="breadcrumb">
+          <li><a href="#">插件示例</a></li>
+          <li class="active">文件上传控件</li>
+        </ol>
+      </div><!-- /.page-header -->
+      <div class="page-body">
+        <div class="callout callout-default">
+          <p class="link-groups">
+            <a href="https://docs.fineuploader.com/" target="_blank">文档地址</a>
+            <a href="https://docs.fineuploader.com/branch/master/browser-support.html" target="_blank">浏览器支持</a>
+          </p>
+        </div>
+        <div class="alert alert-danger alert-dismissable">
+          <p>为提升性能，此组件ie9功能有限，如有兼容问题可使用 <a href="http://fex.baidu.com/webuploader/" target="_blank">fex.baidu.com/webuploader/</a></p>
+          <p>或者 <a href="http://www.plupload.com/" target="_blank">http://www.plupload.com/</a></p>
+        </div>
+        <h3>普通上传</h3>
+        <div id="fine-uploader-gallery"></div>
+        <h3>手动批量上传</h3>
+        <div id="fine-uploader-manual-trigger"></div>
+        <h3>分块上传等功能前往<a href="https://fineuploader.com/demos.html" target="_blank">更多demo</a></h3>
+      </div><!-- /.page-body -->
+    </div><!-- /.page -->
+  </section><!-- /.content -->
 </div><!-- 页面容器 -->
 <!-- 普通上传模版 -->
 <script type="text/template" id="qq-template-gallery">
-	<div class="qq-uploader-selector qq-uploader qq-gallery" qq-drop-area-text="或将照片拖到这里，只能接受图片">
-		<div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
-			<div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
-		</div>
-		<div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
-			<span class="qq-upload-drop-area-text-selector"></span>
-		</div>
-		<div class="qq-upload-button-selector qq-upload-button">
-			<div>上传文件</div>
-		</div>
-		<span class="qq-drop-processing-selector qq-drop-processing">
-			<!-- <span>Processing dropped files...</span> -->
-			<span>文件上传中...</span>
-			<span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
-		</span>
-		<ul class="qq-upload-list-selector qq-upload-list" role="region" aria-live="polite" aria-relevant="additions removals">
-			<li>
-				<span role="status" class="qq-upload-status-text-selector qq-upload-status-text"></span>
-				<div class="qq-progress-bar-container-selector qq-progress-bar-container">
-					<div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-progress-bar-selector qq-progress-bar"></div>
-				</div>
-				<span class="qq-upload-spinner-selector qq-upload-spinner"></span>
-				<div class="qq-thumbnail-wrapper">
-					<img class="qq-thumbnail-selector" qq-max-size="120" qq-server-scale>
-				</div>
-				<button type="button" class="qq-upload-cancel-selector qq-upload-cancel">X</button>
-				<button type="button" class="qq-upload-retry-selector qq-upload-retry">
-					<span class="qq-btn qq-retry-icon" aria-label="Retry"></span>
-					重试
-				</button>
+  <div class="qq-uploader-selector qq-uploader qq-gallery" qq-drop-area-text="或将照片拖到这里，只能接受图片">
+    <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
+      <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
+    </div>
+    <div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
+      <span class="qq-upload-drop-area-text-selector"></span>
+    </div>
+    <div class="qq-upload-button-selector qq-upload-button">
+      <div>上传文件</div>
+    </div>
+    <span class="qq-drop-processing-selector qq-drop-processing">
+      <!-- <span>Processing dropped files...</span> -->
+      <span>文件上传中...</span>
+      <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
+    </span>
+    <ul class="qq-upload-list-selector qq-upload-list" role="region" aria-live="polite" aria-relevant="additions removals">
+      <li>
+        <span role="status" class="qq-upload-status-text-selector qq-upload-status-text"></span>
+        <div class="qq-progress-bar-container-selector qq-progress-bar-container">
+          <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-progress-bar-selector qq-progress-bar"></div>
+        </div>
+        <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
+        <div class="qq-thumbnail-wrapper">
+          <img class="qq-thumbnail-selector" qq-max-size="120" qq-server-scale>
+        </div>
+        <button type="button" class="qq-upload-cancel-selector qq-upload-cancel">X</button>
+        <button type="button" class="qq-upload-retry-selector qq-upload-retry">
+          <span class="qq-btn qq-retry-icon" aria-label="Retry"></span>
+          重试
+        </button>
 
-				<div class="qq-file-info">
-					<div class="qq-file-name">
-						<span class="qq-upload-file-selector qq-upload-file"></span>
-						<span class="qq-edit-filename-icon-selector qq-edit-filename-icon" aria-label="Edit filename"></span>
-					</div>
-					<input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
-					<span class="qq-upload-size-selector qq-upload-size"></span>
-					<button type="button" class="qq-btn qq-upload-delete-selector qq-upload-delete">
-						<span class="qq-btn qq-delete-icon" aria-label="Delete"></span>
-					</button>
-					<button type="button" class="qq-btn qq-upload-pause-selector qq-upload-pause">
-						<span class="qq-btn qq-pause-icon" aria-label="Pause"></span>
-					</button>
-					<button type="button" class="qq-btn qq-upload-continue-selector qq-upload-continue">
-						<span class="qq-btn qq-continue-icon" aria-label="Continue"></span>
-					</button>
-				</div>
-			</li>
-		</ul>
+        <div class="qq-file-info">
+          <div class="qq-file-name">
+            <span class="qq-upload-file-selector qq-upload-file"></span>
+            <span class="qq-edit-filename-icon-selector qq-edit-filename-icon" aria-label="Edit filename"></span>
+          </div>
+          <input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
+          <span class="qq-upload-size-selector qq-upload-size"></span>
+          <button type="button" class="qq-btn qq-upload-delete-selector qq-upload-delete">
+            <span class="qq-btn qq-delete-icon" aria-label="Delete"></span>
+          </button>
+          <button type="button" class="qq-btn qq-upload-pause-selector qq-upload-pause">
+            <span class="qq-btn qq-pause-icon" aria-label="Pause"></span>
+          </button>
+          <button type="button" class="qq-btn qq-upload-continue-selector qq-upload-continue">
+            <span class="qq-btn qq-continue-icon" aria-label="Continue"></span>
+          </button>
+        </div>
+      </li>
+    </ul>
 
-		<dialog class="qq-alert-dialog-selector">
-			<div class="qq-dialog-message-selector"></div>
-			<div class="qq-dialog-buttons">
-				<button type="button" class="qq-cancel-button-selector">关闭</button>
-			</div>
-		</dialog>
+    <dialog class="qq-alert-dialog-selector">
+      <div class="qq-dialog-message-selector"></div>
+      <div class="qq-dialog-buttons">
+        <button type="button" class="qq-cancel-button-selector">关闭</button>
+      </div>
+    </dialog>
 
-		<dialog class="qq-confirm-dialog-selector">
-			<div class="qq-dialog-message-selector"></div>
-			<div class="qq-dialog-buttons">
-				<button type="button" class="qq-cancel-button-selector">否</button>
-				<button type="button" class="qq-ok-button-selector">是</button>
-			</div>
-		</dialog>
+    <dialog class="qq-confirm-dialog-selector">
+      <div class="qq-dialog-message-selector"></div>
+      <div class="qq-dialog-buttons">
+        <button type="button" class="qq-cancel-button-selector">否</button>
+        <button type="button" class="qq-ok-button-selector">是</button>
+      </div>
+    </dialog>
 
-		<dialog class="qq-prompt-dialog-selector">
-			<div class="qq-dialog-message-selector"></div>
-			<input type="text">
-			<div class="qq-dialog-buttons">
-				<button type="button" class="qq-cancel-button-selector">取消</button>
-				<button type="button" class="qq-ok-button-selector">确认</button>
-			</div>
-		</dialog>
-	</div>
+    <dialog class="qq-prompt-dialog-selector">
+      <div class="qq-dialog-message-selector"></div>
+      <input type="text">
+      <div class="qq-dialog-buttons">
+        <button type="button" class="qq-cancel-button-selector">取消</button>
+        <button type="button" class="qq-ok-button-selector">确认</button>
+      </div>
+    </dialog>
+  </div>
 </script>
 <!-- 手动批量上传模版 -->
 <script type="text/template" id="qq-template-manual-trigger">
-	<div class="qq-uploader-selector qq-uploader" qq-drop-area-text="或将照片拖到这里，单次最多上传3个，单个文件不超过10MB">
-		<div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
-			<div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
-		</div>
-		<div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
-			<span class="qq-upload-drop-area-text-selector"></span>
-		</div>
-		<div class="buttons">
-			<div class="qq-upload-button-selector qq-upload-button">
-				<div>选择文件</div>
-			</div>
-			<button type="button" id="trigger-upload" class="qq-upload-button" style="margin-left:20px">
-				<i class="fa fa-cloud-upload"></i> 上传
-			</button>
-		</div>
-		<span class="qq-drop-processing-selector qq-drop-processing">
-			<span>文件上传中...</span>
-			<span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
-		</span>
-		<ul class="qq-upload-list-selector qq-upload-list" aria-live="polite" aria-relevant="additions removals">
-			<li>
-				<div class="qq-progress-bar-container-selector">
-					<div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-progress-bar-selector qq-progress-bar"></div>
-				</div>
-				<span class="qq-upload-spinner-selector qq-upload-spinner"></span>
-				<img class="qq-thumbnail-selector" qq-max-size="100" qq-server-scale>
-				<span class="qq-upload-file-selector qq-upload-file"></span>
-				<span class="qq-edit-filename-icon-selector qq-edit-filename-icon" aria-label="编辑文件名"></span>
-				<input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
-				<span class="qq-upload-size-selector qq-upload-size"></span>
-				<button type="button" class="qq-btn qq-upload-cancel-selector qq-upload-cancel">取消</button>
-				<button type="button" class="qq-btn qq-upload-retry-selector qq-upload-retry">重试</button>
-				<button type="button" class="qq-btn qq-upload-delete-selector qq-upload-delete">删除</button>
-				<span role="status" class="qq-upload-status-text-selector qq-upload-status-text"></span>
-			</li>
-		</ul>
+  <div class="qq-uploader-selector qq-uploader" qq-drop-area-text="或将照片拖到这里，单次最多上传3个，单个文件不超过10MB">
+    <div class="qq-total-progress-bar-container-selector qq-total-progress-bar-container">
+      <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-total-progress-bar-selector qq-progress-bar qq-total-progress-bar"></div>
+    </div>
+    <div class="qq-upload-drop-area-selector qq-upload-drop-area" qq-hide-dropzone>
+      <span class="qq-upload-drop-area-text-selector"></span>
+    </div>
+    <div class="buttons">
+      <div class="qq-upload-button-selector qq-upload-button">
+        <div>选择文件</div>
+      </div>
+      <button type="button" id="trigger-upload" class="qq-upload-button" style="margin-left:20px">
+        <i class="fa fa-cloud-upload"></i> 上传
+      </button>
+    </div>
+    <span class="qq-drop-processing-selector qq-drop-processing">
+      <span>文件上传中...</span>
+      <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
+    </span>
+    <ul class="qq-upload-list-selector qq-upload-list" aria-live="polite" aria-relevant="additions removals">
+      <li>
+        <div class="qq-progress-bar-container-selector">
+          <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" class="qq-progress-bar-selector qq-progress-bar"></div>
+        </div>
+        <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
+        <img class="qq-thumbnail-selector" qq-max-size="100" qq-server-scale>
+        <span class="qq-upload-file-selector qq-upload-file"></span>
+        <span class="qq-edit-filename-icon-selector qq-edit-filename-icon" aria-label="编辑文件名"></span>
+        <input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
+        <span class="qq-upload-size-selector qq-upload-size"></span>
+        <button type="button" class="qq-btn qq-upload-cancel-selector qq-upload-cancel">取消</button>
+        <button type="button" class="qq-btn qq-upload-retry-selector qq-upload-retry">重试</button>
+        <button type="button" class="qq-btn qq-upload-delete-selector qq-upload-delete">删除</button>
+        <span role="status" class="qq-upload-status-text-selector qq-upload-status-text"></span>
+      </li>
+    </ul>
 
-		<dialog class="qq-alert-dialog-selector">
-			<div class="qq-dialog-message-selector"></div>
-			<div class="qq-dialog-buttons">
-				<button type="button" class="qq-cancel-button-selector">关闭</button>
-			</div>
-		</dialog>
+    <dialog class="qq-alert-dialog-selector">
+      <div class="qq-dialog-message-selector"></div>
+      <div class="qq-dialog-buttons">
+        <button type="button" class="qq-cancel-button-selector">关闭</button>
+      </div>
+    </dialog>
 
-		<dialog class="qq-confirm-dialog-selector">
-			<div class="qq-dialog-message-selector"></div>
-			<div class="qq-dialog-buttons">
-				<button type="button" class="qq-cancel-button-selector">否</button>
-				<button type="button" class="qq-ok-button-selector">是</button>
-			</div>
-		</dialog>
+    <dialog class="qq-confirm-dialog-selector">
+      <div class="qq-dialog-message-selector"></div>
+      <div class="qq-dialog-buttons">
+        <button type="button" class="qq-cancel-button-selector">否</button>
+        <button type="button" class="qq-ok-button-selector">是</button>
+      </div>
+    </dialog>
 
-		<dialog class="qq-prompt-dialog-selector">
-			<div class="qq-dialog-message-selector"></div>
-			<input type="text">
-			<div class="qq-dialog-buttons">
-				<button type="button" class="qq-cancel-button-selector">取消</button>
-				<button type="button" class="qq-ok-button-selector">确认</button>
-			</div>
-		</dialog>
-	</div>
+    <dialog class="qq-prompt-dialog-selector">
+      <div class="qq-dialog-message-selector"></div>
+      <input type="text">
+      <div class="qq-dialog-buttons">
+        <button type="button" class="qq-cancel-button-selector">取消</button>
+        <button type="button" class="qq-ok-button-selector">确认</button>
+      </div>
+    </dialog>
+  </div>
 </script>
 <!-- jQuery 2.1.4 -->
 <script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
@@ -212,145 +212,145 @@
 <script src="../../src/js/common.js"></script>
 <!-- 业务逻辑js -->
 <script>
-	$(function(){
-		page.init();
-	});
-	var page=(function(){
-		//树结构初始化
-		var dataInit=function(){};
-		//组件初始化；
-		var componentInit=function(){
-			//状态汉化
-			qq.status = {
-				SUBMITTING: "提交中",
-				SUBMITTED: "已提交",
-				REJECTED: "拒绝接受",
-				QUEUED: "排队等候",
-				CANCELED: "已取消",
-				PAUSED: "已暂停",
-				UPLOADING: "上传中",
-				UPLOAD_RETRYING: "重新上传中",
-				UPLOAD_SUCCESSFUL: "上传成功",
-				UPLOAD_FAILED: "上传失败",
-				DELETE_FAILED: "删除失败",
-				DELETING: "删除中",
-				DELETED: "已删除"
-			};
-			//普通上传,默认参数在源码 line 6426;
-			var galleryUploader = new qq.FineUploader({
-				element: document.getElementById("fine-uploader-gallery"),
-				template: 'qq-template-gallery',
-				request: {
-					endpoint: 'http://localhost:24020/api/v1/jt/jtdc/UploadImage',
-					customHeaders: {},
-					filenameParam: "filename",
-					forceMultipart: true,
-					inputName: "file",
-					method: "POST",
-					params: {},
-					paramsInBody: true,
-					totalFileSizeName: "qqtotalfilesize",
-					uuidName: "qquuid"
-				},
-				messages: { //源码 line 2416
-					typeError: "{file} 文件类型错误，允许上传文件类型: {extensions}.",
-					sizeError: "{file} 文件太大，不能大于 {sizeLimit}.",
-					minSizeError: "{file} 文件太小，不能小于 {minSizeLimit}.",
-					emptyError: "{file} 是空的，请重新选择文件",
-					noFilesError: "没有上传的文件",
-					tooManyItemsError: "文件数目 ({netItems}) 已超出限制，文件最多不能超过 {itemLimit} 个",
-					maxHeightImageError: "图片超出最大高度",
-					maxWidthImageError: "图片超出最大宽度",
-					minHeightImageError: "图片小于最小高度",
-					minWidthImageError: "图片小于最小宽度",
-					retryFailTooManyItems: "重试失败 - 您已达到您的文件限制",
-					onLeave: "文件正在上传，现在离开上传将被终止",
-					unsupportedBrowserIos8Safari: "错误 - 由于iOS8 Safari浏览器的严重bug，浏览器目前不允许上传任何文件，请使用其他浏览器"
-				},
-				text: {
-					formatProgress: "{percent}% / {total_size}",
-					failUpload: "上传失败",
-					waitingForResponse: "上传中...",
-					paused: "已暂停"
-				},
-				thumbnails: {
-					placeholders: {
-						waitingPath: '../../src/libs/fine-uploader/placeholders/waiting-generic.png',
-						notAvailablePath: '../../src/libs/fine-uploader/placeholders/not_available-generic.png'
-					}
-				},
-				validation: {
-					itemLimit: 3,
-					allowedExtensions: ['jpeg', 'jpg', 'gif', 'png']
-				}
-			});
-			//手动批量上传
-			var manualUploader = new qq.FineUploader({
-				element: document.getElementById('fine-uploader-manual-trigger'),
-				template: 'qq-template-manual-trigger',
-				request: {
-					endpoint: '/server/uploads',
-					customHeaders: {},
-					filenameParam: "filename",
-					forceMultipart: true,
-					inputName: "file",
-					method: "POST",
-					params: {},
-					paramsInBody: true,
-					totalFileSizeName: "qqtotalfilesize",
-					uuidName: "qquuid"
-				},
-				messages: { //源码 line 2416
-					typeError: "{file} 文件类型错误，允许上传文件类型: {extensions}.",
-					sizeError: "{file} 文件太大，不能大于 {sizeLimit}.",
-					minSizeError: "{file} 文件太小，不能小于 {minSizeLimit}.",
-					emptyError: "{file} 是空的，请重新选择文件",
-					noFilesError: "没有上传的文件",
-					tooManyItemsError: "文件数目 ({netItems}) 已超出限制，文件最多不能超过 {itemLimit} 个",
-					maxHeightImageError: "图片超出最大高度",
-					maxWidthImageError: "图片超出最大宽度",
-					minHeightImageError: "图片小于最小高度",
-					minWidthImageError: "图片小于最小宽度",
-					retryFailTooManyItems: "重试失败 - 您已达到您的文件限制",
-					onLeave: "文件正在上传，现在离开上传将被终止",
-					unsupportedBrowserIos8Safari: "错误 - 由于iOS8 Safari浏览器的严重bug，浏览器目前不允许上传任何文件，请使用其他浏览器"
-				},
-				text: {
-					formatProgress: "{percent}% / {total_size}",
-					failUpload: "上传失败",
-					waitingForResponse: "上传中...",
-					paused: "已暂停"
-				},
-				thumbnails: {
-					placeholders: {
-						waitingPath: '../../src/libs/fine-uploader/placeholders/waiting-generic.png',
-						notAvailablePath: '../../src/libs/fine-uploader/placeholders/not_available-generic.png'
-					}
-				},
-				autoUpload: false,
-				validation: {
-					allowedExtensions: ['jpeg', 'jpg', 'png', 'docx', 'doc','pdf'],
-					itemLimit: 3,
-					sizeLimit: 10240000 // 10mb = 10 *1000 * 1024 bytes
-				},
-				debug: true
-			});
+  $(function(){
+    page.init();
+  });
+  var page=(function(){
+    //树结构初始化
+    var dataInit=function(){};
+    //组件初始化；
+    var componentInit=function(){
+      //状态汉化
+      qq.status = {
+        SUBMITTING: "提交中",
+        SUBMITTED: "已提交",
+        REJECTED: "拒绝接受",
+        QUEUED: "排队等候",
+        CANCELED: "已取消",
+        PAUSED: "已暂停",
+        UPLOADING: "上传中",
+        UPLOAD_RETRYING: "重新上传中",
+        UPLOAD_SUCCESSFUL: "上传成功",
+        UPLOAD_FAILED: "上传失败",
+        DELETE_FAILED: "删除失败",
+        DELETING: "删除中",
+        DELETED: "已删除"
+      };
+      //普通上传,默认参数在源码 line 6426;
+      var galleryUploader = new qq.FineUploader({
+        element: document.getElementById("fine-uploader-gallery"),
+        template: 'qq-template-gallery',
+        request: {
+          endpoint: 'http://localhost:24020/api/v1/jt/jtdc/UploadImage',
+          customHeaders: {},
+          filenameParam: "filename",
+          forceMultipart: true,
+          inputName: "file",
+          method: "POST",
+          params: {},
+          paramsInBody: true,
+          totalFileSizeName: "qqtotalfilesize",
+          uuidName: "qquuid"
+        },
+        messages: { //源码 line 2416
+          typeError: "{file} 文件类型错误，允许上传文件类型: {extensions}.",
+          sizeError: "{file} 文件太大，不能大于 {sizeLimit}.",
+          minSizeError: "{file} 文件太小，不能小于 {minSizeLimit}.",
+          emptyError: "{file} 是空的，请重新选择文件",
+          noFilesError: "没有上传的文件",
+          tooManyItemsError: "文件数目 ({netItems}) 已超出限制，文件最多不能超过 {itemLimit} 个",
+          maxHeightImageError: "图片超出最大高度",
+          maxWidthImageError: "图片超出最大宽度",
+          minHeightImageError: "图片小于最小高度",
+          minWidthImageError: "图片小于最小宽度",
+          retryFailTooManyItems: "重试失败 - 您已达到您的文件限制",
+          onLeave: "文件正在上传，现在离开上传将被终止",
+          unsupportedBrowserIos8Safari: "错误 - 由于iOS8 Safari浏览器的严重bug，浏览器目前不允许上传任何文件，请使用其他浏览器"
+        },
+        text: {
+          formatProgress: "{percent}% / {total_size}",
+          failUpload: "上传失败",
+          waitingForResponse: "上传中...",
+          paused: "已暂停"
+        },
+        thumbnails: {
+          placeholders: {
+            waitingPath: '../../src/libs/fine-uploader/placeholders/waiting-generic.png',
+            notAvailablePath: '../../src/libs/fine-uploader/placeholders/not_available-generic.png'
+          }
+        },
+        validation: {
+          itemLimit: 3,
+          allowedExtensions: ['jpeg', 'jpg', 'gif', 'png']
+        }
+      });
+      //手动批量上传
+      var manualUploader = new qq.FineUploader({
+        element: document.getElementById('fine-uploader-manual-trigger'),
+        template: 'qq-template-manual-trigger',
+        request: {
+          endpoint: '/server/uploads',
+          customHeaders: {},
+          filenameParam: "filename",
+          forceMultipart: true,
+          inputName: "file",
+          method: "POST",
+          params: {},
+          paramsInBody: true,
+          totalFileSizeName: "qqtotalfilesize",
+          uuidName: "qquuid"
+        },
+        messages: { //源码 line 2416
+          typeError: "{file} 文件类型错误，允许上传文件类型: {extensions}.",
+          sizeError: "{file} 文件太大，不能大于 {sizeLimit}.",
+          minSizeError: "{file} 文件太小，不能小于 {minSizeLimit}.",
+          emptyError: "{file} 是空的，请重新选择文件",
+          noFilesError: "没有上传的文件",
+          tooManyItemsError: "文件数目 ({netItems}) 已超出限制，文件最多不能超过 {itemLimit} 个",
+          maxHeightImageError: "图片超出最大高度",
+          maxWidthImageError: "图片超出最大宽度",
+          minHeightImageError: "图片小于最小高度",
+          minWidthImageError: "图片小于最小宽度",
+          retryFailTooManyItems: "重试失败 - 您已达到您的文件限制",
+          onLeave: "文件正在上传，现在离开上传将被终止",
+          unsupportedBrowserIos8Safari: "错误 - 由于iOS8 Safari浏览器的严重bug，浏览器目前不允许上传任何文件，请使用其他浏览器"
+        },
+        text: {
+          formatProgress: "{percent}% / {total_size}",
+          failUpload: "上传失败",
+          waitingForResponse: "上传中...",
+          paused: "已暂停"
+        },
+        thumbnails: {
+          placeholders: {
+            waitingPath: '../../src/libs/fine-uploader/placeholders/waiting-generic.png',
+            notAvailablePath: '../../src/libs/fine-uploader/placeholders/not_available-generic.png'
+          }
+        },
+        autoUpload: false,
+        validation: {
+          allowedExtensions: ['jpeg', 'jpg', 'png', 'docx', 'doc','pdf'],
+          itemLimit: 3,
+          sizeLimit: 10240000 // 10mb = 10 *1000 * 1024 bytes
+        },
+        debug: true
+      });
 
-			qq(document.getElementById("trigger-upload")).attach("click", function() {
-				manualUploader.uploadStoredFiles();
-			});
-		};
-		//按钮点击初始化
-		var btnActionInit=function(){
-		};
-		return {
-			init:function(){
-				dataInit();
-				componentInit();
-				btnActionInit();
-			}
-		}
-	})();
+      qq(document.getElementById("trigger-upload")).attach("click", function() {
+        manualUploader.uploadStoredFiles();
+      });
+    };
+    //按钮点击初始化
+    var btnActionInit=function(){
+    };
+    return {
+      init:function(){
+        dataInit();
+        componentInit();
+        btnActionInit();
+      }
+    }
+  })();
 </script>
 </body>
 </html>

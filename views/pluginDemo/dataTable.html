@@ -1,162 +1,162 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>交通工程质量安全监督监管系统</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
-	<!-- 主题 -->
-	<link rel="stylesheet" href="../../src/css/app.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>交通工程质量安全监督监管系统</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- 主题 -->
+  <link rel="stylesheet" href="../../src/css/app.css">
 
-	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
-	<!-- 警告: Respond.js使用file://无法正常工作 -->
-	<!--[if lt IE 9]>
-	<script src="../../src/js/html5shiv.min.js"></script>
-	<script src="../../src/js/respond.min.js"></script>
-	<![endif]-->
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../../src/js/html5shiv.min.js"></script>
+  <script src="../../src/js/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <!-- 页面容器 -->
 <div class="wrapper">
-	<!-- Main content -->
-	<section class="content">
-		<div class="page">
-			<div class="page-header">
-				<ol class="breadcrumb">
-					<li><a href="#">插件示例</a></li>
-					<li class="active">dataTable</li>
-				</ol>
-			</div><!-- /.page-header -->
-			<div class="page-body">
-				<form class="form-search" id="form-search">
-					<div class="form-group form-inline" >
-						<label class="control-label">用户账号</label>
-						<input class="form-control" name="account" data-tips="用户账号是唯一的" data-action="search">
-					</div>
-					<div class="form-group form-inline" >
-						<label class="control-label">用户类型</label>
-						<select class="form-control" name="type" data-action="search">
-							<option value="">全部</option>
-							<option value="system">系统管理员</option>
-							<option value="normal">普通用户</option>
-						</select>
-					</div>
-				</form>
-				<div class="" id="toolbar" style="margin-top:10px">
-					<button class="btn btn-default btn-flat" type="button" id="btn-search"><i class="fa fa-search"></i>查询</button>
-					<button class="btn btn-info btn-flat" type="button" id="btn-add" data-toggle="modal" data-target="#modal-add"><i class="fa fa-plus"></i>新增</button>
-					<!--<button class="btn btn-primary btn-flat" type="button" id="btn-edit"><i class="fa fa-edit"></i>修改</button>-->
-					<!--<button class="btn btn-danger btn-flat" type="button" id="btn-delete"><i class="fa fa-trash"></i>删除</button>-->
-					<button class="btn btn-warning btn-flat" type="button" id="btn-export"><i class="glyphicon glyphicon-export"></i>导出</button>
-				</div>
-				<table class="table table-bordered table-hover" id="table" width="100%"></table>
-				<h4>table table-bordered table-ele</h4>
-				<table class="table table-bordered table-ele" id="table3" width="100%"></table>
-				<h4>table table-bordered table-light</h4>
-				<table class="table table-bordered table-light" id="table1" width="100%"></table>
-				<h4>table table-bordered table-info</h4>
-				<table class="table table-bordered table-info" id="table2" width="100%"></table>
-			</div><!-- /.page-body -->
-		</div><!-- /.page -->
-	</section><!-- /.content -->
-	<!-- 添加Modal -->
-	<div class="modal" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					<h4 class="modal-title">添加用户</h4>
-				</div>
-				<div class="modal-body clearfix">
-					<form class="form-horizontal" id="form-add">
-						<div class="form-group">
-							<label class="col-sm-3 control-label"><span class="text-red">*</span>用户账号</label>
-							<div class="col-sm-8 col-md-6">
-								<input type="text" class="form-control" name="account" validate="{required:true}" placeholder="请输入用户账号">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label"><span class="text-red">*</span>用户名称</label>
-							<div class="col-sm-8 col-md-6">
-								<input type="text" class="form-control" name="name" validate="{required:true}" placeholder="请输入用户名称">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label"><span class="text-red">*</span>手机号码</label>
-							<div class="col-sm-8 col-md-6">
-								<input type="text" class="form-control" name="[hone" validate="{required:true,isPhone:true}" placeholder="请输入手机号码">
-							</div>
-						</div>
-						<!-- select -->
-						<div class="form-group">
-							<label class="col-sm-3 control-label"><span class="text-red">*</span>用户类型</label>
-							<div class="col-sm-8 col-md-6">
-								<select class="form-control" name="type" validate="{required:true}">
-									<option value="normal">普通用户</option>
-									<option value="system">系统管理员</option>
-								</select>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
-					<button type="button" class="btn btn-primary" id="form-add-save"><i class="fa fa-save"></i>保存</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- 添加Modal -->
-	<div class="modal" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-					<h4 class="modal-title">编辑用户</h4>
-				</div>
-				<div class="modal-body clearfix">
-					<form class="form-horizontal" id="form-edit">
-						<div class="form-group">
-							<label class="col-sm-3 control-label"><span class="text-red">*</span>用户账号</label>
-							<div class="col-sm-8 col-md-6">
-								<input type="text" class="form-control" name="account" validate="{required:true}" placeholder="请输入用户账号">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label"><span class="text-red">*</span>用户名称</label>
-							<div class="col-sm-8 col-md-6">
-								<input type="text" class="form-control" name="name" validate="{required:true}" placeholder="请输入用户名称">
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label"><span class="text-red">*</span>手机号码</label>
-							<div class="col-sm-8 col-md-6">
-								<input type="text" class="form-control" name="phone" validate="{required:true,isPhone:true}" placeholder="请输入手机号码">
-							</div>
-						</div>
-						<!-- select -->
-						<div class="form-group">
-							<label class="col-sm-3 control-label"><span class="text-red">*</span>用户类型</label>
-							<div class="col-sm-8 col-md-6">
-								<select class="form-control" name="type" validate="{required:true}">
-									<option value="admin">系统管理员</option>
-									<option value="normal">普通用户</option>
-								</select>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
-					<button type="button" class="btn btn-primary" id="form-edit-save"><i class="fa fa-save"></i>保存</button>
-				</div>
-			</div>
-		</div>
-	</div>
+  <!-- Main content -->
+  <section class="content">
+    <div class="page">
+      <div class="page-header">
+        <ol class="breadcrumb">
+          <li><a href="#">插件示例</a></li>
+          <li class="active">dataTable</li>
+        </ol>
+      </div><!-- /.page-header -->
+      <div class="page-body">
+        <form class="form-search" id="form-search">
+          <div class="form-group form-inline" >
+            <label class="control-label">用户账号</label>
+            <input class="form-control" name="account" data-tips="用户账号是唯一的" data-action="search">
+          </div>
+          <div class="form-group form-inline" >
+            <label class="control-label">用户类型</label>
+            <select class="form-control" name="type" data-action="search">
+              <option value="">全部</option>
+              <option value="system">系统管理员</option>
+              <option value="normal">普通用户</option>
+            </select>
+          </div>
+        </form>
+        <div class="" id="toolbar" style="margin-top:10px">
+          <button class="btn btn-default btn-flat" type="button" id="btn-search"><i class="fa fa-search"></i>查询</button>
+          <button class="btn btn-info btn-flat" type="button" id="btn-add" data-toggle="modal" data-target="#modal-add"><i class="fa fa-plus"></i>新增</button>
+          <!--<button class="btn btn-primary btn-flat" type="button" id="btn-edit"><i class="fa fa-edit"></i>修改</button>-->
+          <!--<button class="btn btn-danger btn-flat" type="button" id="btn-delete"><i class="fa fa-trash"></i>删除</button>-->
+          <button class="btn btn-warning btn-flat" type="button" id="btn-export"><i class="glyphicon glyphicon-export"></i>导出</button>
+        </div>
+        <table class="table table-bordered table-hover" id="table" width="100%"></table>
+        <h4>table table-bordered table-ele</h4>
+        <table class="table table-bordered table-ele" id="table3" width="100%"></table>
+        <h4>table table-bordered table-light</h4>
+        <table class="table table-bordered table-light" id="table1" width="100%"></table>
+        <h4>table table-bordered table-info</h4>
+        <table class="table table-bordered table-info" id="table2" width="100%"></table>
+      </div><!-- /.page-body -->
+    </div><!-- /.page -->
+  </section><!-- /.content -->
+  <!-- 添加Modal -->
+  <div class="modal" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title">添加用户</h4>
+        </div>
+        <div class="modal-body clearfix">
+          <form class="form-horizontal" id="form-add">
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><span class="text-red">*</span>用户账号</label>
+              <div class="col-sm-8 col-md-6">
+                <input type="text" class="form-control" name="account" validate="{required:true}" placeholder="请输入用户账号">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><span class="text-red">*</span>用户名称</label>
+              <div class="col-sm-8 col-md-6">
+                <input type="text" class="form-control" name="name" validate="{required:true}" placeholder="请输入用户名称">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><span class="text-red">*</span>手机号码</label>
+              <div class="col-sm-8 col-md-6">
+                <input type="text" class="form-control" name="[hone" validate="{required:true,isPhone:true}" placeholder="请输入手机号码">
+              </div>
+            </div>
+            <!-- select -->
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><span class="text-red">*</span>用户类型</label>
+              <div class="col-sm-8 col-md-6">
+                <select class="form-control" name="type" validate="{required:true}">
+                  <option value="normal">普通用户</option>
+                  <option value="system">系统管理员</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
+          <button type="button" class="btn btn-primary" id="form-add-save"><i class="fa fa-save"></i>保存</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- 添加Modal -->
+  <div class="modal" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title">编辑用户</h4>
+        </div>
+        <div class="modal-body clearfix">
+          <form class="form-horizontal" id="form-edit">
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><span class="text-red">*</span>用户账号</label>
+              <div class="col-sm-8 col-md-6">
+                <input type="text" class="form-control" name="account" validate="{required:true}" placeholder="请输入用户账号">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><span class="text-red">*</span>用户名称</label>
+              <div class="col-sm-8 col-md-6">
+                <input type="text" class="form-control" name="name" validate="{required:true}" placeholder="请输入用户名称">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><span class="text-red">*</span>手机号码</label>
+              <div class="col-sm-8 col-md-6">
+                <input type="text" class="form-control" name="phone" validate="{required:true,isPhone:true}" placeholder="请输入手机号码">
+              </div>
+            </div>
+            <!-- select -->
+            <div class="form-group">
+              <label class="col-sm-3 control-label"><span class="text-red">*</span>用户类型</label>
+              <div class="col-sm-8 col-md-6">
+                <select class="form-control" name="type" validate="{required:true}">
+                  <option value="admin">系统管理员</option>
+                  <option value="normal">普通用户</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
+          <button type="button" class="btn btn-primary" id="form-edit-save"><i class="fa fa-save"></i>保存</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div><!-- 页面容器 -->
 
 <!-- jQuery 2.1.4 -->
@@ -178,133 +178,133 @@
 <script src="../../src/js/common.js"></script>
 <!-- 业务逻辑js -->
 <script>
-	$(function(){
-		page.init();
-	});
-	var page=(function(){
-		var dataInit=function(){};
-		var tableInit=function(){
-			var dataList=[
-				{
-					id:"1",account:"admin",name:"admin",phone:"",type:"admin",login_time:"2017-03-01 12:00:00"
-				},
-				{
-					id:"2",account:"zhangsan",name:"张三",phone:"13447895642",type:"normal",login_time:"2017-02-01 12:11:13"
-				},
-				{
-					id:"3",account:"lisi",name:"李四",phone:"15447895642",type:"normal",login_time:"2017-02-03 12:11:13"
-				},
-				{
-					id:"4",account:"wangwu",name:"王五",phone:"15647895642",type:"normal",login_time:"2017-02-05 12:11:13"
-				},
-				{
-					id:"5",account:"zhaoliu",name:"赵六",phone:"17547895642",type:"normal",login_time:"2017-02-07 12:11:13"
-				},
-				{
-					id:"6",account:"zhouqi",name:"周七",phone:"18147895642",type:"normal",login_time:"2017-02-09 12:11:13"
-				}
-			];
-			var columns=[
-				{
-					data:"account",title:"账户名",width:"15%"
-				},
-				{
-					data:"name",title:"姓名",width:"15%"
-				},
-				{
-					data:"phone",title:"手机号码",width:"15%"
-				},
-				{
-					data:"type",title:"用户类型",width:"15%",
-					render:function(data, type, row, meta){return data=="admin"?"系统管理员":"普通用户"}
-				},
-				{
-					data:"login_time",title:"最近登录时间",width:"20%"
-				},
-				{
-					data:"",title:"操作",width:"20%",
-					render:function(data, type, row, meta){
-						return '<div class="btn-group">' +
-								'<button type="button" class="btn btn-xs btn-primary btn-edit" >修改</button>' +
-								'<button type="button" class="btn btn-xs btn-primary btn-delete" >删除</button>' +
-								'</div>'
-					}
-				}
-			];
-			var option={
-				data:dataList,
-				columnDefs: [{
-					"searchable": false,
-					"orderable": false,
-					"targets": [0, 1, 2, 3, 4, 5]
-				}],
-				columns: columns,
-				serverSide:false//是否开启服务器模式
-			};
-			option=common.extend(common.getDataTableOption(),option);
-			$("#table").DataTable(option);
-			$("#table1").DataTable(option);
-			$("#table2").DataTable(option);
-			$("#table3").DataTable(option);
-		};
-		//组件初始化；
-		var componentInit=function(){
-			//表单验证初始化
-			formValidateInit("#form-add");
-			formValidateInit("#form-edit");
-		};
-		//按钮点击初始化
-		var btnActionInit=function(){
-			//查询
-			$("#btn-search").on("click",function(){
-				$("#table").bootstrapTable("refresh");
-			});
-			$("#table").on("click",".btn-edit",function(){
-				var table=$("#table").DataTable();
-				var row=table.row( $(this).parents('tr')).data();
-				$('#form-edit').data("id",row.id);
-				$('#form-edit [name="account"]').val(row.account);
-				$('#form-edit [name="name"]').val(row.name);
-				$('#form-edit [name="phone"]').val(row.phone);
-				$('#form-edit [name="type"]').val(row.type);
-				$("#modal-edit").modal("show");
-			}).on("click",".btn-delete",function(){
-				var self=$(this);
-				var table=$("#table").DataTable();
-				$.confirm("确定要删除选中数据吗？",function(){
-					layer.closeAll();
-					var load=$.showLoading();
-					setTimeout(function(){
-						table.row(self.parents('tr') ).remove().draw();
-						layer.close(load);
-						$.msg("删除成功！",6);
-					},1000);
-				})
-			});
-			//添加模态框保存
-			$("#form-add-save").on("click",function(){
-				if(!$("#form-add").valid())return;
-				$("#modal-add").modal("hide");
-			});
-			//修改模态框保存
-			$("#form-edit-save").on("click",function(){
-				if(!$("#form-edit").valid())return;
-				$("#modal-edit").modal("hide");
-			});
-			//导出
-			$("#btn-export").on("click",function(){
-				//
-			})
-		};
-		return {
-			init:function(){
-				dataInit();
-				tableInit();
-				componentInit();
-				btnActionInit();
-			}
-		}
-	})();
+  $(function(){
+    page.init();
+  });
+  var page=(function(){
+    var dataInit=function(){};
+    var tableInit=function(){
+      var dataList=[
+        {
+          id:"1",account:"admin",name:"admin",phone:"",type:"admin",login_time:"2017-03-01 12:00:00"
+        },
+        {
+          id:"2",account:"zhangsan",name:"张三",phone:"13447895642",type:"normal",login_time:"2017-02-01 12:11:13"
+        },
+        {
+          id:"3",account:"lisi",name:"李四",phone:"15447895642",type:"normal",login_time:"2017-02-03 12:11:13"
+        },
+        {
+          id:"4",account:"wangwu",name:"王五",phone:"15647895642",type:"normal",login_time:"2017-02-05 12:11:13"
+        },
+        {
+          id:"5",account:"zhaoliu",name:"赵六",phone:"17547895642",type:"normal",login_time:"2017-02-07 12:11:13"
+        },
+        {
+          id:"6",account:"zhouqi",name:"周七",phone:"18147895642",type:"normal",login_time:"2017-02-09 12:11:13"
+        }
+      ];
+      var columns=[
+        {
+          data:"account",title:"账户名",width:"15%"
+        },
+        {
+          data:"name",title:"姓名",width:"15%"
+        },
+        {
+          data:"phone",title:"手机号码",width:"15%"
+        },
+        {
+          data:"type",title:"用户类型",width:"15%",
+          render:function(data, type, row, meta){return data=="admin"?"系统管理员":"普通用户"}
+        },
+        {
+          data:"login_time",title:"最近登录时间",width:"20%"
+        },
+        {
+          data:"",title:"操作",width:"20%",
+          render:function(data, type, row, meta){
+            return '<div class="btn-group">' +
+                '<button type="button" class="btn btn-xs btn-primary btn-edit" >修改</button>' +
+                '<button type="button" class="btn btn-xs btn-primary btn-delete" >删除</button>' +
+                '</div>'
+          }
+        }
+      ];
+      var option={
+        data:dataList,
+        columnDefs: [{
+          "searchable": false,
+          "orderable": false,
+          "targets": [0, 1, 2, 3, 4, 5]
+        }],
+        columns: columns,
+        serverSide:false//是否开启服务器模式
+      };
+      option=common.extend(common.getDataTableOption(),option);
+      $("#table").DataTable(option);
+      $("#table1").DataTable(option);
+      $("#table2").DataTable(option);
+      $("#table3").DataTable(option);
+    };
+    //组件初始化；
+    var componentInit=function(){
+      //表单验证初始化
+      formValidateInit("#form-add");
+      formValidateInit("#form-edit");
+    };
+    //按钮点击初始化
+    var btnActionInit=function(){
+      //查询
+      $("#btn-search").on("click",function(){
+        $("#table").bootstrapTable("refresh");
+      });
+      $("#table").on("click",".btn-edit",function(){
+        var table=$("#table").DataTable();
+        var row=table.row( $(this).parents('tr')).data();
+        $('#form-edit').data("id",row.id);
+        $('#form-edit [name="account"]').val(row.account);
+        $('#form-edit [name="name"]').val(row.name);
+        $('#form-edit [name="phone"]').val(row.phone);
+        $('#form-edit [name="type"]').val(row.type);
+        $("#modal-edit").modal("show");
+      }).on("click",".btn-delete",function(){
+        var self=$(this);
+        var table=$("#table").DataTable();
+        $.confirm("确定要删除选中数据吗？",function(){
+          layer.closeAll();
+          var load=$.showLoading();
+          setTimeout(function(){
+            table.row(self.parents('tr') ).remove().draw();
+            layer.close(load);
+            $.msg("删除成功！",6);
+          },1000);
+        })
+      });
+      //添加模态框保存
+      $("#form-add-save").on("click",function(){
+        if(!$("#form-add").valid())return;
+        $("#modal-add").modal("hide");
+      });
+      //修改模态框保存
+      $("#form-edit-save").on("click",function(){
+        if(!$("#form-edit").valid())return;
+        $("#modal-edit").modal("hide");
+      });
+      //导出
+      $("#btn-export").on("click",function(){
+        //
+      })
+    };
+    return {
+      init:function(){
+        dataInit();
+        tableInit();
+        componentInit();
+        btnActionInit();
+      }
+    }
+  })();
 </script>
 </body>
 </html>

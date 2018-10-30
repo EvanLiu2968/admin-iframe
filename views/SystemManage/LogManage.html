@@ -1,64 +1,64 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>后台管理系统</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
-	<!-- 主题 -->
-	<link rel="stylesheet" href="../../src/css/app.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>后台管理系统</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- 主题 -->
+  <link rel="stylesheet" href="../../src/css/app.css">
 
-	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
-	<!-- 警告: Respond.js使用file://无法正常工作 -->
-	<!--[if lt IE 9]>
-	<script src="../../src/js/html5shiv.min.js"></script>
-	<script src="../../src/js/respond.min.js"></script>
-	<![endif]-->
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../../src/js/html5shiv.min.js"></script>
+  <script src="../../src/js/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <!-- 页面容器 -->
 <div class="wrapper">
-	<!-- Main content -->
-	<section class="content">
-		<div class="page">
-			<div class="page-header">
-				<div class="pull-right">
-					<a class="page-header-btn" role="button" data-toggle="collapse" href="#form-search-collapse"><i class="fa fa-angle-double-down"></i>显示搜索项</a>
-				</div>
-				
-				<ol class="breadcrumb">
-					<li><a href="#">系统管理</a></li>
-					<li class="active">日志管理</li>
-				</ol>
-			</div><!-- /.page-header -->
-			<div class="page-body">
-				<div class="collapse" id="form-search-collapse">
-					<form class="form-search" id="form-search">
-						<div class="form-group form-inline">
-							<label class="control-label">日志分类</label>
-							<input class="form-control" name="log_type" data-action="search">
-						</div>
-						<div class="form-group form-inline">
-							<label class="control-label">操作用户</label>
-							<input class="form-control" name="user" data-action="search">
-						</div>
-						<div class="form-group form-inline">
-							<label class="control-label">日志时间</label>
-							<input class="form-control" name="time" id="time" data-action="search">
-						</div>
-					</form>
-				</div>
-				<div class="" id="toolbar">
-					<button class="btn btn-primary" ><i class="fa fa-search"></i>查询</button>
-				</div>
-				<table id="table"></table>
-			</div><!-- /.page-body -->
-		</div><!-- /.page -->
-	</section><!-- /.content -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="page">
+      <div class="page-header">
+        <div class="pull-right">
+          <a class="page-header-btn" role="button" data-toggle="collapse" href="#form-search-collapse"><i class="fa fa-angle-double-down"></i>显示搜索项</a>
+        </div>
+        
+        <ol class="breadcrumb">
+          <li><a href="#">系统管理</a></li>
+          <li class="active">日志管理</li>
+        </ol>
+      </div><!-- /.page-header -->
+      <div class="page-body">
+        <div class="collapse" id="form-search-collapse">
+          <form class="form-search" id="form-search">
+            <div class="form-group form-inline">
+              <label class="control-label">日志分类</label>
+              <input class="form-control" name="log_type" data-action="search">
+            </div>
+            <div class="form-group form-inline">
+              <label class="control-label">操作用户</label>
+              <input class="form-control" name="user" data-action="search">
+            </div>
+            <div class="form-group form-inline">
+              <label class="control-label">日志时间</label>
+              <input class="form-control" name="time" id="time" data-action="search">
+            </div>
+          </form>
+        </div>
+        <div class="" id="toolbar">
+          <button class="btn btn-primary" ><i class="fa fa-search"></i>查询</button>
+        </div>
+        <table id="table"></table>
+      </div><!-- /.page-body -->
+    </div><!-- /.page -->
+  </section><!-- /.content -->
 </div><!-- 页面容器 -->
 <!-- jQuery 2.1.4 -->
 <script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
@@ -79,99 +79,99 @@
 <script src="../../src/js/common.js"></script>
 <!-- 业务逻辑js -->
 <script >
-	$(function(){
-		page.init();
-	});
-	var page=(function(){
-		var tableInit=function(){
-			var dataList=[
-				{
-					logType:'info',
-					logTime:'2017-04-01T20:34:47.323+02:00',
-					user:'admin',
-					logDesc:'Request userList complated in 0.320 seconds'
-				},
-				{
-					logType:'info',
-					logTime:'2017-04-01T20:35:12.323+02:00',
-					user:'admin',
-					logDesc:'Request URL "/home"'
-				}
+  $(function(){
+    page.init();
+  });
+  var page=(function(){
+    var tableInit=function(){
+      var dataList=[
+        {
+          logType:'info',
+          logTime:'2017-04-01T20:34:47.323+02:00',
+          user:'admin',
+          logDesc:'Request userList complated in 0.320 seconds'
+        },
+        {
+          logType:'info',
+          logTime:'2017-04-01T20:35:12.323+02:00',
+          user:'admin',
+          logDesc:'Request URL "/home"'
+        }
 
-			];
-			var columns=[
-				{
-					field:"logType",title:"日志类型"
-				},
-				{
-					field:"logTime",title:"日志时间"
-				},
-				{
-					field:"user",title:"操作用户"
-				},
-				{
-					field:"logDesc",title:"日志描述"
-				}
-			];
-			function queryParams(params){
-				console.log(params);
-				return params;
-			}
-			var option={
-				data:dataList,  //需切换common => sidePagination
-				url:'/api/v1/log',
-				columns: columns, //列
-				idField: "id",  //标识哪个字段为id主键
-				uniqueId:"id"//给每行一个唯一标识
-			};
-			option=common.extend(common.getBootstrapTableOption(),option);
-			$("#table").bootstrapTable(option);
-		};
-		//组件初始化；
-		var componentInit=function(){
-			flatpickr("#time",{
-				locale:"zh",
-				mode:"range",
-				dateFormat:"Y-m-d H:i:S",
-				allowInput:true,
-				enableTime:true,
-				enableSeconds:true,
-				time_24hr:true
-			});
-			formValidateInit("#form-add");
-			formValidateInit("#form-edit");
-		};
-		var btnActionInit=function(){
-			$("#modal-add-save").on("click",function(){
-				var valid=$("#form-add").valid();
-				if(!valid)return;
-			});
-			$("#modal-edit-save").on("click",function(){
-				var valid=$("#form-edit").valid();
-				if(!valid)return;
-			});
-		};
-		return {
-			init:function(){
-				tableInit();
-				componentInit();
-				btnActionInit();
-			},
-			edit:function(id){
-				var row=$("#table").bootstrapTable('getRowByUniqueId',id);
-				//row插入表单
-				$("#form-edit [name='role']").val(row.role);
-				$("#form-edit [name='roleDesc']").val(row.roleDesc);
-				$("#editModal").modal("show");
-			},
-			freezeRole:function(id){
-				$.msg("冻结角色");
-			},
-			assignUser:function(id){
-				$.msg("分配用户");
-			}
-		}
-	})();
+      ];
+      var columns=[
+        {
+          field:"logType",title:"日志类型"
+        },
+        {
+          field:"logTime",title:"日志时间"
+        },
+        {
+          field:"user",title:"操作用户"
+        },
+        {
+          field:"logDesc",title:"日志描述"
+        }
+      ];
+      function queryParams(params){
+        console.log(params);
+        return params;
+      }
+      var option={
+        data:dataList,  //需切换common => sidePagination
+        url:'/api/v1/log',
+        columns: columns, //列
+        idField: "id",  //标识哪个字段为id主键
+        uniqueId:"id"//给每行一个唯一标识
+      };
+      option=common.extend(common.getBootstrapTableOption(),option);
+      $("#table").bootstrapTable(option);
+    };
+    //组件初始化；
+    var componentInit=function(){
+      flatpickr("#time",{
+        locale:"zh",
+        mode:"range",
+        dateFormat:"Y-m-d H:i:S",
+        allowInput:true,
+        enableTime:true,
+        enableSeconds:true,
+        time_24hr:true
+      });
+      formValidateInit("#form-add");
+      formValidateInit("#form-edit");
+    };
+    var btnActionInit=function(){
+      $("#modal-add-save").on("click",function(){
+        var valid=$("#form-add").valid();
+        if(!valid)return;
+      });
+      $("#modal-edit-save").on("click",function(){
+        var valid=$("#form-edit").valid();
+        if(!valid)return;
+      });
+    };
+    return {
+      init:function(){
+        tableInit();
+        componentInit();
+        btnActionInit();
+      },
+      edit:function(id){
+        var row=$("#table").bootstrapTable('getRowByUniqueId',id);
+        //row插入表单
+        $("#form-edit [name='role']").val(row.role);
+        $("#form-edit [name='roleDesc']").val(row.roleDesc);
+        $("#editModal").modal("show");
+      },
+      freezeRole:function(id){
+        $.msg("冻结角色");
+      },
+      assignUser:function(id){
+        $.msg("分配用户");
+      }
+    }
+  })();
 </script>
 </body>
 </html>

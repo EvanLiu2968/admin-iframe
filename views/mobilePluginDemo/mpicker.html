@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>后台管理系统</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
-	<!-- 主题 -->
-	<link rel="stylesheet" href="../../src/css/app.css">
-	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
-	<!-- 警告: Respond.js使用file://无法正常工作 -->
-	<!--[if lt IE 9]>
-	<script src="../../src/js/html5shiv.min.js"></script>
-	<script src="../../src/js/respond.min.js"></script>
-	<![endif]-->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>后台管理系统</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- 主题 -->
+  <link rel="stylesheet" href="../../src/css/app.css">
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../../src/js/html5shiv.min.js"></script>
+  <script src="../../src/js/respond.min.js"></script>
+  <![endif]-->
 </head>
 <style>
-	.form-control[disabled], .form-control[readonly],input[readonly]{
-		background-color: transparent !important;
-		border:1px solid #ddd !important;
-	}
-	.mbsc-control{
-		border-radius: 0;
-		box-shadow: none;
-		border-color: #d2d6de;
-		height: 30px;
-		padding: 4px 10px;
-	}
+  .form-control[disabled], .form-control[readonly],input[readonly]{
+    background-color: transparent !important;
+    border:1px solid #ddd !important;
+  }
+  .mbsc-control{
+    border-radius: 0;
+    box-shadow: none;
+    border-color: #d2d6de;
+    height: 30px;
+    padding: 4px 10px;
+  }
 </style>
 <body>
 <!-- 页面容器 -->
 <div class="wrapper">
-	<!-- Main content -->
-	<section class="content">
-		<div class="page">
-			<div class="page-header ">
-				<h1 class="page-title">mpicker</h1>
-			</div><!-- /.page-header -->
-			<div class="page-body">
-				<div class="callout callout-default">
-					<p><a href="http://dev.dcloud.net.cn/mui/ui/#picker" target="_blank">mpicker文档</a></p>
-				</div>
-				<button type="button" class="btn btn-primary" id="btn1">自定义选择器</button>
-				<button type="button" class="btn btn-primary" id="btn2">日期选择器</button>
-			</div><!-- /.page-body -->
-		</div><!-- /.page -->
-	</section><!-- /.content -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="page">
+      <div class="page-header ">
+        <h1 class="page-title">mpicker</h1>
+      </div><!-- /.page-header -->
+      <div class="page-body">
+        <div class="callout callout-default">
+          <p><a href="http://dev.dcloud.net.cn/mui/ui/#picker" target="_blank">mpicker文档</a></p>
+        </div>
+        <button type="button" class="btn btn-primary" id="btn1">自定义选择器</button>
+        <button type="button" class="btn btn-primary" id="btn2">日期选择器</button>
+      </div><!-- /.page-body -->
+    </div><!-- /.page -->
+  </section><!-- /.content -->
 </div><!-- 页面容器 -->
 
 <!-- jQuery 2.1.4 -->
@@ -69,55 +69,55 @@
 <script src="../../src/js/common.js"></script>
 <!-- 业务逻辑js -->
 <script>
-	$(function(){
-		page.init();
-	});
-	var page=(function(){
-		//初始化；
-		var componentInit=function(){
-			$("#btn1").on("click", function(){
-				var popPicker = new mui.PopPicker({
-					layer: 2
-				});
-				popPicker.setData([{
-					value: '110000',
-					text: '北京市',
-					children: [{
-						value: "110101",
-						text: "东城区"
-					}]
-				}, {
-					value: '120000',
-					text: '天津市',
-					children: [{
-							value: "120101",
-							text: "和平区"
-						}, {
-							value: "120102",
-							text: "河东区"
-						}, {
-							value: "120104",
-							text: "南开区"
-						}
-					]
-				}])
-				popPicker.show(function(selectItems){
-					console.log(selectItems)
-				})
-			})
-			$("#btn2").on("click", function(){
-				var dtPicker = new mui.DtPicker({});
-				dtPicker.show(function(selectItems){
-					console.log(selectItems)
-				})
-			})
-		}
-		return {
-			init:function(){
-				componentInit();
-			}
-		}
-	})();
+  $(function(){
+    page.init();
+  });
+  var page=(function(){
+    //初始化；
+    var componentInit=function(){
+      $("#btn1").on("click", function(){
+        var popPicker = new mui.PopPicker({
+          layer: 2
+        });
+        popPicker.setData([{
+          value: '110000',
+          text: '北京市',
+          children: [{
+            value: "110101",
+            text: "东城区"
+          }]
+        }, {
+          value: '120000',
+          text: '天津市',
+          children: [{
+              value: "120101",
+              text: "和平区"
+            }, {
+              value: "120102",
+              text: "河东区"
+            }, {
+              value: "120104",
+              text: "南开区"
+            }
+          ]
+        }])
+        popPicker.show(function(selectItems){
+          console.log(selectItems)
+        })
+      })
+      $("#btn2").on("click", function(){
+        var dtPicker = new mui.DtPicker({});
+        dtPicker.show(function(selectItems){
+          console.log(selectItems)
+        })
+      })
+    }
+    return {
+      init:function(){
+        componentInit();
+      }
+    }
+  })();
 </script>
 </body>
 </html>

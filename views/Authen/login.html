@@ -1,109 +1,109 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>登录</title>
-	<!-- Tell the browser to be responsive to screen width -->
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<!-- Bootstrap 3.3.5 -->
-	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
-	<!-- app.css -->
-	<link rel="stylesheet" href="../../src/css/app.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>登录</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.5 -->
+  <link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- app.css -->
+  <link rel="stylesheet" href="../../src/css/app.css">
 
-	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
-	<!-- 警告: Respond.js使用file://无法正常工作 -->
-	<!--[if lt IE 9]>
-	<script src="../../src/js/html5shiv.min.js"></script>
-	<script src="../../src/js/respond.min.js"></script>
-	<![endif]-->
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../../src/js/html5shiv.min.js"></script>
+  <script src="../../src/js/respond.min.js"></script>
+  <![endif]-->
 </head>
 <style>
-	.login{
-		background-color: #364150
-	}
-	.login .logo{
-		display:block;
-		margin:15px auto;
-		max-width:100%;
-		text-align: center;
-		font-weight: 300;
-		color:#fff;
-	}
-	.login-box{
-		position:absolute;
-		width: 500px;
-		top:50%;left:50%;
-		border-radius:6px;
-		-webkit-transform: translate3D(-50%,-50%,0);
-		transform: translate3D(-50%,-50%,0);
-	}
-	.login .form-title {
-		font-weight: 300;
-		margin-bottom: 25px;
-		color: #364150;
-		text-align: center;
-	}
-	.login .remember{
-		color:#999;
-	}
-	.login-box-body{
-		background: #fff;
-		padding: 20px;
-		border-top: 0;
-		color: #666;
-	}
-	.login-box-body .form-control-feedback{
-		color: #777;
-	}
-	.login .copyright {
-		text-align: center;
-		margin: 0 auto 30px 0;
-		padding: 10px;
-		color: #5f7b8d;
-		font-size: 13px
-	}
-	@media (max-width: 480px) {
-		.login-box{
-			width: 90%;
-		}
-	}
+  .login{
+    background-color: #364150
+  }
+  .login .logo{
+    display:block;
+    margin:15px auto;
+    max-width:100%;
+    text-align: center;
+    font-weight: 300;
+    color:#fff;
+  }
+  .login-box{
+    position:absolute;
+    width: 500px;
+    top:50%;left:50%;
+    border-radius:6px;
+    -webkit-transform: translate3D(-50%,-50%,0);
+    transform: translate3D(-50%,-50%,0);
+  }
+  .login .form-title {
+    font-weight: 300;
+    margin-bottom: 25px;
+    color: #364150;
+    text-align: center;
+  }
+  .login .remember{
+    color:#999;
+  }
+  .login-box-body{
+    background: #fff;
+    padding: 20px;
+    border-top: 0;
+    color: #666;
+  }
+  .login-box-body .form-control-feedback{
+    color: #777;
+  }
+  .login .copyright {
+    text-align: center;
+    margin: 0 auto 30px 0;
+    padding: 10px;
+    color: #5f7b8d;
+    font-size: 13px
+  }
+  @media (max-width: 480px) {
+    .login-box{
+      width: 90%;
+    }
+  }
 </style>
 <body class="login">
 <div class="wrapper">
-	<div class="login-box">
-		<img class="logo" src="../../src/images/logo_title.png" alt="" />
-		<div class="login-box-body" style="padding:20px 100px">
-			<form class="login-form" action="../index.html" method="post">
-				<h3 class="form-title">登录</h3>
-				<div class="form-group has-feedback">
-					<input type="email" class="form-control" style="height:36px" placeholder="用户名">
-					<span class="glyphicon glyphicon-user form-control-feedback"></span>
-				</div>
-				<div class="form-group has-feedback">
-					<input type="password" class="form-control" style="height:36px" placeholder="密码">
-					<span class="glyphicon glyphicon-lock form-control-feedback"></span>
-				</div>
-				<div class="row">
-					<div class="col-xs-12">
-						<div class="el-checkbox" style="margin:10px 0;">
-							<input type="checkbox" id="remember" name="remember" value="1">
-							<label class="el-checkbox-style" for="remember"></label>
-							<span>记住密码</span>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-xs-12 text-center">
-						<button type="submit" class="btn btn-primary btn-block">登 录</button>
-					</div><!-- /.col -->
-				</div>
-			</form>
-		</div><!-- /.login-box-body -->
-		<div class="copyright">版本 beta1.0  Copyright © 2017 后台管理系统</div>
-	</div><!-- /.login-box -->
+  <div class="login-box">
+    <img class="logo" src="../../src/images/logo_title.png" alt="" />
+    <div class="login-box-body" style="padding:20px 100px">
+      <form class="login-form" action="../index.html" method="post">
+        <h3 class="form-title">登录</h3>
+        <div class="form-group has-feedback">
+          <input type="email" class="form-control" style="height:36px" placeholder="用户名">
+          <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        </div>
+        <div class="form-group has-feedback">
+          <input type="password" class="form-control" style="height:36px" placeholder="密码">
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="el-checkbox" style="margin:10px 0;">
+              <input type="checkbox" id="remember" name="remember" value="1">
+              <label class="el-checkbox-style" for="remember"></label>
+              <span>记住密码</span>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 text-center">
+            <button type="submit" class="btn btn-primary btn-block">登 录</button>
+          </div><!-- /.col -->
+        </div>
+      </form>
+    </div><!-- /.login-box-body -->
+    <div class="copyright">版本 beta1.0  Copyright © 2017 后台管理系统</div>
+  </div><!-- /.login-box -->
 </div>
 
 
@@ -118,8 +118,8 @@
 <!--公用common.js-->
 <script src="../../src/js/common.js"></script>
 <script>
-	$(function () {
-	});
+  $(function () {
+  });
 </script>
 </body>
 </html>

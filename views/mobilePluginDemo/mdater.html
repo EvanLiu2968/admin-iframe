@@ -1,60 +1,60 @@
 <!DOCTYPE html>
 <html  style="font-size:54px">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>后台管理系统</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
-	<!-- 主题 -->
-	<link rel="stylesheet" href="../../src/css/app.css">
-	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
-	<!-- 警告: Respond.js使用file://无法正常工作 -->
-	<!--[if lt IE 9]>
-	<script src="../../src/js/html5shiv.min.js"></script>
-	<script src="../../src/js/respond.min.js"></script>
-	<![endif]-->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>后台管理系统</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- 主题 -->
+  <link rel="stylesheet" href="../../src/css/app.css">
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../../src/js/html5shiv.min.js"></script>
+  <script src="../../src/js/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <!-- 页面容器 -->
 <div class="wrapper">
-	<!-- Main content -->
-	<section class="content">
-		<div class="page">
-			<div class="page-header ">
-				<h1 class="page-title">mdater</h1>
-			</div><!-- /.page-header -->
-			<div class="page-body">
-				<div class="callout callout-default">
-					<p>/src/libs/mobile/mdater.md</p>
-				</div>
-				<form class="form-horizontal row">
-					<h4 class="text-center text-red">演示</h4>
-					<div class="form-group">
-						<label class="control-label col-sm-3" for="mdater">日期(可切换年月)</label>
-						<div class="col-sm-4">
-							<input type="text" id="mdater" class="form-control">
-						</div>
-						<div class="col-sm-4">
-							<span id="mdater-text" class="form-control no-border"></span>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-3" for="mdater">日期(仅切换月)</label>
-						<div class="col-sm-4">
-							<input type="text" id="mdater1" class="form-control">
-						</div>
-						<div class="col-sm-4">
-							<span id="mdater-text1" class="form-control no-border"></span>
-						</div>
-					</div>
-				</form>
-			</div><!-- /.page-body -->
-		</div><!-- /.page -->
-	</section><!-- /.content -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="page">
+      <div class="page-header ">
+        <h1 class="page-title">mdater</h1>
+      </div><!-- /.page-header -->
+      <div class="page-body">
+        <div class="callout callout-default">
+          <p>/src/libs/mobile/mdater.md</p>
+        </div>
+        <form class="form-horizontal row">
+          <h4 class="text-center text-red">演示</h4>
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="mdater">日期(可切换年月)</label>
+            <div class="col-sm-4">
+              <input type="text" id="mdater" class="form-control">
+            </div>
+            <div class="col-sm-4">
+              <span id="mdater-text" class="form-control no-border"></span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-3" for="mdater">日期(仅切换月)</label>
+            <div class="col-sm-4">
+              <input type="text" id="mdater1" class="form-control">
+            </div>
+            <div class="col-sm-4">
+              <span id="mdater-text1" class="form-control no-border"></span>
+            </div>
+          </div>
+        </form>
+      </div><!-- /.page-body -->
+    </div><!-- /.page -->
+  </section><!-- /.content -->
 </div><!-- 页面容器 -->
 
 <!-- jQuery 2.1.4 -->
@@ -72,39 +72,39 @@
 <script src="../../src/js/common.js"></script>
 <!-- 业务逻辑js -->
 <script>
-	$(function(){
-		page.init();
-	});
-	var page=(function(){
-		//初始化；
-		var componentInit=function(){
-			$("#mdater").val(new Date().format('yyyy-MM-dd')).mdater({
-				trigger:"tap", //可选"click"||"tap"
-				toggleYear:true,  //true显示切换年，false则只显示切换月
-				minDate:new Date(),  //最小日期
-				maxDate:new Date(new Date().valueOf() + 10*24*60*60*1000)  //最大日期10天
-			}).on("datechange",function(){
-				var value=$(this).val();
-				var date=new Date(value);
-				$("#mdater-text").text(LunarCalendar.getYear(date)+","+LunarCalendar.getMonth(date)+","+LunarCalendar.getDay(date));
-			});
-			$("#mdater1").val(new Date().format('yyyy-MM-dd')).mdater({
-				trigger:"click", //可选"click"||"tap"
-				toggleYear:false,  //true显示切换年，false则只显示切换月
-				minDate:new Date(),  //最小日期
-				maxDate:new Date(new Date().valueOf() + 10*24*60*60*1000)  //最大日期10天
-			}).on("datechange",function(){
-				var value=$(this).val();
-				var date=new Date(value);
-				$("#mdater-text1").text(LunarCalendar.getYear(date)+","+LunarCalendar.getMonth(date)+","+LunarCalendar.getDay(date));
-			});
-		};
-		return {
-			init:function(){
-				componentInit();
-			}
-		}
-	})();
+  $(function(){
+    page.init();
+  });
+  var page=(function(){
+    //初始化；
+    var componentInit=function(){
+      $("#mdater").val(new Date().format('yyyy-MM-dd')).mdater({
+        trigger:"tap", //可选"click"||"tap"
+        toggleYear:true,  //true显示切换年，false则只显示切换月
+        minDate:new Date(),  //最小日期
+        maxDate:new Date(new Date().valueOf() + 10*24*60*60*1000)  //最大日期10天
+      }).on("datechange",function(){
+        var value=$(this).val();
+        var date=new Date(value);
+        $("#mdater-text").text(LunarCalendar.getYear(date)+","+LunarCalendar.getMonth(date)+","+LunarCalendar.getDay(date));
+      });
+      $("#mdater1").val(new Date().format('yyyy-MM-dd')).mdater({
+        trigger:"click", //可选"click"||"tap"
+        toggleYear:false,  //true显示切换年，false则只显示切换月
+        minDate:new Date(),  //最小日期
+        maxDate:new Date(new Date().valueOf() + 10*24*60*60*1000)  //最大日期10天
+      }).on("datechange",function(){
+        var value=$(this).val();
+        var date=new Date(value);
+        $("#mdater-text1").text(LunarCalendar.getYear(date)+","+LunarCalendar.getMonth(date)+","+LunarCalendar.getDay(date));
+      });
+    };
+    return {
+      init:function(){
+        componentInit();
+      }
+    }
+  })();
 </script>
 </body>
 </html>

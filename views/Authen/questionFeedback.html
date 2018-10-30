@@ -1,61 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>交通工程质量安全监督监管系统</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
-	<!-- 主题 -->
-	<link rel="stylesheet" href="../../src/css/app.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>交通工程质量安全监督监管系统</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- 主题 -->
+  <link rel="stylesheet" href="../../src/css/app.css">
 
-	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
-	<!-- 警告: Respond.js使用file://无法正常工作 -->
-	<!--[if lt IE 9]>
-	<script src="../../src/js/html5shiv.min.js"></script>
-	<script src="../../src/js/respond.min.js"></script>
-	<![endif]-->
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../../src/js/html5shiv.min.js"></script>
+  <script src="../../src/js/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <!-- 页面容器 -->
 <div class="wrapper">
-	<!-- Main content -->
-	<section class="content">
-		<div class="row">
-			<div class="col-xs-12">
-				<div class="page">
-					<div class="page-header">
-						<ol class="breadcrumb">
-							<li><a href="#">首页</a></li>
-							<li class="active">问题反馈</li>
-						</ol>
-					</div><!-- /.page-header -->
-					<div class="page-body">
-						<form class="form-horizontal" id="form-feedback">
-							<div class="form-group">
-								<label class="col-sm-3 control-label"><span class="text-red">*</span>问题标题</label>
-								<div class="col-sm-6 ">
-									<input type="text" class="form-control" name="title" validate="{required:true,minlength:6}" placeholder="请输入内容">
-								</div>
-							</div>
-							<div class="form-group">
-								<label class="col-sm-3 control-label"><span class="text-red">*</span>问题描述</label>
-								<div class="col-sm-6 ">
-									<textarea  class="form-control" rows="3"  name="description" id="password1" validate="{required:true,minlength:6}" placeholder="请输入内容"></textarea>
-								</div>
-							</div>
-							<div class="btn-wrapper text-center">
-								<button type="button" class="btn btn-primary" id="btn-save"><i class="fa fa-save"></i>提交</button>
-							</div>
-						</form>
-					</div><!-- /.page-body -->
-				</div><!-- /.page -->
-			</div>
-		</div>
-	</section><!-- /.content -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="page">
+          <div class="page-header">
+            <ol class="breadcrumb">
+              <li><a href="#">首页</a></li>
+              <li class="active">问题反馈</li>
+            </ol>
+          </div><!-- /.page-header -->
+          <div class="page-body">
+            <form class="form-horizontal" id="form-feedback">
+              <div class="form-group">
+                <label class="col-sm-3 control-label"><span class="text-red">*</span>问题标题</label>
+                <div class="col-sm-6 ">
+                  <input type="text" class="form-control" name="title" validate="{required:true,minlength:6}" placeholder="请输入内容">
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-3 control-label"><span class="text-red">*</span>问题描述</label>
+                <div class="col-sm-6 ">
+                  <textarea  class="form-control" rows="3"  name="description" id="password1" validate="{required:true,minlength:6}" placeholder="请输入内容"></textarea>
+                </div>
+              </div>
+              <div class="btn-wrapper text-center">
+                <button type="button" class="btn btn-primary" id="btn-save"><i class="fa fa-save"></i>提交</button>
+              </div>
+            </form>
+          </div><!-- /.page-body -->
+        </div><!-- /.page -->
+      </div>
+    </div>
+  </section><!-- /.content -->
 </div><!-- 页面容器 -->
 
 <!-- jQuery 2.1.4 -->
@@ -71,12 +71,12 @@
 <!--公用common.js-->
 <script src="../../src/js/common.js"></script>
 <script>
-	$(function(){
-		formValidateInit("#form-feedback");
-		$("#btn-save").on("click",function(){
-			if(!$("#form-feedback").valid())return;
-		})
-	});
+  $(function(){
+    formValidateInit("#form-feedback");
+    $("#btn-save").on("click",function(){
+      if(!$("#form-feedback").valid())return;
+    })
+  });
 </script>
 </body>
 </html>

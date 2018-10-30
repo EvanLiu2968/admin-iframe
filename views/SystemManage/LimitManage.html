@@ -1,124 +1,124 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>交通工程质量安全监督监管系统</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
-	<!-- 主题 -->
-	<link rel="stylesheet" href="../../src/css/app.css">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>交通工程质量安全监督监管系统</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- 主题 -->
+  <link rel="stylesheet" href="../../src/css/app.css">
 
-	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
-	<!-- 警告: Respond.js使用file://无法正常工作 -->
-	<!--[if lt IE 9]>
-	<script src="../../src/js/html5shiv.min.js"></script>
-	<script src="../../src/js/respond.min.js"></script>
-	<![endif]-->
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../../src/js/html5shiv.min.js"></script>
+  <script src="../../src/js/respond.min.js"></script>
+  <![endif]-->
 </head>
 <style>
-	#rMenu {position:absolute; visibility:hidden; top:0; padding:1px 0;min-width:16em;text-align: left;border:1px solid #ddd;background-color: #fff;}
-	#rMenu>li{
-		padding: 0 2em;
-		line-height:200%;
-		cursor: pointer;
-		list-style: none ;
-		border-bottom:1px solid #eee;
-	}
-	#rMenu>li:last-child{
-		border-color:transparent;
-	}
-	#rMenu>li:hover{
-		background-color: #eee;
-	}
+  #rMenu {position:absolute; visibility:hidden; top:0; padding:1px 0;min-width:16em;text-align: left;border:1px solid #ddd;background-color: #fff;}
+  #rMenu>li{
+    padding: 0 2em;
+    line-height:200%;
+    cursor: pointer;
+    list-style: none ;
+    border-bottom:1px solid #eee;
+  }
+  #rMenu>li:last-child{
+    border-color:transparent;
+  }
+  #rMenu>li:hover{
+    background-color: #eee;
+  }
 </style>
 <body >
 <!-- 页面容器 -->
 <div class="wrapper">
-	<!-- Main content -->
-	<section class="content">
-		<div class="page">
-			<div class="page-header">
-				
-				<ol class="breadcrumb">
-					<li><a href="#">系统管理</a></li>
-					<li class="active">菜单管理</li>
-				</ol>
-			</div><!-- /.page-header -->
-			<div class="page-body">
-				<div class="callout callout-info">
-					<p>
-						鼠标右键可对菜单项进行权限分配。
-					</p>
-				</div>
-				<div id="menu" class="ztree" style="margin-bottom:15px;width:100%;"></div>
-			</div><!-- /.page-body -->
-		</div><!-- /.page -->
-	</section><!-- /.content -->
-	<!--zTree右键菜单-->
-	<ul id="rMenu">
-		<li  onclick="page.assignTreeNode();">权限分配</li>
-	</ul>
-	<!--新增模态框-->
-	<div class="modal" id="modal-assign">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
-					<h4 class="modal-title">权限分配</h4>
-				</div>
-				<div class="modal-body">
-					<form class="form-horizontal" id="form-assign">
-						<div class="form-group">
-							<label class="col-sm-3 control-label">分配角色</label>
-							<div class="col-sm-3">
-								<select class="form-control" multiple id="roleList">
-									<option>系统管理员</option>
-									<option>普通用户</option>
-									<option>部门负责人</option>
-								</select>
-							</div>
-							<div class="col-sm-1">
-								<button type="button" class="btn btn-primary" id="btn-role-remove" style="margin-bottom:10px">移除</button>
-								<button type="button" class="btn btn-primary" id="btn-role-add">添加</button>
-							</div>
-							<div class="col-sm-3">
-								<select class="form-control" multiple id="roleLimit">
-									<option>系统管理员</option>
-									<option>普通用户</option>
-									<option>部门负责人</option>
-								</select>
-							</div>
-						</div>
-						<div class="form-group">
-							<label class="col-sm-3 control-label">分配用户</label>
-							<div class="col-sm-3">
-								<select class="form-control" id="userQuery" style="width:100%"></select>
-							</div>
-							<div class="col-sm-1">
-								<button type="button" class="btn btn-primary" id="btn-user-remove" style="margin-bottom:10px">移除</button>
-								<button type="button" class="btn btn-primary" id="btn-user-add">添加</button>
-							</div>
-							<div class="col-sm-3">
-								<select class="form-control" multiple id="userLimit">
-									<option>zhangsan</option>
-									<option>lisi</option>
-									<option>wangwu</option>
-								</select>
-							</div>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
-					<button type="button" class="btn btn-primary" id="modal-assign-save"><i class="fa fa-check"></i>保存</button>
-				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="page">
+      <div class="page-header">
+        
+        <ol class="breadcrumb">
+          <li><a href="#">系统管理</a></li>
+          <li class="active">菜单管理</li>
+        </ol>
+      </div><!-- /.page-header -->
+      <div class="page-body">
+        <div class="callout callout-info">
+          <p>
+            鼠标右键可对菜单项进行权限分配。
+          </p>
+        </div>
+        <div id="menu" class="ztree" style="margin-bottom:15px;width:100%;"></div>
+      </div><!-- /.page-body -->
+    </div><!-- /.page -->
+  </section><!-- /.content -->
+  <!--zTree右键菜单-->
+  <ul id="rMenu">
+    <li  onclick="page.assignTreeNode();">权限分配</li>
+  </ul>
+  <!--新增模态框-->
+  <div class="modal" id="modal-assign">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+          <h4 class="modal-title">权限分配</h4>
+        </div>
+        <div class="modal-body">
+          <form class="form-horizontal" id="form-assign">
+            <div class="form-group">
+              <label class="col-sm-3 control-label">分配角色</label>
+              <div class="col-sm-3">
+                <select class="form-control" multiple id="roleList">
+                  <option>系统管理员</option>
+                  <option>普通用户</option>
+                  <option>部门负责人</option>
+                </select>
+              </div>
+              <div class="col-sm-1">
+                <button type="button" class="btn btn-primary" id="btn-role-remove" style="margin-bottom:10px">移除</button>
+                <button type="button" class="btn btn-primary" id="btn-role-add">添加</button>
+              </div>
+              <div class="col-sm-3">
+                <select class="form-control" multiple id="roleLimit">
+                  <option>系统管理员</option>
+                  <option>普通用户</option>
+                  <option>部门负责人</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-sm-3 control-label">分配用户</label>
+              <div class="col-sm-3">
+                <select class="form-control" id="userQuery" style="width:100%"></select>
+              </div>
+              <div class="col-sm-1">
+                <button type="button" class="btn btn-primary" id="btn-user-remove" style="margin-bottom:10px">移除</button>
+                <button type="button" class="btn btn-primary" id="btn-user-add">添加</button>
+              </div>
+              <div class="col-sm-3">
+                <select class="form-control" multiple id="userLimit">
+                  <option>zhangsan</option>
+                  <option>lisi</option>
+                  <option>wangwu</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
+          <button type="button" class="btn btn-primary" id="modal-assign-save"><i class="fa fa-check"></i>保存</button>
+        </div>
+      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+  </div><!-- /.modal -->
 </div><!-- 页面容器 -->
 <!-- jQuery 2.1.4 -->
 <script src="../../src/libs/jQuery/jquery-2.2.3.min.js"></script>
@@ -143,160 +143,160 @@
 <script src="../../src/js/common.js"></script>
 <!-- 业务逻辑js -->
 <script>
-	$(function(){
-		page.init();
-	});
-	var page=(function(){
-		//树结构初始化
-		var zTreeInit=function(zNodes){
-			var setting = {
-				view: {
-					dblClickExpand: false,
-					showLine: true,
-					selectedMulti: false
-				},
-				data: {
-					simpleData: {
-						enable:true,
-						idKey: "id",
-						pIdKey: "pId",
-						rootPId: ""
-					}
-				},
-				callback: {
-					onRightClick:function(event, treeId, treeNode){
-						var zTree = $.fn.zTree.getZTreeObj("menu");
-						if (!treeNode && event.target.tagName.toLowerCase() != "button" && $(event.target).parents("a").length == 0) {
-							zTree.cancelSelectedNode();
-							showRMenu("root", event.clientX, event.clientY);
-						} else if (treeNode && !treeNode.noR) {
-							zTree.selectNode(treeNode);
-							showRMenu("node", event.clientX, event.clientY);
-						}
-					}
-				}
-			};
-			$.fn.zTree.init($("#menu"), setting, zNodes);
-		};
-		function showRMenu(type, x, y) {
-			$("#rMenu ul").show();
-			if (type=="root") {
-				$("#m_del").hide();//根目录不能删除
-			} else {
-				$("#m_del").show();
-			}
-			$("#rMenu").css({"top":y+"px", "left":x+"px", "visibility":"visible"});
+  $(function(){
+    page.init();
+  });
+  var page=(function(){
+    //树结构初始化
+    var zTreeInit=function(zNodes){
+      var setting = {
+        view: {
+          dblClickExpand: false,
+          showLine: true,
+          selectedMulti: false
+        },
+        data: {
+          simpleData: {
+            enable:true,
+            idKey: "id",
+            pIdKey: "pId",
+            rootPId: ""
+          }
+        },
+        callback: {
+          onRightClick:function(event, treeId, treeNode){
+            var zTree = $.fn.zTree.getZTreeObj("menu");
+            if (!treeNode && event.target.tagName.toLowerCase() != "button" && $(event.target).parents("a").length == 0) {
+              zTree.cancelSelectedNode();
+              showRMenu("root", event.clientX, event.clientY);
+            } else if (treeNode && !treeNode.noR) {
+              zTree.selectNode(treeNode);
+              showRMenu("node", event.clientX, event.clientY);
+            }
+          }
+        }
+      };
+      $.fn.zTree.init($("#menu"), setting, zNodes);
+    };
+    function showRMenu(type, x, y) {
+      $("#rMenu ul").show();
+      if (type=="root") {
+        $("#m_del").hide();//根目录不能删除
+      } else {
+        $("#m_del").show();
+      }
+      $("#rMenu").css({"top":y+"px", "left":x+"px", "visibility":"visible"});
 
-			$("body").bind("mousedown", onBodyMouseDown);
-		}
-		function hideRMenu() {
-			if ($("#rMenu")) $("#rMenu").css({"visibility": "hidden"});
-			$("body").unbind("mousedown", onBodyMouseDown);
-		}
-		function onBodyMouseDown(event){
-			if (!(event.target.id == "rMenu" || $(event.target).parents("#rMenu").length>0)) {
-				$("#rMenu").css({"visibility" : "hidden"});
-			}
-		}
-		//树结构数据
-		var zNodes =[
-			{id:1, pId:0, name:"菜单一", open:true},
-			{id:101, pId:1, name:"子菜单一"},
-			{id:102, pId:1, name:"子菜单二"},
-			{id:3, pId:0, name:"统计分析", open:true},
-			{id:301, pId:3, name:"统计分析一"},
-			{id:302, pId:3, name:"统计分析二"},
-			{id:2, pId:0, name:"系统管理", open:true},
-			{id:201, pId:2, name:"用户管理"},
-			{id:202, pId:2, name:"角色管理"},
-			{id:202, pId:2, name:"菜单管理"},
-			{id:202, pId:2, name:"权限管理"},
-			{id:202, pId:2, name:"日志管理"}
-		];
-		//组件初始化；
-		var componentInit=function(){
-			//表单验证初始化
-			formValidateInit("#form-add");
-			formValidateInit("#form-edit");
-			$("#userQuery").select2({
-				placeholder: "选择用户",
-				ajax: {
-					url: "/api/v1/Enterprise/Select2",
-					dataType: 'json',
-					delay: 250,
-					data: function (params) {
-						return {
-							q: params.term, // search term
-							page: params.page
-						};
-					},
-					processResults: function (data, params) {
-						// parse the results into the format expected by Select2
-						// since we are using custom formatting functions we do not need to
-						// alter the remote JSON data, except to indicate that infinite
-						// scrolling can be used
-						params.page = params.page || 1;
+      $("body").bind("mousedown", onBodyMouseDown);
+    }
+    function hideRMenu() {
+      if ($("#rMenu")) $("#rMenu").css({"visibility": "hidden"});
+      $("body").unbind("mousedown", onBodyMouseDown);
+    }
+    function onBodyMouseDown(event){
+      if (!(event.target.id == "rMenu" || $(event.target).parents("#rMenu").length>0)) {
+        $("#rMenu").css({"visibility" : "hidden"});
+      }
+    }
+    //树结构数据
+    var zNodes =[
+      {id:1, pId:0, name:"菜单一", open:true},
+      {id:101, pId:1, name:"子菜单一"},
+      {id:102, pId:1, name:"子菜单二"},
+      {id:3, pId:0, name:"统计分析", open:true},
+      {id:301, pId:3, name:"统计分析一"},
+      {id:302, pId:3, name:"统计分析二"},
+      {id:2, pId:0, name:"系统管理", open:true},
+      {id:201, pId:2, name:"用户管理"},
+      {id:202, pId:2, name:"角色管理"},
+      {id:202, pId:2, name:"菜单管理"},
+      {id:202, pId:2, name:"权限管理"},
+      {id:202, pId:2, name:"日志管理"}
+    ];
+    //组件初始化；
+    var componentInit=function(){
+      //表单验证初始化
+      formValidateInit("#form-add");
+      formValidateInit("#form-edit");
+      $("#userQuery").select2({
+        placeholder: "选择用户",
+        ajax: {
+          url: "/api/v1/Enterprise/Select2",
+          dataType: 'json',
+          delay: 250,
+          data: function (params) {
+            return {
+              q: params.term, // search term
+              page: params.page
+            };
+          },
+          processResults: function (data, params) {
+            // parse the results into the format expected by Select2
+            // since we are using custom formatting functions we do not need to
+            // alter the remote JSON data, except to indicate that infinite
+            // scrolling can be used
+            params.page = params.page || 1;
 
-						return {
-							results: data.items,
-							pagination: {
-								more: (params.page * 30) < data.total_count
-							}
-						};
-					},
-					cache: true
-				},
-				escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
-				minimumInputLength: 1
-				//templateResult: formatRepo, // omitted for brevity, see the source of this page
-				//templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
-			});
-		};
-		//按钮点击初始化
-		var buttonActionInit=function(){
-			$("#btn-role-remove").on("click",function(){
-				var seleted=$("#roleLimit").find('option:selected');
-				console.log(seleted);
-				seleted.each(function(){
-					$(this).remove();
-				});
-			});
-			$("#btn-role-add").on("click",function(){
-				var seleted=$("#roleList").find('option:selected');
-				seleted.each(function(){
-					$("#roleLimit").append($(this).clone());
-				});
-			});
-			$("#btn-user-remove").on("click",function(){
-				var seleted=$("#userLimit").find('option:selected');
-				seleted.each(function(){
-					$(this).remove();
-				});
-			});
-			$("#btn-user-add").on("click",function(){
-				//
-			});
-		};
-		return {
-			init:function(){
-				zTreeInit(zNodes);
-				componentInit();
-				buttonActionInit();
-			},
-			assignTreeNode:function() {
-				hideRMenu();
-				var zTree = $.fn.zTree.getZTreeObj("menu");
-				var nodes = zTree.getSelectedNodes(),
-						treeNode = nodes[0];
-				if (nodes.length == 0) {
-					$.alert("请先选择一个节点");
-					return;
-				}
-//				$('#form-assign [name="content"]').val(treeNode.name);
-				$("#modal-assign").modal("show");
-			}
-		}
-	})();
+            return {
+              results: data.items,
+              pagination: {
+                more: (params.page * 30) < data.total_count
+              }
+            };
+          },
+          cache: true
+        },
+        escapeMarkup: function (markup) { return markup; }, // let our custom formatter work
+        minimumInputLength: 1
+        //templateResult: formatRepo, // omitted for brevity, see the source of this page
+        //templateSelection: formatRepoSelection // omitted for brevity, see the source of this page
+      });
+    };
+    //按钮点击初始化
+    var buttonActionInit=function(){
+      $("#btn-role-remove").on("click",function(){
+        var seleted=$("#roleLimit").find('option:selected');
+        console.log(seleted);
+        seleted.each(function(){
+          $(this).remove();
+        });
+      });
+      $("#btn-role-add").on("click",function(){
+        var seleted=$("#roleList").find('option:selected');
+        seleted.each(function(){
+          $("#roleLimit").append($(this).clone());
+        });
+      });
+      $("#btn-user-remove").on("click",function(){
+        var seleted=$("#userLimit").find('option:selected');
+        seleted.each(function(){
+          $(this).remove();
+        });
+      });
+      $("#btn-user-add").on("click",function(){
+        //
+      });
+    };
+    return {
+      init:function(){
+        zTreeInit(zNodes);
+        componentInit();
+        buttonActionInit();
+      },
+      assignTreeNode:function() {
+        hideRMenu();
+        var zTree = $.fn.zTree.getZTreeObj("menu");
+        var nodes = zTree.getSelectedNodes(),
+            treeNode = nodes[0];
+        if (nodes.length == 0) {
+          $.alert("请先选择一个节点");
+          return;
+        }
+//        $('#form-assign [name="content"]').val(treeNode.name);
+        $("#modal-assign").modal("show");
+      }
+    }
+  })();
 </script>
 </body>
 </html>

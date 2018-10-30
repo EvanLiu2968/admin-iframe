@@ -1,54 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>后台管理系统</title>
-	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-	<!-- bootstrap -->
-	<link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
-	<!-- 主题 -->
-	<link rel="stylesheet" href="../../src/css/app.css">
-	<!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
-	<!-- 警告: Respond.js使用file://无法正常工作 -->
-	<!--[if lt IE 9]>
-	<script src="../../src/js/html5shiv.min.js"></script>
-	<script src="../../src/js/respond.min.js"></script>
-	<![endif]-->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>后台管理系统</title>
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="../../src/libs/bootstrap-3.3.6/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../src/libs/font-awesome-4.5.0/css/font-awesome.min.css">
+  <!-- 主题 -->
+  <link rel="stylesheet" href="../../src/css/app.css">
+  <!-- HTML5 Shim and Respond.js IE8 支持HTML5元素和媒体查询 -->
+  <!-- 警告: Respond.js使用file://无法正常工作 -->
+  <!--[if lt IE 9]>
+  <script src="../../src/js/html5shiv.min.js"></script>
+  <script src="../../src/js/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
 <!-- 页面容器 -->
 <div class="wrapper">
-	<!-- Main content -->
-	<section class="content">
-		<div class="page">
-			<div class="page-header ">
-				<h1 class="page-title">联级选择</h1>
-			</div><!-- /.page-header -->
-			<div class="page-body">
-				<form class="form-horizontal row">
-					<div class="form-group">
-						<label class="control-label col-md-3" >城市选择</label>
-						<div class="col-md-9" id="city">
-							<select class="form-control input-inline prov"></select>
-							<select class="form-control input-inline city" style="display: none"></select>
-							<select class="form-control input-inline dist" style="display: none"></select>
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="col-md-3 control-label" >自定义选择</label>
-						<div class="col-md-9" id="demo">
-							<select class="form-control input-inline prov"></select>
-							<select class="form-control input-inline city" style="display: none"></select>
-							<select class="form-control input-inline dist" style="display: none"></select>
-						</div>
-					</div>
-				</form>
-			</div><!-- /.page-body -->
-		</div><!-- /.page -->
-	</section><!-- /.content -->
+  <!-- Main content -->
+  <section class="content">
+    <div class="page">
+      <div class="page-header ">
+        <h1 class="page-title">联级选择</h1>
+      </div><!-- /.page-header -->
+      <div class="page-body">
+        <form class="form-horizontal row">
+          <div class="form-group">
+            <label class="control-label col-md-3" >城市选择</label>
+            <div class="col-md-9" id="city">
+              <select class="form-control input-inline prov"></select>
+              <select class="form-control input-inline city" style="display: none"></select>
+              <select class="form-control input-inline dist" style="display: none"></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-md-3 control-label" >自定义选择</label>
+            <div class="col-md-9" id="demo">
+              <select class="form-control input-inline prov"></select>
+              <select class="form-control input-inline city" style="display: none"></select>
+              <select class="form-control input-inline dist" style="display: none"></select>
+            </div>
+          </div>
+        </form>
+      </div><!-- /.page-body -->
+    </div><!-- /.page -->
+  </section><!-- /.content -->
 </div><!-- 页面容器 -->
 
 <!-- jQuery 2.1.4 -->
@@ -64,39 +64,39 @@
 <script src="../../src/js/common.js"></script>
 <!-- 业务逻辑js -->
 <script>
-	$(function(){
-		page.init();
-	});
-	var page=(function(){
-		//初始化；
-		var componentInit=function(){
-			if(!location.host)$.alert("城市选择无法请求到数据");
-			$("#city").citySelect({
-				url:"../../src/libs/cityselect/city.min.js",
-				nodata:"none",
-				prov:null,
-				city:null,
-				dist:null,
-				required:false
-			});
-			$("#demo").citySelect({
-				url:{"citylist":[
-					{"p":"一级菜单1","c":[{"n":"二级菜单1"},{"n":"二级菜单2","a":[{"s":"三级菜单1"},{"s":"三级菜单2"}]},{"n":"二级菜单3"}]},
-					{"p":"一级菜单2","c":[{"n":"二级菜单4"},{"n":"二级菜单5"}]}
-				]},
-				nodata:"none",
-				prov:null,
-				city:null,
-				dist:null,
-				required:false
-			});
-		};
-		return {
-			init:function(){
-				componentInit();
-			}
-		}
-	})();
+  $(function(){
+    page.init();
+  });
+  var page=(function(){
+    //初始化；
+    var componentInit=function(){
+      if(!location.host)$.alert("城市选择无法请求到数据");
+      $("#city").citySelect({
+        url:"../../src/libs/cityselect/city.min.js",
+        nodata:"none",
+        prov:null,
+        city:null,
+        dist:null,
+        required:false
+      });
+      $("#demo").citySelect({
+        url:{"citylist":[
+          {"p":"一级菜单1","c":[{"n":"二级菜单1"},{"n":"二级菜单2","a":[{"s":"三级菜单1"},{"s":"三级菜单2"}]},{"n":"二级菜单3"}]},
+          {"p":"一级菜单2","c":[{"n":"二级菜单4"},{"n":"二级菜单5"}]}
+        ]},
+        nodata:"none",
+        prov:null,
+        city:null,
+        dist:null,
+        required:false
+      });
+    };
+    return {
+      init:function(){
+        componentInit();
+      }
+    }
+  })();
 </script>
 </body>
 </html>
